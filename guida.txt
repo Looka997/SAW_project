@@ -1,0 +1,33 @@
+home
+registrazione utente
+pagina profilo utente, con informazioni opzionali (città di residenza, about me, link pag web perosnale)
+login: per area riservata autenticarsi, vede delle cose private nella sua pagina
+modifica del profilo utente - cambi precompilati, per i campi base usare struttura registration.php IL NOME DEL FILE
+    show_profile.php , lo script che modifica i dati nel database deve chiamarsi update_profile.php
+motore di ricerca interno: ricerca all'interno del dominio (cerca prodotti, post su argomento, etc.)
+logout - ricordarsi di cancellare i cookie, facendoli scadere
+
+
+avanzate: tre funzionalità aggiuntive tra:
+
+blog del sito
+carrello acquisti
+valutazione prodotti
+newsletter
+sistema crowdfounding
+chat interna
+area amministrativa
+
+Si deve usare: 
+Bootstrap o altri framework CSS
+Javascript, Ajax
+PHP, sessioni, accesso al database per parte lato server
+
+Se gli script non funzionano, controlla le impostazini del file di configurazione php.ini - display errors potrebbe off
+HTML deve essere valido per W3C
+
+
+Consegnare sul server del corso
+consegnare solo se passa i test automatici, che possiamo eseguire
+ogni gruppo deve preparare una breve presentazione (3/4 slide) che descrive il dominio, la struttura database,
+le funzionalità implementate. Anche questa deve essere cosnegnata sul server.
