@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All users</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <?php
         session_start();
-        require_once("../../db_connections/connections.php");
+        require_once("../db_connections/connections.php");
         $link = my_oo_connect(HOST, DB_USER, DB_PASSWORD, DATABASE);
         require("common/navbar.php");
         require_once("common/db_ops.php")

@@ -3,7 +3,7 @@
     require_once('common/db_ops.php');
     require_once('common/utilities.php');
     if (!isset($link)){
-        require_once('../../db_connections/connections.php');
+        require_once("../db_connections/connections.php");
         $link = my_oo_connect(HOST, DB_USER, DB_PASSWORD, DATABASE);
     }
 

@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Show Profile</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <?php 
@@ -15,7 +15,7 @@
         }
         require("common/navbar.php");
         require_once("common/db_ops.php");
-        require_once("../../db_connections/connections.php");
+        require_once("../db_connections/connections.php");
         $link = my_oo_connect(HOST, DB_USER, DB_PASSWORD, DATABASE);
         require_once("common/utilities.php");
         require_once("common/details_reg.php");
