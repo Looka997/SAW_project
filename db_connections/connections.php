@@ -1,9 +1,9 @@
 <?php
 
     define ('HOST', "localhost");
-    define ('DB_USER', "luca");
-    define ('DB_PASSWORD',"provapsw");
-    define ('DATABASE', "prova");
+    define ('DB_USER', "progetto");
+    define ('DB_PASSWORD',"test");
+    define ('DATABASE', "progetto");
         
     function my_connect($host, $db_user, $db_password, $database){
         $db_con = mysqli_connect($host,$db_user,$db_password,$database);
