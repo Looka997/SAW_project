@@ -1,6 +1,6 @@
 <?php
-    require_once('../progetto_MARINELLI_CRIPPA_MORCIANO/common/db_ops.php');
-    require_once('../progetto_MARINELLI_CRIPPA_MORCIANO/common/utilities.php');
+    require_once('../public_html/common/db_ops.php');
+    require_once('../public_html/common/utilities.php');
     require_once('../db_connections/connections.php');
     if (!isset($link)){
         $link = my_oo_connect(HOST, DB_USER, DB_PASSWORD, DATABASE);
@@ -47,6 +47,6 @@
     ('HTML is for bois','Fedez','lessgreaterthen.jpg', 19.91)";
     my_oo_query($link, $query);
 
-    header("Location: ../progetto_MARINELLI_CRIPPA_MORCIANO/common/logout.php");
+    header("Location: ../public_html/common/logout.php");
     exit;
 ?>
