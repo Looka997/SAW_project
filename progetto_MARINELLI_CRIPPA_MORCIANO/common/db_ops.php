@@ -44,7 +44,7 @@
     function my_oo_query($con, $query){
         $res = $con->query($query);
         if ($res == FALSE){
-            echo($con->error());
+            echo($con->error);
             exit;
         }
         return $res;

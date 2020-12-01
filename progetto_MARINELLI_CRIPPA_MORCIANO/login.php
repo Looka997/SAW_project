@@ -47,6 +47,8 @@
             }
             if ($found && (password_verify($_POST["pass"], $row["password"]))){
                 $_SESSION["email"] = $email;
+                if ($row["admin"])
+                    $_SESSION["admin"] = TRUE;
                 mysqli_stmt_close($stmt);
                 header('Location: home.php');
                 exit;

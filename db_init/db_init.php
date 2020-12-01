@@ -1,25 +1,28 @@
 <?php
-    require_once('common/db_ops.php');
-    require_once('common/utilities.php');
-    require_once('../../db_connections/connections.php');
+    require_once('../progetto_MARINELLI_CRIPPA_MORCIANO/common/db_ops.php');
+    require_once('../progetto_MARINELLI_CRIPPA_MORCIANO/common/utilities.php');
+    require_once('../db_connections/connections.php');
     if (!isset($link)){
         $link = my_oo_connect(HOST, DB_USER, DB_PASSWORD, DATABASE);
     }
     
-    $query = "DROP TABLE users";
+    $query = "DROP TABLE IF EXISTS users";
     my_oo_query($link, $query);
 
     $query = "CREATE TABLE users (
         id MEDIUMINT AUTO_INCREMENT PRIMARY KEY,
         email VARCHAR(254) UNIQUE NOT NULL,
+        password VARCHAR(255) NOT NULL,
         firstname VARCHAR(256) NOT NULL, 
         lastname VARCHAR(256) NOT NULL,
         username VARCHAR(256) UNIQUE NOT NULL,
         address VARCHAR(256),
-        phone VARCHAR(15) 
-        ); ";
+        phone VARCHAR(15),
+        admin BOOLEAN DEFAULT FALSE
+        ) ";
+    my_oo_query($link, $query);
 
-    $query = "DROP TABLE products";
+    $query = "DROP TABLE IF EXISTS products";
     my_oo_query($link, $query);
 
     $query = "CREATE TABLE products (
@@ -27,8 +30,23 @@
         name VARCHAR(256) NOT NULL,
         author VARCHAR(256) REFERENCES users(username) ON UPDATE CASCADE ON DELETE CASCADE,
         filename VARCHAR(255) NOT NULL,
-        price DECIMAL(12,2) NOT NULL, -- https://youtu.be/ehcp_lI5CAc?t=55
-        ); ";
+        price DECIMAL(12,2) NOT NULL -- https://youtu.be/ehcp_lI5CAc?t=55
+        ) ";
     my_oo_query($link, $query);
 
+    $query = "INSERT INTO users (email, password, firstname, lastname, username, address, phone, admin) VALUES 
+    ('luca@marinelli.it','" . password_hash('prova1', PASSWORD_DEFAULT) . "','Luca', 'Marinelli', 'Looka', 'sotto casa mia 123, Genova', '123 1231 23', TRUE),
+    ('fede@crippa.it','" . password_hash('prova2', PASSWORD_DEFAULT) . "','Federico', 'Crippa', 'Fedez', 'sotto casa sua 456, La Spezia', '456 4567 45', TRUE),
+    ('ale@morciano.it','" . password_hash('prova3', PASSWORD_DEFAULT) . "','Alessio', 'Morciano', 'AleMagno', 'mai a casa mia 789, Savona', '789 7891 07', TRUE),
+    ('giorno@giovanna.it','" . password_hash('prova4', PASSWORD_DEFAULT) . "','Giorno', 'Giovanna', 'Requiem', 'Mamma mia, Napoli', '333 3333 33', FALSE)";
+    my_oo_query($link, $query); 
+
+    $query = "INSERT INTO products (name, author, filename, price) VALUES 
+    ('Paper Mario!','Looka','paper-mario.jpg', 14.99),
+    ('Vita da Trullo','Fedez','trullo.jpg', 11.99),
+    ('HTML is for bois','Fedez','lessgreaterthen.jpg', 19.91)";
+    my_oo_query($link, $query);
+
+    header("Location: ../progetto_MARINELLI_CRIPPA_MORCIANO/common/logout.php");
+    exit;
 ?>
