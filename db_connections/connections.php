@@ -1,9 +1,6 @@
 <?php
 
-    define ('HOST', "localhost");
-    define ('DB_USER', "");
-    define ('DB_PASSWORD',"");
-    define ('DATABASE', "");
+    require_once("credentials.php");
         
     function my_connect($host, $db_user, $db_password, $database){
         $db_con = mysqli_connect($host,$db_user,$db_password,$database);
