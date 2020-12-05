@@ -30,9 +30,9 @@
             $res = myquery($link, $query);
             while ($row = mysqli_fetch_assoc($res)){
                 echo "<tr>
-                    <td> $row[email] </td>
-                    <td> $row[firstname] </td>
-                    <td> $row[lastname] </td>
+                    <td> " . htmlspecialchars($row['email']) . " </td>
+                    <td> " . htmlspecialchars($row['firstname']) . " </td>
+                    <td> " . htmlspecialchars($row['lastname']) . " </td>
                 </tr>";
             }
         ?>
