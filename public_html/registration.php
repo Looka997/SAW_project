@@ -13,8 +13,10 @@
     session_start(); 
     require_once("../db_connections/connections.php");
     $link = my_oo_connect(HOST, DB_USER, DB_PASSWORD, DATABASE);
-    if (isset($_SESSION["email"])) 
+    if (isset($_SESSION["email"])){
         header("Location: home.php");
+        exit;
+    }
     require("common/navbar.php") ?>
 
 
@@ -27,7 +29,7 @@
             <input type="email" id="email" name="email">
             <label for="pass">Password:</label>
             <input type="password" id="pass" name="pass">
-            <label for="confirm">Confirm passoword:</label>
+            <label for="confirm">Confirm password:</label>
             <input type="password" id="confirm" name="confirm">
             <input type="submit" name="submit" value="submit">
     </form>
@@ -55,12 +57,14 @@
         if (preg_match($pass_reg, $_POST["pass"])=== 0 || !is_valid_length( $_POST["pass"], $min_len["pass"], $max_len["pass"])){
             echo "<h1> password is not valid </h1>";
             $abort = true;
-        } else if ($_POST["pass"] != $_POST["confirm"] || !is_valid_length( $_POST["confirm"], $min_len["confirm"], $max_len["confirm"])){
+        } else if ($_POST["pass"] != $_POST["confirm"] || !is_valid_length( $_POST["confirm"], $min_len["pass"], $max_len["pass"])){
             echo "<h1> are you sure this is the password that you want? </h1>";
             $abort = true;
         }
-        if ($abort)
+        if ($abort){
             header("Location: registration.php");
+            exit;
+        }
 
 
         // create user if it doesn't exist

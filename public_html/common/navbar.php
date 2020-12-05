@@ -4,7 +4,7 @@
         <?php if (isset($_SESSION["email"])){
             if (isset($_SESSION["admin"]) && $_SESSION["admin"] )
                 echo "<li><a href=\"../db_init/db_init.php\">DB RESET</a></li>";
-            echo "<li> Hi " . $_SESSION["email"] . " </li>";
+            echo "<li> Hi " . htmlspecialchars($_SESSION["email"]) . " </li>";
         } ?>
         <li>
             <a href="show_products.php">I prodotti della community</a>

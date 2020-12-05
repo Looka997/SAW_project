@@ -8,10 +8,11 @@
 <body>
    <?php 
    session_start();
-   require("common/navbar.php");
    if (!isset($_SESSION["email"])){
         header("Location: login.php");
+        exit;
    }
+   require("common/navbar.php");
    ?> 
 </body>
 </html>

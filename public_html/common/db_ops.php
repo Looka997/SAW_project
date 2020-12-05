@@ -20,7 +20,7 @@
         return $stmt;       
     }
 
-    function my_oo_prepared_stmt($con, $query, $types, &...$parameters){
+    function my_oo_prepared_stmt($con, $query, $types, ...$parameters){
         if ($stmt = $con->prepare($query)){
             $stmt->bind_param($types,...$parameters);
             $stmt->execute();
