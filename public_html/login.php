@@ -37,23 +37,24 @@
             $res = mysqli_stmt_get_result($stmt);
             
             
-            if ($res == FALSE){
+            if ($res === FALSE){
                 echo "mysqli_stmt_get_result failed";
                 exit;
             }
-            if (mysqli_num_rows($res)== 1){
+
+            if (mysqli_num_rows($res) === 1){
                 $found = TRUE;
                 $row = mysqli_fetch_assoc($res);
             }
-            if ($found && (password_verify($_POST["pass"], $row["password"]))){
+
+            if ($found && (password_verify($_POST["pass"], $row["password"]))) {
                 $_SESSION["email"] = $email;
                 if ($row["admin"])
                     $_SESSION["admin"] = TRUE;
                 mysqli_stmt_close($stmt);
                 header('Location: home.php');
                 exit;
-            }
-            else{
+            } else {
                 echo "<h1> User not found </h1>" ; 
                 mysqli_stmt_close($stmt);
             }

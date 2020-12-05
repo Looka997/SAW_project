@@ -12,7 +12,7 @@
         <?php 
         if (!isset($_SESSION["email"])){
             echo "<li><a href=\"login.php\">Accedi</a></li>";
-            echo "<li><a href=\"registration.php\">Registrati</a></li>";
+            echo "<li><a href=\"register.php\">Registrati</a></li>";
         }
         else{
             echo "<li><a href=\"common/logout.php\">Logout</a></li>";
