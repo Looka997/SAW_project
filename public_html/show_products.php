@@ -27,11 +27,11 @@
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
     ?>
     <?php foreach($products as $product): ?>
-    <h4><?php echo $product['name'] ?></h4>
+    <h4><?php echo htmlspecialchars($product['name']) ?></h4>
     <img src=<?php echo "assets/$product[filename]"; ?> alt="Product image">
     <div>
-        <span>by <?php echo $product['author'] ?></span> 
-        <span>only <?php echo $product['price'] ?></span>
+        <span>by <?php echo htmlspecialchars($product['author']) ?></span> 
+        <span>only <?php echo htmlspecialchars($product['price']) ?></span>
     </div>
     
     <!-- qua probabilmente un bel average voto -->
