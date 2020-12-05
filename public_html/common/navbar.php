@@ -11,7 +11,7 @@
         </li>
         <?php 
         if (!isset($_SESSION["email"])){
-            echo "<li><a href=\"login.php\">Accedi</a></li>";
+            echo "<li><a href=\"logon.php\">Accedi</a></li>";
             echo "<li><a href=\"register.php\">Registrati</a></li>";
         }
         else{

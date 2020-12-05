@@ -9,7 +9,10 @@
 </head>
 
 <body>
-    <?php require("common/navbar.php") ?>
+    <?php 
+        session_start();
+        require("common/navbar.php")
+    ?>
 
 
     <form action="registration.php" method="POST" id="registerForm">

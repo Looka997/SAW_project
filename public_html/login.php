@@ -14,18 +14,7 @@
             header("Location: home.php");
             exit;
         }
-        require("common/navbar.php");
-        ?>
 
-    <form action="login.php" method="post" id="loginForm">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email">
-        <label for="pass">Password:</label>
-        <input type="password" id="pass" name="pass">
-        <input type="submit" name="submit" value="submit">
-    </form>
-
-    <?php 
         if (isset($_POST['submit'])){
             require_once("common/db_ops.php");
             require_once("common/utilities.php");
@@ -55,11 +44,10 @@
                 header('Location: home.php');
                 exit;
             } else {
-                echo "<h1> User not found </h1>" ; 
+                echo "<h1> User not found </h1>"; 
                 mysqli_stmt_close($stmt);
             }
-        }  
-        require_once("common/footer.php");
+        }
     ?>
 </body>
 </html>

@@ -44,7 +44,7 @@
             $abort = true;
         }
         if ($abort){
-            header("Location: registration.php");
+            header("Location: register.php");
             exit;
         }
 
@@ -59,7 +59,6 @@
         $lastname = mysqli_escape_string($link, $_POST["lastname"]);
         insertuser($link, $email, password_hash($_POST["pass"], PASSWORD_DEFAULT), $firstname, $lastname);  
     }
-    require_once("common/footer.php");
 ?>
 
 </body>
