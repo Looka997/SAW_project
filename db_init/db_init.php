@@ -15,7 +15,7 @@
         password VARCHAR(255) NOT NULL,
         firstname VARCHAR(256) NOT NULL, 
         lastname VARCHAR(256) NOT NULL,
-        username VARCHAR(256) UNIQUE NOT NULL,
+        username VARCHAR(256) UNIQUE,
         address VARCHAR(256),
         phone VARCHAR(15),
         admin BOOLEAN DEFAULT FALSE
@@ -38,7 +38,10 @@
     ('luca@marinelli.it','" . password_hash('prova1', PASSWORD_DEFAULT) . "','Luca', 'Marinelli', 'Looka', 'sotto casa mia 123, Genova', '123 1231 23', TRUE),
     ('fede@crippa.it','" . password_hash('prova2', PASSWORD_DEFAULT) . "','Federico', 'Crippa', 'Fedez', 'sotto casa sua 456, La Spezia', '456 4567 45', TRUE),
     ('ale@morciano.it','" . password_hash('prova3', PASSWORD_DEFAULT) . "','Alessio', 'Morciano', 'AleMagno', 'mai a casa mia 789, Savona', '789 7891 07', TRUE),
-    ('giorno@giovanna.it','" . password_hash('prova4', PASSWORD_DEFAULT) . "','Giorno', 'Giovanna', 'Requiem', 'Mamma mia, Napoli', '333 3333 33', FALSE)";
+    ('giorno@giovanna.it','" . password_hash('prova4', PASSWORD_DEFAULT) . "','Giorno', 'Giovanna', 'Requiem', 'Mamma mia, Napoli', '333 3333 33', FALSE),
+    ('senza@address.it','" . password_hash('prova5', PASSWORD_DEFAULT) . "','Senza', 'Address', 'Hobo', NULL, '399 3999 99', FALSE),
+    ('phone@less.it','" . password_hash('prova6', PASSWORD_DEFAULT) . "','Phone', 'Less', 'OldFashioned123', 'Vivoquantomeno 25, Chiavari', NULL, FALSE),
+    ('vero@antico.it','" . password_hash('prova7', PASSWORD_DEFAULT) . "','Vero', 'Antico', 'Amish', NULL, NULL, FALSE)";
     my_oo_query($link, $query); 
 
     $query = "INSERT INTO products (name, author, filename, price) VALUES 
