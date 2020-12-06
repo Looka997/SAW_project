@@ -6,6 +6,7 @@
     $username_reg= '/.+/';
     $address_reg = '/(^$|.+)/';
     $phone_reg = '/(^$|.+)/';
+    $design_name = '/.+/';
 
     $min_len = array("firstname" => 1, "lastname" => 1, "email" => 5, "pass" => 1);
     $max_len = array("firstname" => 255, "lastname" => 255, "email" => 254, "pass" => 255);
