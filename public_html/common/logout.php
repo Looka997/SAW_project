@@ -4,7 +4,7 @@
     setcookie(session_name(), "", 0);
     session_unset();
     session_destroy();
-    header("Location: ../login.php");
+    header("Location: ../logon.php");
     exit;
 ?>
 

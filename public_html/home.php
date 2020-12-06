@@ -9,7 +9,7 @@
    <?php 
    session_start();
    if (!isset($_SESSION["email"])){
-        header("Location: login.php");
+        header("Location: logon.php");
         exit;
    }
    require("common/navbar.php");

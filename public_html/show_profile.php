@@ -24,7 +24,7 @@
                     (isset($_SESSION["email"])? 
                         $_SESSION["email"] 
                     : 
-                        header("Location: login.php") && exit );
+                        header("Location: logon.php") && exit );
 
         $stmt = user_found($link, $email);
         $res = mysqli_stmt_get_result($stmt);
@@ -41,7 +41,7 @@
         if (!$found){
             // non hai trovato chi cercavi? se sei loggato, cerca te stesso, altrimenti vai a loggarti
             (isset($_SESSION["email"]))? header("Location: show_profile.php") : 
-            header("Location: login.php");
+            header("Location: logon.php");
             exit;
         }
         $firstname = $row["firstname"];

@@ -14,18 +14,7 @@
             header("Location: home.php");
             exit;
         }
-        require("common/navbar.php");
-        ?>
 
-    <form action="login.php" method="post" id="loginForm">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email">
-        <label for="pass">Password:</label>
-        <input type="password" id="pass" name="pass">
-        <input type="submit" name="submit" value="submit">
-    </form>
-
-    <?php 
         if (isset($_POST['submit'])){
             require_once("common/db_ops.php");
             require_once("common/utilities.php");
@@ -37,28 +26,28 @@
             $res = mysqli_stmt_get_result($stmt);
             
             
-            if ($res == FALSE){
+            if ($res === FALSE){
                 echo "mysqli_stmt_get_result failed";
                 exit;
             }
-            if (mysqli_num_rows($res)== 1){
+
+            if (mysqli_num_rows($res) === 1){
                 $found = TRUE;
                 $row = mysqli_fetch_assoc($res);
             }
-            if ($found && (password_verify($_POST["pass"], $row["password"]))){
+
+            if ($found && (password_verify($_POST["pass"], $row["password"]))) {
                 $_SESSION["email"] = $email;
                 if ($row["admin"])
                     $_SESSION["admin"] = TRUE;
                 mysqli_stmt_close($stmt);
                 header('Location: home.php');
                 exit;
-            }
-            else{
-                echo "<h1> User not found </h1>" ; 
+            } else {
+                echo "<h1> User not found </h1>"; 
                 mysqli_stmt_close($stmt);
             }
-        }  
-        require_once("common/footer.php");
+        }
     ?>
 </body>
 </html>
