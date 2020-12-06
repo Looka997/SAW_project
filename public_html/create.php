@@ -21,12 +21,23 @@
         <input type="text" name="design_name" id="design_name">
         <label for="model">Select a model:</label>
         <select name="model" id="model">
-            <option value="tshirt">T-shirt</option>
-            <option value="lsleeves">Long sleeves</option>
-            <option value="sweater">Sweater</option>
+            <?php 
+                require_once('common/db_ops.php');
+                require_once('common/utilities.php');
+                $query = 'SELECT name, filename, price FROM models';
+                $result = my_oo_query($link, $query);
+                $models = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                $model_to_price = array();
+                foreach($models as $model):         
+                    $model_name = htmlspecialchars($model['name']); ?>
+                    <option value="<?php echo $model_name?>"><?php echo $model_name  ?></option>       
+            <?php endforeach ?>
         </select>
         <label for="upload">Upload a custom image (.jpeg, .jpg, .png):</label>
         <input type="file" name="upload" id="upload">
+        <label for="design_price">Set a price for your design (a minimum will be set depending on chosen model): </label>
+        <!-- TODO: set a minimum price depending on chosen model_name; -->
+        <input type="number" name="design_price" id="design_price" value="">
         <input type="submit" name="submit_design" value="submit">
     </form>
     

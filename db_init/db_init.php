@@ -34,6 +34,17 @@
         ) ";
     my_oo_query($link, $query);
 
+    $query = "DROP TABLE IF EXISTS models";
+    my_oo_query($link, $query);
+    
+    $query = "CREATE TABLE models (
+        id MEDIUMINT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(30) NOT NULL UNIQUE,
+        filename VARCHAR(255) NOT NULL UNIQUE,
+        price DECIMAL (12,2) NOT NULL -- inherent cost of materials; a design of x model cannot be priced under price
+        ) ";
+    my_oo_query($link, $query);
+
     $query = "INSERT INTO users (email, password, firstname, lastname, username, address, phone, admin) VALUES 
     ('luca@marinelli.it','" . password_hash('prova1', PASSWORD_DEFAULT) . "','Luca', 'Marinelli', 'Looka', 'sotto casa mia 123, Genova', '123 1231 23', TRUE),
     ('fede@crippa.it','" . password_hash('prova2', PASSWORD_DEFAULT) . "','Federico', 'Crippa', 'Fedez', 'sotto casa sua 456, La Spezia', '456 4567 45', TRUE),
@@ -48,6 +59,14 @@
     ('Paper Mario!','Looka','paper-mario.jpg', 14.99),
     ('Vita da Trullo','Fedez','trullo.jpg', 11.99),
     ('HTML is for bois','Fedez','lessgreaterthen.jpg', 19.91)";
+    my_oo_query($link, $query);
+
+    $query = "INSERT INTO models (name, filename, price) VALUES
+    ('Tanktop', 'tanktop.jpg', 7.00),
+    ('T-shirt', 'tshirt.jpg', 10.00),
+    ('Sweatshirt', 'sweatshirt.jpg', 14.00 ),
+    ('Hoody', 'hoody.jpg', 20.00 )
+    ";
     my_oo_query($link, $query);
 
     header("Location: ../public_html/common/logout.php");
