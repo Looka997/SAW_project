@@ -16,7 +16,7 @@
         $link = my_oo_connect(HOST, DB_USER, DB_PASSWORD, DATABASE);
         require_once("common/navbar.php");
     ?>
-    <form action="handle_create.php" method="POST">
+    <form action="handle_create.php" method="POST" enctype="multipart/form-data">
         <?php 
             $precompiled = false;
             if (isset($_SESSION["create_POST"])){
@@ -40,8 +40,14 @@
                     <option value="<?php echo $model_name?>" <?php echo $precompiled && ($model_name === $fields['model']) ? "selected" : ""; ?> ><?php echo $model_name  ?></option>       
             <?php endforeach ?>
         </select>
+
+        <!-- TODO qui ci va immagine scelta dinamicamente -->
+        <img id="model_preview" src="" alt="">
+        <img id="preview" src="" alt="">
+
         <label for="upload">Upload a custom image (.jpeg, .jpg, .png):</label>
-        <input type="file" name="upload" id="upload">
+        <input type="file" name="upload" id="upload" accept="image/png, image/jpeg">
+
         <label for="design_price">Set a price for your design (a minimum will be set depending on chosen model): </label>
         <!-- TODO: set a minimum price depending on chosen model_name; -->
         <input type="number" name="design_price" id="design_price" value="<?php echo $precompiled ? $fields["design_price"] : ""; ?>">

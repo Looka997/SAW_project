@@ -38,6 +38,7 @@
 
             if ($found && (password_verify($_POST["pass"], $row["password"]))) {
                 $_SESSION["email"] = $email;
+                $_SESSION["userid"] = $row["id"];
                 if ($row["admin"])
                     $_SESSION["admin"] = TRUE;
                 mysqli_stmt_close($stmt);

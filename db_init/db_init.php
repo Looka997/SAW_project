@@ -63,7 +63,7 @@
 
     $query = "INSERT INTO models (name, filename, price) VALUES
     ('Tanktop', 'tanktop.jpg', 7.00),
-    ('T-shirt', 'tshirt.jpg', 10.00),
+    ('T-shirt', 'tshirt.svg', 10.00),
     ('Sweatshirt', 'sweatshirt.jpg', 14.00 ),
     ('Hoody', 'hoody.jpg', 20.00 )
     ";
