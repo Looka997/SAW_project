@@ -25,6 +25,8 @@
 
     // fetch resulting rows as an array
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    // qui ci sarà da guardare, per ogni autore, a chi corrisponde lo userid
     ?>
     <?php foreach($products as $product): ?>
     <h4><?php echo htmlspecialchars($product['name']) ?></h4>

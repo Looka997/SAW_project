@@ -1,5 +1,7 @@
 <?php 
     session_start();
+    require_once("../db_connections/connections.php");
+    $link = my_oo_connect(HOST, DB_USER, DB_PASSWORD, DATABASE);
     if (!isset($_SESSION["email"])){
         $_SESSION["create_POST"] = $_POST;
         header("Location: logon.php");
@@ -17,11 +19,15 @@
     // validazione POST e gestire upload filename
     if(isset($_POST["design_submit"])){
         
-        $abort = false;
-        if (preg_match($design_name, $_POST["design_name"])===0){
+        if (!(isset($_POST["design_name"]) && isset($_POST["model"]) && isset($_POST["design_price"]))){
             $abort = true;
         }
-        if (!in_array($_POST["model"],$_POST["model_names"],true)){
+
+        $abort = false;
+        if (preg_match($design_name_reg, $_POST["design_name"])===0){
+            $abort = true;
+        }
+        if (!in_array($_POST["model"],$_SESSION["model_names"],true)){
             $abort = true;
         }
         if (preg_match($design_price_reg, $_POST["design_price"])===0){
@@ -62,16 +68,19 @@
             exit;
         } else {
             if (!move_uploaded_file($_FILES[$input_name]["tmp_name"], $target_file)) {
-                // qua deve inserire su db
                 header("Location: create.php");
                 exit;
             }
+            // qua deve inserire su db
+            $query = "INSERT INTO products (name, model, author, filename, price) VALUES 
+            (?,?,?,?,?)";
+            // da finire la cosa sotto
+            my_oo_prepared_stmt($link, $query, "ssisd", $_POST["design_name"], $_POST["model"],$_SESSION["userid"], basename($_FILES[$input_name]["name"]), $_POST["design_price"]);
         }
     }
 
     //only for testing, to remove later
-    $_SESSION["create_POST"] = $_POST;
-    header("Location: create.php");
+    header("Location: show_products.php");
     //
 
 ?>

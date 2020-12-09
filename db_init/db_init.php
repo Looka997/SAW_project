@@ -25,15 +25,6 @@
     $query = "DROP TABLE IF EXISTS products";
     my_oo_query($link, $query);
 
-    $query = "CREATE TABLE products (
-        id MEDIUMINT AUTO_INCREMENT PRIMARY KEY,
-        name VARCHAR(256) NOT NULL,
-        author VARCHAR(256) REFERENCES users(username) ON UPDATE CASCADE ON DELETE CASCADE,
-        filename VARCHAR(255) NOT NULL,
-        price DECIMAL(12,2) NOT NULL -- https://youtu.be/ehcp_lI5CAc?t=55
-        ) ";
-    my_oo_query($link, $query);
-
     $query = "DROP TABLE IF EXISTS models";
     my_oo_query($link, $query);
     
@@ -45,6 +36,17 @@
         ) ";
     my_oo_query($link, $query);
 
+    $query = "CREATE TABLE products (
+        id MEDIUMINT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(256) NOT NULL,
+        model VARCHAR(30) REFERENCES models(name) ON UPDATE RESTRICT ON DELETE RESTRICT,
+        author MEDIUMINT REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+        filename VARCHAR(255) NOT NULL,
+        price DECIMAL(12,2) NOT NULL -- https://youtu.be/ehcp_lI5CAc?t=55
+        ) ";
+    my_oo_query($link, $query);
+    
+
     $query = "INSERT INTO users (email, password, firstname, lastname, username, address, phone, admin) VALUES 
     ('luca@marinelli.it','" . password_hash('prova1', PASSWORD_DEFAULT) . "','Luca', 'Marinelli', 'Looka', 'sotto casa mia 123, Genova', '123 1231 23', TRUE),
     ('fede@crippa.it','" . password_hash('prova2', PASSWORD_DEFAULT) . "','Federico', 'Crippa', 'Fedez', 'sotto casa sua 456, La Spezia', '456 4567 45', TRUE),
@@ -55,10 +57,10 @@
     ('vero@antico.it','" . password_hash('prova7', PASSWORD_DEFAULT) . "','Vero', 'Antico', 'Amish', NULL, NULL, FALSE)";
     my_oo_query($link, $query); 
 
-    $query = "INSERT INTO products (name, author, filename, price) VALUES 
-    ('Paper Mario!','Looka','paper-mario.jpg', 14.99),
-    ('Vita da Trullo','Fedez','trullo.jpg', 11.99),
-    ('HTML is for bois','Fedez','lessgreaterthen.jpg', 19.91)";
+    $query = "INSERT INTO products (name, model, author, filename, price) VALUES 
+    ('Paper Mario!', 'T-shirt', 1, 'paper-mario.jpg', 14.99),
+    ('Vita da Trullo', 'T-shirt', 2,'trullo.jpg', 11.99),
+    ('HTML is for bois', 'T-shirt', 2,'lessgreaterthen.jpg', 19.91)";
     my_oo_query($link, $query);
 
     $query = "INSERT INTO models (name, filename, price) VALUES

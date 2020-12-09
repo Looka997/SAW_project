@@ -34,16 +34,15 @@
                 $query = 'SELECT name, filename, price FROM models';
                 $result = my_oo_query($link, $query);
                 $models = mysqli_fetch_all($result, MYSQLI_ASSOC);
-                $_POST["model_names"] = array();
+                $_SESSION["model_names"] = array();
                 foreach($models as $model):    
                     $model_name = $model['name']; 
                     // così non dovremmo rifare la stessa query in handle_create
-                    array_push($_POST["model_names"], $model_name); 
+                    array_push($_SESSION["model_names"], $model_name); 
                     ?>
                     <option value="<?php echo $model_name?>" <?php echo $precompiled && ($model_name === $fields['model']) ? "selected" : ""; ?> ><?php echo $model_name  ?></option>       
             <?php endforeach ?>
         </select>
-
         <!-- TODO qui ci va immagine scelta dinamicamente -->
         <img id="model_preview" src="" alt="">
         <img id="preview" src="" alt="">
