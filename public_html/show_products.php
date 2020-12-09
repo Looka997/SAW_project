@@ -30,7 +30,7 @@
     ?>
     <?php foreach($products as $product): ?>
     <h4><?php echo htmlspecialchars($product['name']) ?></h4>
-    <img src=<?php echo "assets/$product[filename]"; ?> alt="Product image">
+    <img src=<?php echo "uploads/$product[filename]"; ?> alt="Design image">
     <div>
         <span>by <?php echo htmlspecialchars($product['author']) ?></span> 
         <span>only <?php echo htmlspecialchars($product['price']) ?></span>

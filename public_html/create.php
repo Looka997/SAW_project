@@ -46,7 +46,8 @@
         $retry = 5;
         do{
             // bisogna riprovare nel caso di collisioni su rand();
-            $target_file = UPLOADS_DIR . '/' . $_SESSION["userid"] . rand() . basename($_FILES[$input_name]["name"]);
+            $random_num = rand();
+            $target_file = UPLOADS_DIR . '/' . $_SESSION["userid"] . $random_num . basename($_FILES[$input_name]["name"]);
             $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
             $retry -= 1;
         } while($retry > 0 && file_exists($target_file));
@@ -74,8 +75,7 @@
             // qua deve inserire su db
             $query = "INSERT INTO products (name, model, author, filename, price) VALUES 
             (?,?,?,?,?)";
-            // da finire la cosa sotto
-            my_oo_prepared_stmt($link, $query, "ssisd", $_POST["design_name"], $_POST["model"],$_SESSION["userid"], basename($_FILES[$input_name]["name"]), $_POST["design_price"]);
+            my_oo_prepared_stmt($link, $query, "ssisd", $_POST["design_name"], $_POST["model"],$_SESSION["userid"], basename($target_file), $_POST["design_price"]);
         }
     }
 
