@@ -28,10 +28,14 @@
 
     // qui ci sarà da guardare, per ogni autore, a chi corrisponde lo userid
     ?>
-    <?php foreach($products as $product): ?>
+    <?php 
+    // $query = "SELECT email, username FROM users
+    //             WHERE id=?";
+    foreach($products as $product): ?>
     <h4><?php echo htmlspecialchars($product['name']) ?></h4>
     <img src=<?php echo "uploads/$product[filename]"; ?> alt="Design image">
     <div>
+        <?php // lavorare su prepared statement ?>
         <span>by <?php echo htmlspecialchars($product['author']) ?></span> 
         <span>only <?php echo htmlspecialchars($product['price']) ?></span>
     </div>

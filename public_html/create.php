@@ -80,7 +80,7 @@
     }
 
     //only for testing, to remove later
-    header("Location: show_products.php");
+    header("Location: view_designs.php");
     //
 
 ?>

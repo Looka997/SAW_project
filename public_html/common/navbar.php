@@ -7,7 +7,7 @@
             echo "<li> Hi " . htmlspecialchars($_SESSION["username"]) . " </li>";
         } ?>
         <li><a href="view_create.php"> Design your own </a></li>
-        <li><a href="show_products.php">Designs by the community</a></li>
+        <li><a href="view_designs.php">Designs by the community</a></li>
         <?php 
         if (!isset($_SESSION["email"])){
             echo "<li><a href=\"view_login.php\">Accedi</a></li>";
