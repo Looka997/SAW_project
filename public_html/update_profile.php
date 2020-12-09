@@ -71,7 +71,7 @@
         if (mysqli_stmt_affected_rows($stmt)===1){
             mysqli_stmt_close($stmt);
             $_SESSION["email"] = $new_email;
-            header("Location: home.php");
+            header("Location: index.php");
             exit;
         }
         mysqli_stmt_close($stmt);

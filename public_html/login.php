@@ -11,7 +11,7 @@
         require_once("../db_connections/connections.php");
         $link = my_oo_connect(HOST, DB_USER, DB_PASSWORD, DATABASE);
         if (isset($_SESSION["email"])){ 
-            header("Location: home.php");
+            header("Location: index.php");
             exit;
         }
 
@@ -47,7 +47,7 @@
                     header("Location: create.php");
                     exit;
                 }
-                header('Location: home.php');
+                header('Location: index.php');
                 exit;
             } else {
                 echo "<h1> User not found </h1>"; 
