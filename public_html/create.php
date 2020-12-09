@@ -22,7 +22,6 @@
             if (isset($_SESSION["create_POST"])){
                 $precompiled = true;
                 $fields = $_SESSION["create_POST"];
-                // die(var_dump($fields));
             }
         ?>
         <label for="design_name">Insert a name for your design:</label>
@@ -35,8 +34,12 @@
                 $query = 'SELECT name, filename, price FROM models';
                 $result = my_oo_query($link, $query);
                 $models = mysqli_fetch_all($result, MYSQLI_ASSOC);
-                foreach($models as $model):         
-                    $model_name = htmlspecialchars($model['name']); ?>
+                $_POST["model_names"] = array();
+                foreach($models as $model):    
+                    $model_name = $model['name']; 
+                    // così non dovremmo rifare la stessa query in handle_create
+                    array_push($_POST["model_names"], $model_name); 
+                    ?>
                     <option value="<?php echo $model_name?>" <?php echo $precompiled && ($model_name === $fields['model']) ? "selected" : ""; ?> ><?php echo $model_name  ?></option>       
             <?php endforeach ?>
         </select>
