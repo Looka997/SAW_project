@@ -44,7 +44,7 @@
                     $_SESSION["admin"] = TRUE;
                 mysqli_stmt_close($stmt);
                 if (isset($_SESSION["create_POST"])){
-                    header("Location: create.php");
+                    header("Location: view_create.php");
                     exit;
                 }
                 header('Location: index.php');

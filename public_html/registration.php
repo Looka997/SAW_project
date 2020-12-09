@@ -44,7 +44,7 @@
             $abort = true;
         }
         if ($abort){
-            header("Location: register.php");
+            header("Location: view_registration.php");
             exit;
         }
 
@@ -57,7 +57,19 @@
         $email = mysqli_escape_string($link, $_POST["email"]);
         $firstname = mysqli_escape_string($link, $_POST["firstname"]);
         $lastname = mysqli_escape_string($link, $_POST["lastname"]);
-        insertuser($link, $email, password_hash($_POST["pass"], PASSWORD_DEFAULT), $firstname, $lastname);  
+        if (!insertuser($link, $email, password_hash($_POST["pass"], PASSWORD_DEFAULT), $firstname, $lastname)){
+            // ERROR CODE FOR DUPLICATE KEY
+            if ($link->errno === 1062){
+                // in register mostrare user già esistente
+                header("Location: view_registration.php");
+                exit;
+            }
+                // in register mostrare errore generico
+                header("Location: view_registration.php");
+                exit;
+        } 
+        header("Location: view_login.php");
+        exit;
     }
 ?>
 

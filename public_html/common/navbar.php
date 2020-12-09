@@ -6,12 +6,12 @@
                 echo "<li><a href=\"../db_init/db_init.php\">DB RESET</a></li>";
             echo "<li> Hi " . htmlspecialchars($_SESSION["username"]) . " </li>";
         } ?>
-        <li><a href="create.php"> Design your own </a></li>
+        <li><a href="view_create.php"> Design your own </a></li>
         <li><a href="show_products.php">Designs by the community</a></li>
         <?php 
         if (!isset($_SESSION["email"])){
-            echo "<li><a href=\"logon.php\">Accedi</a></li>";
-            echo "<li><a href=\"register.php\">Registrati</a></li>";
+            echo "<li><a href=\"view_login.php\">Accedi</a></li>";
+            echo "<li><a href=\"view_registration.php\">Registrati</a></li>";
         }
         else{
             echo "<li><a href=\"common/logout.php\">Logout</a></li>";
