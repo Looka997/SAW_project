@@ -29,18 +29,37 @@
     // qui ci sarà da guardare, per ogni autore, a chi corrisponde lo userid
     ?>
     <?php 
-    // $query = "SELECT email, username FROM users
-    //             WHERE id=?";
-    foreach($products as $product): ?>
+    $query = "SELECT email, username FROM users
+                WHERE id=?";
+
+    if ($stmt = $link->prepare($query)){
+        $stmt->bind_param("i",$authorid);
+    }else{
+        echo $con->error;
+        exit;
+    }
+
+    foreach($products as $product): 
+        $authorid = $product['author'];
+        if ($stmt->execute()){
+            $stmt->store_result();
+            if ($stmt->num_rows > 0){
+                $stmt->bind_result($authoremail, $authorusername);
+                $stmt->fetch();
+            }
+        }
+    ?>
     <h4><?php echo htmlspecialchars($product['name']) ?></h4>
     <img src=<?php echo "uploads/$product[filename]"; ?> alt="Design image">
     <div>
         <?php // lavorare su prepared statement ?>
-        <span>by <?php echo htmlspecialchars($product['author']) ?></span> 
+        <span>by <?php echo htmlspecialchars(is_null($authorusername)? $authoremail : $authorusername ) ?></span> 
         <span>only <?php echo htmlspecialchars($product['price']) ?></span>
     </div>
     
     <!-- qua probabilmente un bel average voto -->
-    <?php endforeach ?>
+    <?php endforeach; 
+    $stmt->close();
+    ?>
 </body>
 </html>
