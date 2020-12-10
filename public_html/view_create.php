@@ -43,9 +43,6 @@
                     <option value="<?php echo $model_name?>" <?php echo $precompiled && ($model_name === $fields['model']) ? "selected" : ""; ?> ><?php echo $model_name  ?></option>       
             <?php endforeach ?>
         </select>
-        <!-- TODO qui ci va immagine scelta dinamicamente -->
-        <img id="model_preview" src="" alt="">
-        <img id="preview" src="" alt="">
 
         <label for="upload">Upload a custom image (.jpeg, .jpg, .png):</label>
         <input type="file" name="upload" id="upload" accept="image/png, image/jpeg">
@@ -55,6 +52,8 @@
         <input type="number" name="design_price" id="design_price" value="<?php echo $precompiled ? $fields["design_price"] : ""; ?>">
         <input type="submit" name="design_submit" value="submit">
     </form>
-    
+
+    <canvas id="graphics_tablet"></canvas>
+    <script src="js/graphics_tablet.js"></script>
 </body>
 </html>
