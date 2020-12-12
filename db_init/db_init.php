@@ -32,7 +32,11 @@
         id MEDIUMINT AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(30) NOT NULL UNIQUE,
         filename VARCHAR(255) NOT NULL UNIQUE,
-        price DECIMAL (12,2) NOT NULL -- inherent cost of materials; a design of x model cannot be priced under price
+        price DECIMAL (12,2) NOT NULL, -- inherent cost of materials; a design of x model cannot be priced under price
+        image_x_ratio DECIMAL(5, 4) NOT NULL,
+        image_y_ratio DECIMAL(5, 4) NOT NULL,
+        image_w_ratio DECIMAL(5, 4) NOT NULL,
+        image_h_ratio DECIMAL(5, 4) NOT NULL
         ) ";
     my_oo_query($link, $query);
 
@@ -63,10 +67,10 @@
     ('HTML is for bois', 'T-shirt', 2,'lessgreaterthen.jpg', 19.91)";
     my_oo_query($link, $query);
 
-    $query = "INSERT INTO models (name, filename, price) VALUES
-    ('Tanktop', 'tanktop.svg', 7.00),
-    ('T-shirt', 'tshirt.svg', 10.00),
-    ('Hoody', 'hoody.svg', 20.00 )
+    $query = "INSERT INTO models (name, filename, price, image_x_ratio, image_y_ratio, image_w_ratio, image_h_ratio) VALUES
+    ('Tanktop', 'tanktop.svg', 7.00, 0.2444, 0.5, 0.5111, 0.2083),
+    ('T-shirt', 'tshirt.svg', 10.00, 0.2555, 0.4416, 0.4555, 0.2583),
+    ('Hoody', 'hoody.svg', 20.00, 0.3333, 0.625, 0.375, 0.1583)
     ";
     my_oo_query($link, $query);
 
