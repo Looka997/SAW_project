@@ -64,10 +64,9 @@
     my_oo_query($link, $query);
 
     $query = "INSERT INTO models (name, filename, price) VALUES
-    ('Tanktop', 'tanktop.jpg', 7.00),
+    ('Tanktop', 'tanktop.svg', 7.00),
     ('T-shirt', 'tshirt.svg', 10.00),
-    ('Sweatshirt', 'sweatshirt.jpg', 14.00 ),
-    ('Hoody', 'hoody.jpg', 20.00 )
+    ('Hoody', 'hoody.svg', 20.00 )
     ";
     my_oo_query($link, $query);
 

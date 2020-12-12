@@ -10,7 +10,7 @@ let ctx = canvas.getContext("2d");
 let api_url = "api/assets.php";
 let image = new Image();
 image.addEventListener("load", event => {
-    ctx.drawImage(image, 0, 0);
+    draw_canvas();
 })
 
 // TODO: Ridimensionare canvas da decidere
@@ -26,7 +26,12 @@ function get_assets(callback) {
         });
 }
 
-function update_canvas(modelName) {
+function draw_canvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(image, 0, 0);
+}
+
+function update_image(modelName) {
     let path;
 
     fileNames.forEach((element) => {
@@ -40,8 +45,8 @@ function update_canvas(modelName) {
     image.src = path;
 }
 
-get_assets(() => { update_canvas(modelSelector.value) });
+get_assets(() => { update_image(modelSelector.value) });
 
 modelSelector.addEventListener("change", event => {
-    update_canvas(event.target.value);
+    update_image(event.target.value);
 });
