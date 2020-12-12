@@ -28,7 +28,7 @@ function get_assets(callback) {
 
 function draw_canvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(image, 0, 0);
+    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 }
 
 function update_image(modelName) {
