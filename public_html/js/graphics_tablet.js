@@ -1,5 +1,8 @@
+let fileNames = [];
+
+let baseDir = "assets/";
 let canvas = document.getElementById("graphics_tablet");
-let model = document.getElementById("model");
+let modelSelector = document.getElementById("model");
 let upload = document.getElementById("upload");
 
 let ctx = canvas.getContext("2d");
@@ -11,25 +14,34 @@ image.addEventListener("load", event => {
 })
 
 // TODO: Ridimensionare canvas da decidere
+canvas.width = "450";
+canvas.height = "600";
 
 function get_assets(callback) {
-    let base_dir = "assets/";
     fetch(api_url)
         .then(response => response.json())
         .then(data => {
-            data.forEach(element => {
-                if (element.name === model.value)
-                    callback(base_dir + element.filename);
-            });
+            fileNames = data;
+            callback();
         });
 }
 
-function update_canvas(path) {
+function update_canvas(modelName) {
+    let path;
+
+    fileNames.forEach((element) => {
+        if (element.name === modelName) {
+            path = baseDir + element.filename;
+        }
+    });
+
+    if (!path) return;
+
     image.src = path;
 }
 
-get_assets(update_canvas)
+get_assets(() => { update_canvas(modelSelector.value) });
 
-model.addEventListener("change", event => {
-    get_assets(update_canvas);
+modelSelector.addEventListener("change", event => {
+    update_canvas(event.target.value);
 });
