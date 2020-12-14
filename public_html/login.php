@@ -22,12 +22,18 @@
             // defined in common/db_ops.php
           
             $email = mysqli_escape_string($link, $_POST["email"]);
-            $stmt = user_found($link, $email); 
+            $stmt = user_found($link, $email);
+            if ($stmt->errno){
+                mysqli_stmt_close($stmt);
+                header("Location: view_login.php");
+                exit;
+            } 
             $res = mysqli_stmt_get_result($stmt);
             
             
             if ($res === FALSE){
-                echo "mysqli_stmt_get_result failed";
+                mysqli_stmt_close($stmt);
+                header("Location: view_login.php");
                 exit;
             }
 
@@ -52,6 +58,8 @@
             } else {
                 echo "<h1> User not found </h1>"; 
                 mysqli_stmt_close($stmt);
+                header("Location: view_login.php");
+                exit;
             }
         }
     ?>

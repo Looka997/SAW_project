@@ -75,7 +75,11 @@
             // qua deve inserire su db
             $query = "INSERT INTO products (name, model, author, filename, price) VALUES 
             (?,?,?,?,?)";
-            my_oo_prepared_stmt($link, $query, "ssisd", $_POST["design_name"], $_POST["model"],$_SESSION["userid"], basename($target_file), $_POST["design_price"]);
+            $res = my_oo_prepared_stmt($link, $query, "ssisd", $_POST["design_name"], $_POST["model"],$_SESSION["userid"], basename($target_file), $_POST["design_price"]);
+            if ($res->errno){
+                header("Location: view_create.php");
+                exit;
+            }
         }
     }
 

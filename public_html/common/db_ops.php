@@ -23,12 +23,10 @@
     function my_oo_prepared_stmt($con, $query, $types, ...$parameters){
         if ($stmt = $con->prepare($query)){
             $stmt->bind_param($types,...$parameters);
-            if (!$stmt->execute()){
-                return false;
-            }
+            $stmt->execute();
         }else{
             echo $con->error;
-            exit;
+            die;
         }
         //stmt is still to be closed
         return $stmt;

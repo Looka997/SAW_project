@@ -16,7 +16,6 @@
         require_once("common/utilities.php");
         require_once("common/details_reg.php");
 
-        // Sempre voluto usare un operatore terziario. Qui ne ho usati due.
         $email = 
                 (isset($_GET["email"]) && preg_match($email_reg,$_GET["email"])!=0)? 
                     mysqli_escape_string($link,$_GET["email"]) 
@@ -27,16 +26,18 @@
                         header("Location: view_login.php") && exit );
 
         $stmt = user_found($link, $email);
+        if ($stmt->errno){
+            header("Location: view_login.php");
+            exit;
+        }
         $res = mysqli_stmt_get_result($stmt);
         if ($res == FALSE){
-            echo "mysqli_stmt_get_result failed";
+            header("Location: view_login.php");
             exit;
         }
         if (mysqli_num_rows($res)== 1){
             $found = TRUE;
             $row = mysqli_fetch_assoc($res);
-            // var_dump($row);
-            // exit;
         }
         if (!$found){
             // non hai trovato chi cercavi? se sei loggato, cerca te stesso, altrimenti vai a loggarti
