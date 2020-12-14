@@ -68,9 +68,9 @@
     my_oo_query($link, $query);
 
     $query = "INSERT INTO models (name, filename, price, image_x_ratio, image_y_ratio, image_w_ratio, image_h_ratio) VALUES
-    ('Tanktop', 'tanktop.svg', 7.00, 0.2444, 0.5, 0.5111, 0.2083),
-    ('T-shirt', 'tshirt.svg', 10.00, 0.2555, 0.4416, 0.4555, 0.2583),
-    ('Hoody', 'hoody.svg', 20.00, 0.3333, 0.625, 0.375, 0.1583)
+    ('Tanktop', 'tanktop.svg', 7.00, 0.2455, 0.4, 0.5111, 0.2083),
+    ('T-shirt', 'tshirt.svg', 10.00, 0.2785, 0.36, 0.4555, 0.2583),
+    ('Hoody', 'hoody.svg', 20.00, 0.32, 0.45, 0.375, 0.1583)
     ";
     my_oo_query($link, $query);
 
