@@ -26,6 +26,12 @@
                 <input type="password" id="pass" name="pass">
                 <label for="confirm">*Confirm password:</label>
                 <input type="password" id="confirm" name="confirm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address">
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" name="phone">
                 <input type="submit" name="submit" value="submit">
     </form>
     <p>Fields marked by * are mandatory</p>
