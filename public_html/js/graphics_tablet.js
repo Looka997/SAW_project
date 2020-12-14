@@ -24,9 +24,13 @@ uploadImage.addEventListener("load", (event) => {
     draw_canvas();
 })
 
-// TODO: Ridimensionare canvas da decidere
 canvas.width = 450;
 canvas.height = 600;
+
+if (canvas.width/canvas.height !== 450/600) {
+    canvas.width = 450;
+    canvas.height = 600;
+}
 
 function get_assets(callback) {
     fetch(api_url)
