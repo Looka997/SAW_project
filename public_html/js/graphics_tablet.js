@@ -37,14 +37,31 @@ function get_assets(callback) {
         });
 }
 
-function draw_canvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(modelImage, 0, 0, canvas.width, canvas.height);
+function draw_user_image() {
+    let userImageWidth = 0;
+    let userImageHeight = 0;
+    if (uploadImage.width > uploadImage.height) {
+        let ratio = (canvas.width * modelInfo.wRatio) / uploadImage.width;
+        userImageWidth = canvas.width * modelInfo.wRatio;
+        userImageHeight = uploadImage.height * ratio;
+    } else {
+        let ratio = (canvas.height * modelInfo.hRatio) / uploadImage.height;
+        userImageWidth = uploadImage.width * ratio;
+        userImageHeight = canvas.height * modelInfo.hRatio;
+    }
+
     ctx.drawImage(uploadImage,
         canvas.width * modelInfo.xRatio,
         canvas.height * modelInfo.yRatio,
-        canvas.width * modelInfo.wRatio,
-        canvas.height * modelInfo.hRatio);
+        userImageWidth,
+        userImageHeight);
+}
+
+function draw_canvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(modelImage, 0, 0, canvas.width, canvas.height);
+
+    draw_user_image();
 }
 
 function update_image(modelName) {
