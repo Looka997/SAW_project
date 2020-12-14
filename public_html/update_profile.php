@@ -64,7 +64,7 @@
             array_push($args, $new_phone);
         }
         
-        $update_query .= " WHERE email='" . $_POST["to_update"] . "'";
+        $update_query .= " WHERE email='" . mysqli_escape_string($link, $_POST["to_update"]) . "'";
 
         
         $stmt = my_oo_prepared_stmt($link, $update_query, $types, ...$args);
