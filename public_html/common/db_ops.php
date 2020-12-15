@@ -1,9 +1,4 @@
 <?php 
-    // db errors start from 100
-    const DB_DUP_ERR = 100;
-    const DB_GENERIC_ERR = 142;
-   
-
     function my_prepared_stmt($link, $query, $types, ...$parameters){
         $stmt = mysqli_stmt_init($link);
         if (!mysqli_stmt_prepare($stmt,$query)){

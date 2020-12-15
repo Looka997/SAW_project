@@ -23,6 +23,7 @@ session_start();
 
     $found = false;
     $abort = false;
+    $errno = -1;
     if (isset($_POST['submit'])){
         if (isset($_SESSION['registration_POST'])){
             unset($_SESSION["registration_POST"]);
@@ -36,55 +37,56 @@ session_start();
         $_POST['phone'] = trim($_POST['phone']);
 
         /* TODO: sistemare segnalazione errori */
-        require_once("common/details_reg.php"); 
+        require_once("common/details_reg.php");
+        require_once("common/error_codes.php");
         if (preg_match($fstname_reg, $_POST["firstname"]) === 0 || !is_valid_length($_POST["firstname"], $min_len["firstname"], $max_len["lastname"])){
-            echo "<h1> First name is not valid </h1>"; 
             unset($_POST["firstname"]);
             $abort = true;
+            $errno = WRONG_FORMAT_ERR;
         }
         if (preg_match($lastname_reg, $_POST["lastname"]) === 0 || !is_valid_length($_POST["lastname"], $min_len["lastname"], $max_len["lastname"])){
-            echo "<h1> Last name is not valid </h1>";
             unset($_POST["lastname"]);
             $abort = true;
+            $errno = WRONG_FORMAT_ERR;
         }
         if (preg_match($email_reg, $_POST["email"]) === 0 || !is_valid_length($_POST["email"], $min_len["email"], $max_len["email"])){
-            echo "<h1> email is not valid </h1>";
             unset($_POST["email"]);
             $abort = true;
+            $errno = WRONG_FORMAT_ERR;
         }
         if (preg_match($pass_reg, $_POST["pass"]) === 0 || !is_valid_length($_POST["pass"], $min_len["pass"], $max_len["pass"])){
-            echo "<h1> password is not valid </h1>";
             $abort = true;
+            $errno = WRONG_FORMAT_ERR;
         } else if ($_POST["pass"] != $_POST["confirm"] || !is_valid_length($_POST["confirm"], $min_len["pass"], $max_len["pass"])){
-            echo "<h1> password does not match </h1>";
             $abort = true;
+            $errno = NOT_MATCH_ERR;
         }
         if (strlen($_POST["username"])){
             if (preg_match($pass_reg, $_POST["username"]) === 0 || !is_valid_length($_POST["username"], $min_len["username"], $max_len["username"])){
-                echo "<h1> username is not valid </h1>";
                 unset($_POST["username"]);
                 $abort = true;
+                $errno = WRONG_FORMAT_ERR;
             }
         }
         if (strlen($_POST["address"])){
             if (preg_match($pass_reg, $_POST["address"]) === 0 || !is_valid_length($_POST["address"], $min_len["address"], $max_len["address"])){
-                echo "<h1> address is not valid </h1>";
                 unset($_POST["addres"]);
                 $abort = true;
+                $errno = WRONG_FORMAT_ERR;
             }
         }
         if (strlen($_POST["phone"])){
             if (preg_match($pass_reg, $_POST["phone"]) === 0 || !is_valid_length($_POST["phone"], $min_len["phone"], $max_len["phone"])){
-                echo "<h1> phone is not valid </h1>";
                 unset($_POST["phone"]);
                 $abort = true;
+                $errno = WRONG_FORMAT_ERR;
             }
         }
         if ($abort){
             unset($_POST["pass"]);
             unset($_POST["confirm"]);
             $_SESSION["registration_POST"] = $_POST; 
-            header("Location: view_registration.php");
+            header("Location: view_registration.php?error=" . $errno);
             exit;
         }
 
@@ -133,13 +135,16 @@ session_start();
             // ERROR CODE FOR DUPLICATE KEY
 
             // questa parte non sta andando
-            if ($res->errno === 1062){
+            if ($res->errno === 1062) {
                 // in register mostrare user già esistente
                 unset($_POST["email"]);
+                $errno = DB_DUP_ERR;
+            } else {
+                $errno = DB_GENERIC_ERR;
             }
             // in register mostrare errore generico
             $_SESSION["registration_POST"] = $_POST;
-            header("Location: view_registration.php");
+            header("Location: view_registration.php?error=" . $errno);
             exit;
         } 
         header("Location: view_login.php");

@@ -88,7 +88,8 @@
             // qua deve inserire su db
             $query = "INSERT INTO products (name, model, author, filename, price) VALUES 
             (?,?,?,?,?)";
-            $res = my_oo_prepared_stmt($link,
+            $res = my_oo_prepared_stmt(
+                $link,
                 $query,
                 "ssisd",
                 $_POST["design_name"],
