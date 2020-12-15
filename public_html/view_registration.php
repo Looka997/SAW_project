@@ -24,25 +24,30 @@
             $error = "";
             // Using format to allow for faster edits in case of adding classes or ids
             $format = "<p>%s</p>";
-            switch ($_GET['error']) {
-                case DB_DUP_ERR:
-                    $error = sprintf($format, "Email or Username already in use.");
-                    break;
-                case DB_GENERIC_ERR:
-                case GENERIC_ERR:
-                    $error = sprintf($format, "An error has occured.");
-                    break;
-                case WRONG_FORMAT_ERR:
-                    $error = sprintf($format, "Something was spelled wrong or the format doesn't respect what we expect.");
-                    break;
-                case NOT_SET_ERR:
-                    $error = sprintf($format, "Something wasn't set correctly.");
-                    break;
-                default:
-                    $error = sprintf($format, "An unexpected error has occured.");
-            }
+            foreach ($_GET['error'] as $errno) {
+                switch ($errno) {
+                    case DB_DUP_ERR:
+                        $error = sprintf($format, "Email or Username already in use.");
+                        break;
+                    case DB_GENERIC_ERR:
+                    case GENERIC_ERR:
+                        $error = sprintf($format, "An error has occured.");
+                        break;
+                    case WRONG_FORMAT_ERR:
+                        $error = sprintf($format, "Something was spelled wrong or the format doesn't respect what we expect.");
+                        break;
+                    case NOT_SET_ERR:
+                        $error = sprintf($format, "Something wasn't set correctly.");
+                        break;
+                    case NOT_MATCH_ERR:
+                        $error = sprintf($format, "Password didn't match.");
+                        break;
+                    default:
+                        $error = sprintf($format, "An unexpected error has occured.");
+                }
 
-            echo $error;
+                echo $error;
+            }
         }
     ?>
 <section>
@@ -53,7 +58,7 @@
                     id="firstname"
                     name="firstname"
                     value="<?php if (isset($restoring) && isset($restoring['firstname'])) echo $restoring["firstname"] ?>"
-                    pattern="<?php echo preg_replace("/\//", "", $fstname_reg) ?>">
+                    pattern="<?php echo substr($fstname_reg, 1, strlen($fstname_reg) - 2) ?>">
 
                 <label for="lastname">*Last name:</label>
                 <input
@@ -61,7 +66,7 @@
                     id="lastname"
                     name="lastname"
                     value="<?php if (isset($restoring) && isset($restoring['lastname'])) echo $restoring["lastname"] ?>"
-                    pattern="<?php echo preg_replace("/\//", "", $lastname_reg) ?>">
+                    pattern="<?php echo substr($lastname_reg, 1, strlen($lastname_reg) - 2) ?>">
                 
                 <label for="email">*Email</label>
                 <input type="email" id="email" name="email" value="<?php if (isset($restoring) && isset($restoring['email'])) echo $restoring["email"] ?>">
@@ -78,7 +83,7 @@
                     id="username"
                     name="username"
                     value="<?php if (isset($restoring) && isset($restoring['username'])) echo $restoring["username"] ?>"
-                    pattern="<?php echo preg_replace("/\//", "", $username_reg) ?>">
+                    pattern="<?php echo substr($username_reg, 1, strlen($username_reg) - 2) ?>">
 
                 <label for="address">Address:</label>
                 <input
@@ -86,7 +91,7 @@
                     id="address"
                     name="address"
                     value="<?php if (isset($restoring) && isset($restoring['address'])) echo $restoring["address"] ?>"
-                    pattern="<?php echo preg_replace("/\//", "", $address_reg) ?>">
+                    pattern="<?php echo substr($address_reg, 1, strlen($address_reg) - 2) ?>">
 
                 <label for="phone">Phone:</label>
                 <input
@@ -94,7 +99,7 @@
                     id="phone"
                     name="phone"
                     value="<?php if (isset($restoring) && isset($restoring['phone'])) echo $restoring["phone"] ?>"
-                    pattern="<?php echo preg_replace("/\//", "", $phone_reg) ?>">
+                    pattern="<?php echo substr($phone_reg, 1, strlen($phone_reg) - 2) ?>">
 
                 <input type="submit" name="submit" value="submit">
     </form>
