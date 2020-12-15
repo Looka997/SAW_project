@@ -16,6 +16,37 @@
         $link = my_oo_connect(HOST, DB_USER, DB_PASSWORD, DATABASE);
         require_once("common/navbar.php");
     ?>
+
+    <?php
+        if (isset($_GET['error'])) {
+            require_once("common/db_ops.php");
+            require_once("common/error_codes.php");
+
+            $error = "";
+            switch ($_GET['error']) {
+                case DB_DUP_ERR:
+                    $error = sprintf("<p>%s</p>", "Name already in use.");
+                    break;
+                case DB_GENERIC_ERR:
+                case GENERIC_ERR:
+                    $error = sprintf("<p>%s</p>", "An error has occured.");
+                    break;
+                case WRONG_FORMAT_ERR:
+                    $error = sprintf("<p>%s</p>", "Something was spelled wrong or the format doesn't respect what we expect.");
+                    break;
+                case NOT_SET_ERR:
+                    $error = sprintf("<p>%s</p>", "Something wasn't set correctly.");
+                    break;
+                case WRONG_MIME_ERR:
+                    $error = sprintf("<p>%s</p>", "Wrong image type.");
+                    break;
+                default:
+                    $error = sprintf("<p>%s</p>", "An unexpected error has occured.");
+            }
+
+            echo $error;
+        }
+    ?>
     <form action="create.php" method="POST" enctype="multipart/form-data">
         <?php 
             $precompiled = false;
