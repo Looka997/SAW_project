@@ -21,30 +21,32 @@
         if (isset($_GET['error'])) {
             require_once("common/error_codes.php");
 
-            $error = "";
             $format = "<p>%s</p>";
-            switch ($_GET['error']) {
-                case DB_DUP_ERR:
-                    $error = sprintf($format, "Name already in use.");
-                    break;
-                case DB_GENERIC_ERR:
-                case GENERIC_ERR:
-                    $error = sprintf($format, "An error has occured.");
-                    break;
-                case WRONG_FORMAT_ERR:
-                    $error = sprintf($format, "Something was spelled wrong or the format doesn't respect what we expect.");
-                    break;
-                case NOT_SET_ERR:
-                    $error = sprintf($format, "Something wasn't set correctly.");
-                    break;
-                case WRONG_MIME_ERR:
-                    $error = sprintf($format, "Wrong image type.");
-                    break;
-                default:
-                    $error = sprintf($format, "An unexpected error has occured.");
+            foreach ($_GET['error'] as $errno) {
+                $error = "";
+                switch ($errno) {
+                    case DB_DUP_ERR:
+                        $error = sprintf($format, "Name already in use.");
+                        break;
+                    case DB_GENERIC_ERR:
+                    case GENERIC_ERR:
+                        $error = sprintf($format, "An error has occured.");
+                        break;
+                    case WRONG_FORMAT_ERR:
+                        $error = sprintf($format, "Something was spelled wrong or the format doesn't respect what we expect.");
+                        break;
+                    case NOT_SET_ERR:
+                        $error = sprintf($format, "Something wasn't set correctly.");
+                        break;
+                    case WRONG_MIME_ERR:
+                        $error = sprintf($format, "Wrong image type.");
+                        break;
+                    default:
+                        $error = sprintf($format, "An unexpected error has occured.");
+                }
+    
+                echo $error;
             }
-
-            echo $error;
         }
     ?>
     <form action="create.php" method="POST" enctype="multipart/form-data">

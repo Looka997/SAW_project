@@ -20,38 +20,39 @@
 
     // validazione POST e gestire upload filename
     if(isset($_POST["design_submit"])){
-        $errno = -1;
+        $errno = [];
         
         if (!(isset($_POST["design_name"]) && isset($_POST["model"]) && isset($_POST["design_price"]))){
             $abort = true;
-            $errno = NOT_SET_ERR;
+            array_push($errno, NOT_SET_ERR);
         }
 
         $abort = false;
         if (preg_match($design_name_reg, $_POST["design_name"])===0){
             $abort = true;
-            $errno = WRONG_FORMAT_ERR;
+            array_push($errno, WRONG_FORMAT_ERR);
         }
         if (!in_array($_POST["model"],$_SESSION["model_names"],true)){
             $abort = true;
-            $errno = WRONG_FORMAT_ERR;
+            array_push($errno, WRONG_FORMAT_ERR);
         }
         if (preg_match($design_price_reg, $_POST["design_price"])===0){
             $abort = true;
-            $errno = WRONG_FORMAT_ERR;
+            array_push($errno, WRONG_FORMAT_ERR);
         }
 
         // TODO: aggiungere error handling (presentare all'utente il perché l'operazione è fallita)
         $input_name = "upload";
         $mime_type = mime_content_type($_FILES[$input_name]["tmp_name"]);
-        if (!$mime_type){
+        if (!$mime_type) {
             $abort = true;
-            $errno = WRONG_MIME_ERR;
+            array_push($errno, WRONG_MIME_ERR);
         }
-        if (!in_array($mime_type, $accepted_mime_types, true)){
+        if (!in_array($mime_type, $accepted_mime_types, true)) {
             $abort = true;
-            $errno = WRONG_MIME_ERR;
+            array_push($errno, WRONG_MIME_ERR);
         }
+
         $retry = 5;
         do{
             // bisogna riprovare nel caso di collisioni su rand();
@@ -63,26 +64,26 @@
 
         if (!$retry){
             $abort = true;
-            $errno = GENERIC_ERR;
+            array_push($errno, GENERIC_ERR);
         }
 
         if ($_FILES[$input_name]["size"] > return_bytes(ini_get('upload_max_filesize'))) {
             $abort = true;
-            $errno = SIZE_ERR;
+            array_push($errno, SIZE_ERR);
         }
 
         if(!in_array($imageFileType, $accepted_extensions, true)) {
             $abort = true;
-            $errno = WRONG_MIME_ERR;
+            array_push($errno, WRONG_MIME_ERR);
         }
 
         if ($abort) {
-            header("Location: view_create.php?error=" . $errno);
+            header("Location: view_create.php?" . array_to_get($errno, "error"));
             exit;
         } else {
             if (!move_uploaded_file($_FILES[$input_name]["tmp_name"], $target_file)) {
-                $errno = GENERIC_ERR;
-                header("Location: view_create.php?error=" . $errno);
+                array_push($errno, GENERIC_ERR);
+                header("Location: view_create.php?" . array_to_get($errno, "error"));
                 exit;
             }
             // qua deve inserire su db
@@ -99,7 +100,8 @@
                 $_POST["design_price"]);
             
             if ($res->errno){
-                header("Location: view_create.php?error=" . DB_GENERIC_ERR);
+                array_push($errno, DB_GENERIC_ERR);
+                header("Location: view_create.php?" . array_to_get($errno, "error"));
                 exit;
             }
         }

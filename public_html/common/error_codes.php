@@ -1,4 +1,16 @@
 <?php
+    function array_to_get(array $array, string $get_param_name): string {
+        $acc = "";
+        for ($i = 0; $i < count($array); ++$i) {
+            $acc .= $get_param_name . "[]=" . $array[$i];
+            if ($i !== count($array) - 1) {
+                $acc .= "&";
+            }
+        }
+        
+        return $acc;
+    }
+
     const WRONG_FORMAT_ERR      = 0;
     const NOT_SET_ERR           = 1;
     const WRONG_MIME_ERR        = 2;
