@@ -28,6 +28,13 @@ session_start();
             unset($_SESSION["registration_POST"]);
         }
 
+        $_POST['firstname'] = trim($_POST['firstname']);
+        $_POST['lastname'] = trim($_POST['lastname']);
+        $_POST['email'] = trim($_POST['email']);
+        $_POST['username'] = trim($_POST['username']);
+        $_POST['address'] = trim($_POST['address']);
+        $_POST['phone'] = trim($_POST['phone']);
+
         /* TODO: sistemare segnalazione errori */
         require_once("common/details_reg.php"); 
         if (preg_match($fstname_reg, $_POST["firstname"]) === 0 || !is_valid_length($_POST["firstname"], $min_len["firstname"], $max_len["lastname"])){
