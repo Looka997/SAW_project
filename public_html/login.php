@@ -7,6 +7,7 @@
 </head>
 <body>
     <?php
+        const COOKIE_DURATION = 21600;  // 6 hours
         session_start();
         require_once("../db_connections/connections.php");
         $link = my_oo_connect(HOST, DB_USER, DB_PASSWORD, DATABASE);
@@ -49,6 +50,7 @@
                 $_SESSION["username"] = isset($row["username"])? $row["username"] : $email;
                 if ($row["admin"])
                     $_SESSION["admin"] = TRUE;
+                setcookie(session_name(), $_COOKIE[session_name()], time() + COOKIE_DURATION);
                 mysqli_stmt_close($stmt);
                 if (isset($_SESSION["create_POST"])){
                     header("Location: view_create.php");
