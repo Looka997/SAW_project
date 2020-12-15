@@ -63,6 +63,12 @@
             $types .= "s";
             array_push($args, $new_phone);
         }
+        if (isset($_POST["username"])){
+            $new_username = strlen($_POST["username"])? mysqli_escape_string($link,$_POST["username"]) : NULL;
+            $update_query.= ", username=?";
+            $types .= "s";
+            array_push($args, $new_username);
+        }
         
         $update_query .= " WHERE email='" . mysqli_escape_string($link, $_POST["to_update"]) . "'";
 
@@ -71,6 +77,7 @@
         if (mysqli_stmt_affected_rows($stmt)===1){
             mysqli_stmt_close($stmt);
             $_SESSION["email"] = $new_email;
+            $_SESSION["username"] = $new_username;
             header("Location: index.php");
             exit;
         }

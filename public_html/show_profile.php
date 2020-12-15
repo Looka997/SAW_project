@@ -16,14 +16,24 @@
         require_once("common/utilities.php");
         require_once("common/details_reg.php");
 
-        $email = 
-                (isset($_GET["email"]) && preg_match($email_reg,$_GET["email"])!=0)? 
-                    mysqli_escape_string($link,$_GET["email"]) 
-                : 
-                    (isset($_SESSION["email"])? 
-                        $_SESSION["email"] 
-                    : 
-                        header("Location: view_login.php") && exit );
+        // $email = 
+        //         (isset($_GET["email"]) && preg_match($email_reg,$_GET["email"])!=0)? 
+        //             mysqli_escape_string($link,$_GET["email"]) 
+        //         : 
+        //             (isset($_SESSION["email"])? 
+        //                 $_SESSION["email"] 
+        //             : 
+        //                 header("Location: view_login.php") && exit );
+        
+        $email = "";
+        if (isset($_GET["email"]) && preg_match($email_reg, $_GET["email"]) != 0) {
+            $email = mysqli_escape_string($link,$_GET["email"]);
+        } else if (isset($_SESSION["email"])) {
+            $email = $_SESSION["email"];
+        } else {
+            header("Location: view_login.php");
+            exit;
+        }
 
         $stmt = user_found($link, $email);
         if ($stmt->errno){
@@ -31,39 +41,59 @@
             exit;
         }
         $res = mysqli_stmt_get_result($stmt);
-        if ($res == FALSE){
+        if ($res === FALSE){
             header("Location: view_login.php");
             exit;
         }
-        if (mysqli_num_rows($res)== 1){
+        if (mysqli_num_rows($res) === 1){
             $found = TRUE;
             $row = mysqli_fetch_assoc($res);
         }
         if (!$found){
-            // non hai trovato chi cercavi? se sei loggato, cerca te stesso, altrimenti vai a loggarti
-            (isset($_SESSION["email"]))? header("Location: show_profile.php") : 
-            header("Location: view_login.php");
+            // In case of an invalid email, send the user to either
+            // their own profile if they're logged in or to the login
+            // page in case they aren't logged in
+            (isset($_SESSION["email"]))
+                ? header("Location: show_profile.php")
+                : header("Location: view_login.php");
             exit;
         }
+
         $firstname = $row["firstname"];
         $lastname = $row["lastname"];
         if (isset($row["address"]))
             $address = $row["address"];
         if (isset($row["phone"]))
             $phone = $row["phone"];
+        if (isset($row["username"]))
+            $username = $row["username"];
         mysqli_stmt_close($stmt);
     ?>
     <form action="update_profile.php" method="POST">
         <label for="email">Email:</label>
-        <input value="<?php echo htmlspecialchars($email)?>"type="email" id="email" name="email">
+        <input value="<?php echo htmlspecialchars($email)?>" type="email" id="email" name="email">
+
         <label for="firstname">First name:</label>
-        <input value="<?php echo htmlspecialchars($firstname) ?>"type="text" id="firstname" name="firstname">
+        <input value="<?php echo htmlspecialchars($firstname) ?>" type="text" id="firstname" name="firstname">
+
         <label for="lastname">Last name:</label>
-        <input value="<?php echo htmlspecialchars($lastname) ?>"type="text" id="lastname" name="lastname">
+        <input value="<?php echo htmlspecialchars($lastname) ?>" type="text" id="lastname" name="lastname">
+
         <label for="address">Address:</label>
-        <input value="<?php if (isset($address)) echo htmlspecialchars($address) ?>"type="text" id="address" name="address">
+        <input value="<?php if (isset($address)) echo htmlspecialchars($address) ?>" type="text" id="address" name="address">
+
         <label for="phone">Phone:</label>
-        <input value="<?php if (isset($phone)) echo htmlspecialchars($phone) ?>"type="text" id="phone" name="phone">
+        <input value="<?php if (isset($phone)) echo htmlspecialchars($phone) ?>" type="text" id="phone" name="phone">
+
+        <label for="username">Username:</label>
+        <input value="<?php if (isset($username)) echo htmlspecialchars($username) ?>" type="text" id="username" name="username">
+
+        <?php
+            if (strcmp($email, $_SESSION['email']) === 0 && $_SESSION["username"] === NULL) {
+                echo '<p>For a better experience, set a username!</p>';
+            }
+        ?>
+
         <input value="<?php echo htmlspecialchars($email) ?>" type="hidden" name="to_update">
         <input type="submit" name="submit" value="submit">
     </form>
