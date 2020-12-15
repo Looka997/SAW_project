@@ -4,6 +4,7 @@
     const WRONG_MIME_ERR        = 2;
     const SIZE_ERR              = 3;
     const NOT_MATCH_ERR         = 4;
+    const NOT_FOUND             = 5;
     const GENERIC_ERR           = 42;
 
     // db errors start from 100

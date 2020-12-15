@@ -9,6 +9,30 @@
     <?php
         session_start();
         require("common/navbar.php");
+
+        if (isset($_GET["error"])) {
+            require_once("common/error_codes.php");
+
+            $error = "";
+            // Using format to allow for faster edits in case of adding classes or ids
+            $format = "<p>%s</p>";
+            switch ($_GET['error']) {
+                case NOT_FOUND:
+                    $error = sprintf($format, "User not found.");
+                    break;
+                case DB_GENERIC_ERR:
+                case GENERIC_ERR:
+                    $error = sprintf($format, "An error has occured.");
+                    break;
+                case NOT_SET_ERR:
+                    $error = sprintf($format, "Something wasn't set correctly.");
+                    break;
+                default:
+                    $error = sprintf($format, "An unexpected error has occured.");
+            }
+
+            echo $error;
+        }
     ?>
 
     <form action="login.php" method="post" id="loginForm">

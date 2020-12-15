@@ -18,6 +18,7 @@
         if (isset($_POST['submit'])){
             require_once("common/db_ops.php");
             require_once("common/utilities.php");
+            require_once("common/error_codes.php");
             $found = FALSE;
             // defined in common/db_ops.php
           
@@ -25,7 +26,7 @@
             $stmt = user_found($link, $email);
             if ($stmt->errno){
                 mysqli_stmt_close($stmt);
-                header("Location: view_login.php");
+                header("Location: view_login.php?error=" . DB_GENERIC_ERR);
                 exit;
             } 
             $res = mysqli_stmt_get_result($stmt);
@@ -33,7 +34,7 @@
             
             if ($res === FALSE){
                 mysqli_stmt_close($stmt);
-                header("Location: view_login.php");
+                header("Location: view_login.php?error=" . DB_GENERIC_ERR);
                 exit;
             }
 
@@ -42,7 +43,7 @@
                 $row = mysqli_fetch_assoc($res);
             }
 
-            if ($found && (password_verify($_POST["pass"], $row["password"]))) {
+            if ($found && password_verify($_POST["pass"], $row["password"])) {
                 $_SESSION["email"] = $email;
                 $_SESSION["userid"] = $row["id"];
                 $_SESSION["username"] = isset($row["username"])? $row["username"] : $email;
@@ -56,9 +57,8 @@
                 header('Location: index.php');
                 exit;
             } else {
-                echo "<h1> User not found </h1>"; 
                 mysqli_stmt_close($stmt);
-                header("Location: view_login.php");
+                header("Location: view_login.php?error=" . NOT_FOUND);
                 exit;
             }
         }
