@@ -101,7 +101,7 @@
                     value="<?php if (isset($restoring) && isset($restoring['phone'])) echo $restoring["phone"] ?>"
                     pattern="<?php echo substr($phone_reg, 1, strlen($phone_reg) - 2) ?>">
 
-                <input type="submit" name="submit" value="submit">
+                <input id="submit" type="submit" name="submit" value="submit">
     </form>
     <p>Fields marked by * are mandatory</p>
 </section>
@@ -109,6 +109,6 @@
 
 
     <?php require_once("common/footer.php"); ?>
-
+    <script src="js/user_check.js"></script>
 </body>
 </html>
