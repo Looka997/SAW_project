@@ -20,6 +20,7 @@
             require_once("common/db_ops.php");
             require_once("common/utilities.php");
             require_once("common/error_codes.php");
+            require("common/get_keywords.php");
             $found = FALSE;
             // defined in common/db_ops.php
           

@@ -18,11 +18,12 @@
     ?>
 
     <?php
-        if (isset($_GET['error'])) {
+        if (isset($_GET[ERROR])) {
             require_once("common/error_codes.php");
+            require("common/get_keywords.php");
 
             $format = "<p>%s</p>";
-            foreach ($_GET['error'] as $errno) {
+            foreach ($_GET[ERROR] as $errno) {
                 $error = "";
                 switch ($errno) {
                     case DB_DUP_ERR:

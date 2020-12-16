@@ -18,13 +18,14 @@
             $restoring = array_map('htmlspecialchars',$_SESSION["registration_POST"]);
         }
 
-        if (isset($_GET["error"])) {
+        if (isset($_GET[ERROR])) {
             require_once("common/error_codes.php");
+            require("common/get_keywords.php");
 
             $error = "";
             // Using format to allow for faster edits in case of adding classes or ids
             $format = "<p>%s</p>";
-            foreach ($_GET['error'] as $errno) {
+            foreach ($_GET[ERROR] as $errno) {
                 switch ($errno) {
                     case DB_DUP_ERR:
                         $error = sprintf($format, "Email or Username already in use.");

@@ -3,6 +3,7 @@
     require_once("../db_connections/connections.php");
     require_once("common/db_ops.php");
     require_once("common/error_codes.php");
+    require("common/get_keywords.php");
     $link = my_oo_connect(HOST, DB_USER, DB_PASSWORD, DATABASE);
     if (!isset($_SESSION["email"])){
         $_SESSION["create_POST"] = $_POST;
@@ -78,12 +79,12 @@
         }
 
         if ($abort) {
-            header("Location: view_create.php?" . array_to_get($errno, "error"));
+            header("Location: view_create.php?" . array_to_get($errno, ERROR));
             exit;
         } else {
             if (!move_uploaded_file($_FILES[$input_name]["tmp_name"], $target_file)) {
                 array_push($errno, GENERIC_ERR);
-                header("Location: view_create.php?" . array_to_get($errno, "error"));
+                header("Location: view_create.php?" . array_to_get($errno, ERROR));
                 exit;
             }
             // qua deve inserire su db
@@ -101,7 +102,7 @@
             
             if ($res->errno){
                 array_push($errno, DB_GENERIC_ERR);
-                header("Location: view_create.php?" . array_to_get($errno, "error"));
+                header("Location: view_create.php?" . array_to_get($errno, ERROR));
                 exit;
             }
         }

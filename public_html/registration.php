@@ -38,6 +38,7 @@ session_start();
 
         require_once("common/details_reg.php");
         require_once("common/error_codes.php");
+        require("common/get_keywords.php");
         if (preg_match($fstname_reg, $_POST["firstname"]) === 0 || !is_valid_length($_POST["firstname"], $min_len["firstname"], $max_len["lastname"])){
             unset($_POST["firstname"]);
             $abort = true;
@@ -82,7 +83,7 @@ session_start();
             unset($_POST["pass"]);
             unset($_POST["confirm"]);
             $_SESSION["registration_POST"] = $_POST; 
-            header("Location: view_registration.php?" . array_to_get($errno, "error"));
+            header("Location: view_registration.php?" . array_to_get($errno, ERROR));
             exit;
         }
 
@@ -140,7 +141,7 @@ session_start();
             }
             // in register mostrare errore generico
             $_SESSION["registration_POST"] = $_POST;
-            header("Location: view_registration.php?" . array_to_get($errno, "error"));
+            header("Location: view_registration.php?" . array_to_get($errno, ERROR));
             exit;
         } 
         header("Location: view_login.php");
