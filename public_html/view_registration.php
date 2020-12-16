@@ -13,6 +13,7 @@
         session_start();
         require("common/navbar.php");
         require_once("common/details_reg.php");
+        require("common/get_keywords.php");
 
         if (isset($_SESSION["registration_POST"])){
             $restoring = array_map('htmlspecialchars',$_SESSION["registration_POST"]);
@@ -20,7 +21,7 @@
 
         if (isset($_GET[ERROR])) {
             require_once("common/error_codes.php");
-            require("common/get_keywords.php");
+
 
             $error = "";
             // Using format to allow for faster edits in case of adding classes or ids

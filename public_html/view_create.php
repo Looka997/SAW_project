@@ -15,12 +15,13 @@
         require_once("../db_connections/connections.php");
         $link = my_oo_connect(HOST, DB_USER, DB_PASSWORD, DATABASE);
         require_once("common/navbar.php");
+        require("common/get_keywords.php");
     ?>
 
     <?php
         if (isset($_GET[ERROR])) {
             require_once("common/error_codes.php");
-            require("common/get_keywords.php");
+
 
             $format = "<p>%s</p>";
             foreach ($_GET[ERROR] as $errno) {

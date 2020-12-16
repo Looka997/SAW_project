@@ -9,10 +9,10 @@
     <?php
         session_start();
         require("common/navbar.php");
+        require("common/get_keywords.php");
 
         if (isset($_GET[ERROR])) {
             require_once("common/error_codes.php");
-            require("common/get_keywords.php");
 
             $error = "";
             // Using format to allow for faster edits in case of adding classes or ids
