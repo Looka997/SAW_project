@@ -28,7 +28,7 @@
             $stmt = user_found($link, $email);
             if ($stmt->errno){
                 mysqli_stmt_close($stmt);
-                header("Location: view_login.php?error=" . DB_GENERIC_ERR);
+                header("Location: view_login.php?" . ERROR . "=" . DB_GENERIC_ERR);
                 exit;
             } 
             $res = mysqli_stmt_get_result($stmt);
@@ -36,7 +36,7 @@
             
             if ($res === FALSE){
                 mysqli_stmt_close($stmt);
-                header("Location: view_login.php?error=" . DB_GENERIC_ERR);
+                header("Location: view_login.php?" . ERROR . "=" . DB_GENERIC_ERR);
                 exit;
             }
 
@@ -61,7 +61,7 @@
                 exit;
             } else {
                 mysqli_stmt_close($stmt);
-                header("Location: view_login.php?error=" . NOT_FOUND);
+                header("Location: view_login.php?" . ERROR . "=" . NOT_FOUND);
                 exit;
             }
         }
