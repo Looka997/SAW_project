@@ -62,9 +62,9 @@
     my_oo_query($link, $query); 
 
     $query = "INSERT INTO products (name, model, author, filename, price) VALUES 
-    ('Paper Mario!', 'T-shirt', 1, 'paper-mario.jpg', 14.99),
+    ('Paper Mario!', 'T-shirt', 1, 'paper-mario.jpg', 9.99),
     ('Vita da Trullo', 'T-shirt', 2,'trullo.jpg', 11.99),
-    ('HTML is for bois', 'T-shirt', 2,'lessgreaterthen.jpg', 19.91)";
+    ('HTML is for bois', 'T-shirt', 2,'lessgreaterthen.jpg', 20.91)";
     my_oo_query($link, $query);
 
     $query = "INSERT INTO models (name, filename, price, image_x_ratio, image_y_ratio, image_w_ratio, image_h_ratio) VALUES

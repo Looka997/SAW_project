@@ -1,5 +1,8 @@
-<?php 
-    function my_prepared_stmt($link, $query, $types, ...$parameters){
+<?php
+
+use function PHPSTORM_META\map;
+
+function my_prepared_stmt($link, $query, $types, ...$parameters){
         $stmt = mysqli_stmt_init($link);
         if (!mysqli_stmt_prepare($stmt,$query)){
             echo "failed mysqli_stmt_prepare";
@@ -19,7 +22,9 @@
 
     function my_oo_prepared_stmt($con, $query, $types, ...$parameters){
         if ($stmt = $con->prepare($query)){
-            $stmt->bind_param($types,...$parameters);
+            if (count($parameters)){
+                $stmt->bind_param($types,...$parameters);
+            }
             $stmt->execute();
         }else{
             echo $con->error;
