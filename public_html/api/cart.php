@@ -15,7 +15,9 @@ if (!$prod_ids) {
     exit(200);
 }
 
-$query = "SELECT * FROM products WHERE id = ?";
+$query = "SELECT products.name, products.model, products.price, users.username " .
+    "FROM products INNER JOIN users ON users.id = products.author " .
+    "WHERE products.id = ?";
 $stmt = $link->prepare($query);
 $stmt->bind_param("i", $current_id);
 

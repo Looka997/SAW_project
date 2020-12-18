@@ -19,7 +19,7 @@ const checkCreateCart = () => {
  * This function is not responsible to check if the cart exists
  * and will throw an exception if it doesn't.
  * 
- * @param {any} element 
+ * @param {Number} element 
  */
 const cartAdd = (element) => {
     let cart = JSON.parse(sessionStorage.getItem(keyName));
@@ -36,5 +36,5 @@ $(".prod_btn").click((event) => {
     }
 
     checkCreateCart();
-    cartAdd(prod_id);
+    cartAdd(Number(prod_id));
 });
