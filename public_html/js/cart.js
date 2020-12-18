@@ -23,7 +23,17 @@ const checkCreateCart = () => {
  */
 const cartAdd = (element) => {
     let cart = JSON.parse(sessionStorage.getItem(keyName));
-    cart.push(element);
+    cart.push({uid: Math.floor(Math.random() * 40000), id: element});
+    sessionStorage.setItem(keyName, JSON.stringify(cart));
+};
+
+/** Removes an element from the cart using its uid
+ * 
+ * @param {Number} uid 
+ */
+const cartRemove = (uid) => {
+    let cart = JSON.parse(sessionStorage.getItem(keyName));
+    cart = cart.filter(element => element.uid !== uid);
     sessionStorage.setItem(keyName, JSON.stringify(cart));
 };
 
@@ -37,4 +47,5 @@ $(".prod_btn").click((event) => {
 
     checkCreateCart();
     cartAdd(Number(prod_id));
+    count_cart();
 });

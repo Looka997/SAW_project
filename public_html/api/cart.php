@@ -11,9 +11,7 @@ if (!isset($_POST['cart'])) {
 
 $prod_ids = json_decode($_POST['cart']);
 
-if (!$prod_ids) {
-    exit(200);
-}
+if (is_null($prod_ids)) exit(200);
 
 $query = "SELECT products.name, products.model, products.price, users.username " .
     "FROM products INNER JOIN users ON users.id = products.author " .
@@ -23,12 +21,13 @@ $stmt->bind_param("i", $current_id);
 
 $res = array();
 foreach ($prod_ids as $prod_id) {
-    $current_id = $prod_id;
+    $current_id = $prod_id->id;
 
     if (!$stmt->execute()) die(500);
 
     $result = $stmt->get_result();
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+        $row["uid"] = $prod_id->uid;
         array_push($res, $row);
     }
 }

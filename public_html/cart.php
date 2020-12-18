@@ -17,12 +17,15 @@
         include_once("common/navbar.php");
     ?>
 
-    <table id="cart"></table>
+    <div id="cont">
+        <table id="cart"></table>
+    </div>
 
     <?php
         include_once("common/footer.php");
     ?>
 
+    <script src="js/cart.js"></script>
     <script src="js/cart_table.js"></script>
 </body>
 </html>

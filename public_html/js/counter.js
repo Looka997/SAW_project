@@ -1,5 +1,5 @@
 const btn = document.getElementById('cart_btn');
-const seconds = 5;
+const seconds = 3;
 
 /** Counts the elemts inside of the cart variable in
  * sessionStorage
