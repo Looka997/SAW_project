@@ -11,8 +11,6 @@
 <body>
     <?php
 
-use function PHPSTORM_META\map;
-
 session_start(); 
     require_once("../db_connections/connections.php");
     $link = my_oo_connect(HOST, DB_USER, DB_PASSWORD, DATABASE);
@@ -92,8 +90,8 @@ session_start();
         require_once("common/db_ops.php");
         require_once("common/utilities.php");
         
-        // defined in common/db_ops.php
-        $email = mysqli_escape_string($link, $_POST["email"]);
+        // puts the email to lower to check for duplicates
+        $email = strtolower(mysqli_escape_string($link, $_POST["email"]));
         $firstname = mysqli_escape_string($link, $_POST["firstname"]);
         $lastname = mysqli_escape_string($link, $_POST["lastname"]);
         $args = array($email, password_hash($_POST["pass"], PASSWORD_DEFAULT), $firstname, $lastname);
