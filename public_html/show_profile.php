@@ -11,6 +11,7 @@
         $found = FALSE;
         require_once("common/navbar.php");
         require_once("common/db_ops.php");
+        require_once("common/get_keywords.php");
         require_once("../db_connections/connections.php");
         $link = my_oo_connect(HOST, DB_USER, DB_PASSWORD, DATABASE);
         require_once("common/utilities.php");
@@ -25,17 +26,22 @@
         //             : 
         //                 header("Location: view_login.php") && exit );
         
-        $email = "";
-        if (isset($_GET["email"]) && preg_match($email_reg, $_GET["email"]) != 0) {
-            $email = mysqli_escape_string($link,$_GET["email"]);
+        // the username GET parameter gets passed from the links to the user profile.
+        $param = "";
+        if (isset($_GET[EMAIL]) && preg_match($email_reg, $_GET[EMAIL]) != 0) {
+            // The email search is kept for legacy reasons (and because the username is not mandatory)
+            $param = $_GET[EMAIL];
+        } else if (isset($_GET[USERNAME])) {
+            $param = $_GET[USERNAME];
         } else if (isset($_SESSION["email"])) {
-            $email = $_SESSION["email"];
+            $param = $_SESSION["email"];
         } else {
             header("Location: view_login.php");
             exit;
         }
 
-        $stmt = user_found($link, $email);
+        // This uses a prepared statement
+        $stmt = user_from_email_username($link, $param);
         if ($stmt->errno){
             header("Location: view_login.php");
             exit;
@@ -59,6 +65,7 @@
             exit;
         }
 
+        $email = $row["email"];
         $firstname = $row["firstname"];
         $lastname = $row["lastname"];
         if (isset($row["address"]))
@@ -94,8 +101,10 @@
             }
         ?>
 
-        <input value="<?php echo htmlspecialchars($email) ?>" type="hidden" name="to_update">
-        <input type="submit" name="submit" value="submit">
+        <?php if (strcmp($email, $_SESSION['email']) === 0): ?>
+            <input value="<?php echo htmlspecialchars($email) ?>" type="hidden" name="to_update">
+            <input type="submit" name="submit" value="submit">
+        <?php endif; ?>
     </form>
 </body>
 </html>
