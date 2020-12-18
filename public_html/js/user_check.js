@@ -39,10 +39,10 @@ username.addEventListener("blur", () => {
 });
 
 form.addEventListener("submit",(event) => {
-    event.preventDefault();
     let value = "email=" + email.value + "&" + "username=" + username.value;
     fetch_post(value, (data) => {
         submit.disabled = !valid(data);
+        event.preventDefault();
     });
 })
 
