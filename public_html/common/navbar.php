@@ -22,9 +22,13 @@
         }
         else{
             echo "<li><a href=\"common/logout.php\">Logout</a></li>";
-            echo "<li> <a href=\"show_profile.php\">Profilo</a> </li>";
+            echo "<li><a href=\"show_profile.php\">Profilo</a></li>";
+            echo "<li id='cart_btn'><a href='cart.php'>Carrello</a></li>";
         }
         ?>
         <li> <a href="allusers.php">All users list</a></li>
     </ul>
 </nav>
+
+<!-- Cart counter JS -->
+<script src="js/counter.js"></script>
