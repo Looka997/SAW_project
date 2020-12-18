@@ -4,6 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <?php
@@ -31,9 +33,9 @@
     </form>
 <?php
 
-
+    $base_query = 'SELECT id,name,author,filename,price FROM products';
     // write query for all products
-    $query = 'SELECT name,author,filename,price FROM products';
+    $query = $base_query;
 
     $params = array();
     $types = "";
@@ -54,7 +56,7 @@
     }
     $stmt = my_oo_prepared_stmt($link, $query, $types, ...$params);
     if ($stmt->errno){
-        $query = 'SELECT name,author,filename,price FROM products';
+        $query = $base_query;
         $result = my_oo_query($link, $query);
     }else{
         $result = $stmt->get_result();
@@ -93,11 +95,14 @@
         <?php // lavorare su prepared statement ?>
         <a href="show_profile.php?username=<?php echo htmlspecialchars($display_name); ?>"><span>by <?php echo htmlspecialchars($display_name) ?></span></a>
         <span>only <?php echo htmlspecialchars($product['price']) ?></span>
+        <button class="prod_btn" prod_id="<?php echo htmlspecialchars($product['id']) ?>">Aggiungi al carrello</button>
     </div>
     
     <!-- qua probabilmente un bel average voto -->
     <?php endforeach; 
     $stmt->close();
     ?>
+
+    <script src="js/cart.js"></script>
 </body>
 </html>
