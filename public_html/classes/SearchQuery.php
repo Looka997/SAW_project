@@ -1,8 +1,8 @@
 <?php
     class SearchQuery{
-        public string $query;
-        public int $argc;
-        public string $type; 
+        public $query;
+        public $argc;
+        public $type; 
 
         function __construct(string $query, int $argc=0, string $type=""){
             $this->argc = $argc;

@@ -85,12 +85,13 @@
                 $stmt->fetch();
             }
         }
+        $display_name = is_null($authorusername)? $authoremail : $authorusername;
     ?>
     <h4><?php echo htmlspecialchars($product['name']) ?></h4>
     <img src=<?php echo "uploads/$product[filename]"; ?> alt="Design image">
     <div>
         <?php // lavorare su prepared statement ?>
-        <span>by <?php echo htmlspecialchars(is_null($authorusername)? $authoremail : $authorusername ) ?></span> 
+        <a href="show_profile.php?username=<?php echo htmlspecialchars($display_name); ?>"><span>by <?php echo htmlspecialchars($display_name) ?></span></a>
         <span>only <?php echo htmlspecialchars($product['price']) ?></span>
     </div>
     
