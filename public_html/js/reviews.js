@@ -1,6 +1,6 @@
 let reviews_requested = [];
 
-let fetch_post = (value, callback, node) => {
+let fetch_post = (value, callback, ...params) => {
     fetch("api/reviews.php", {
         method: 'POST',
         headers: {
@@ -10,11 +10,11 @@ let fetch_post = (value, callback, node) => {
     })
     .then(response => response.json())
     .then(data => {
-        callback(data, node)
+        callback(data, ...params)
     });
 };
 
-// given an author, a score and a review content, makes a review node (div (h4, div(img), p) ) )
+// given an author, a score and a review content, makes a review node (div (h4, div, p) ) )
 
 let constructReview = (author, score, content) => {
     let li = $("<li>");
@@ -31,11 +31,12 @@ let constructReview = (author, score, content) => {
     return li.append(div.append(h4, p_score, p_content));
 };
 
-let addReviews = (reviews, node) => {
+let addReviews = (reviews, node, prod_id) => {
     console.log(reviews);
     reviews.forEach(element => {
         node.append(constructReview(element.user, element.score, element.content));
     });
+    reviews_requested.push(prod_id);
 }
 
 // On click event
@@ -49,8 +50,6 @@ $(".show-reviews").click((event) => {
     ul.toggleClass('hidden');
     if (!ul.hasClass('hidden') && !reviews_requested.includes(prod_id)){
         // fetch reviews with prod_id
-        fetch_post("prod_id=" + prod_id, addReviews, ul);
-        // should maybe be moved to callback?
-        reviews_requested.push(prod_id);
+        fetch_post("prod_id=" + prod_id, addReviews, ul, prod_id);
     }
 });
