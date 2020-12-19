@@ -36,17 +36,27 @@
             echo $error;
         }
     ?>
-
-    <form action="login.php" method="post" id="loginForm">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email">
-        <label for="pass">Password:</label>
-        <input type="password" id="pass" name="pass">
-        <input type="submit" name="submit" value="submit">
-    </form>
-
+<div class="text-center">
+<main class="form-signin">
+  <form action="login.php" method="POST">
+    <img class="mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+    <h1 class="h3 mb-3 fw-normal">Accedi</h1>
+    <label for="email" class="visually-hidden">Email</label>
+    <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required="" autofocus="">
+    <label for="pass" class="visually-hidden">Password</label>
+    <input type="password" id="pass" name="pass" class="form-control" placeholder="Password" required="">
+    <!--<div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div> -->
+    <button class="w-100 btn btn-lg btn-primary" type="submit" name="submit">Accedi</button>
+  </form>
+</main>
+    </div>
     <?php require_once("common/footer.php"); ?>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>  
+
 
 </body>
 </html>
