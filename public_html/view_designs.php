@@ -89,11 +89,16 @@
             }
         }
         $display_name = is_null($authorusername)? $authoremail : $authorusername;
+
+        $reviews_query = "SELECT COUNT(*) as total FROM reviews WHERE product = $product[id]";
+        $reviews_result = my_oo_query($link, $reviews_query);
+        $reviews = mysqli_fetch_row($reviews_result);
+        
     ?>
     <h4><?php echo htmlspecialchars($product['name']) ?></h4>
     <img src=<?php echo "uploads/$product[filename]"; ?> alt="Design image">
     <div>
-        <?php // lavorare su prepared statement ?>
+        <a href="#">This design has <?php echo $reviews[0] ?> reviews </a>
         <a href="show_profile.php?username=<?php echo htmlspecialchars($display_name); ?>"><span>by <?php echo htmlspecialchars($display_name) ?></span></a>
         <span>only <?php echo htmlspecialchars($product['price']) ?></span>
         <button class="prod_btn" prod_id="<?php echo $product['id'] ?>">Aggiungi al carrello</button>
