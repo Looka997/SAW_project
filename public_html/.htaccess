@@ -1,0 +1,6 @@
+ErrorDocument 404 /not-found.php
+
+<Files ~ "^\.htaccess">
+  Order allow,deny
+  Deny from all
+</Files>
