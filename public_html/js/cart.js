@@ -37,6 +37,14 @@ const cartRemove = (uid) => {
     sessionStorage.setItem(keyName, JSON.stringify(cart));
 };
 
+/** Overrides the sessionStorage with an emmpty cart
+ * 
+ * @returns {void}
+ */
+const cartEmpty = () => {
+    sessionStorage.setItem(keyName, JSON.stringify([]));
+};
+
 // On click event
 $(".prod_btn").click((event) => {
     let prod_id = event.target.getAttribute('prod_id');

@@ -21,6 +21,8 @@
         <table id="cart"></table>
     </div>
 
+    <button id="buy_btn">Compra</button>
+
     <?php
         include_once("common/footer.php");
     ?>
