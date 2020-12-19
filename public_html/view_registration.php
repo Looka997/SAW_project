@@ -13,6 +13,10 @@
 <body>
     <?php 
         session_start();
+        if (isset($_SESSION["email"])){
+            header("Location: index.php");
+            exit;
+        }
         require("common/navbar.php");
         require_once("common/details_reg.php");
         require("common/get_keywords.php");
