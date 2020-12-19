@@ -1,4 +1,7 @@
 const keyName = "cart";
+const btnText = "Aggiungi al carrello";
+const btnTextPressed = "Aggiunto";
+const textAnimSeconds = 1;
 
 /** Checks if the cart exists.
  * If it does, it also checks if the content of it is valid.
@@ -56,4 +59,9 @@ $(".prod_btn").click((event) => {
     checkCreateCart();
     cartAdd(Number(prod_id));
     count_cart();
+    event.target.innerHTML = btnTextPressed;
+    let interval = setInterval(() => {
+        event.target.innerHTML = btnText;
+        clearInterval(interval);
+    }, textAnimSeconds * 1000);
 });
