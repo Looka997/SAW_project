@@ -21,7 +21,7 @@
             echo "<li><a href=\"view_registration.php\">Registrati</a></li>";
         }
         else{
-            echo "<li><a href=\"common/logout.php\">Logout</a></li>";
+            echo "<li><a href=\"logout.php\">Logout</a></li>";
             echo "<li><a href=\"show_profile.php\">Profilo</a></li>";
             echo "<li><a id='cart_btn' href='cart.php'>Carrello</a></li>";
         }
