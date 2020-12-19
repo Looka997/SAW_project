@@ -98,7 +98,8 @@
     <h4><?php echo htmlspecialchars($product['name']) ?></h4>
     <img src=<?php echo "uploads/$product[filename]"; ?> alt="Design image">
     <div>
-        <a href="#">This design has <?php echo $reviews[0] ?> reviews </a>
+        <button class="show-reviews" prod_id="<?php echo htmlspecialchars($product['id']) ?>" >This design has <?php echo $reviews[0] ?> reviews </button>
+        <ul id="<?php echo 'reviews' . $product['id']?>" class="hidden"></ul>
         <a href="show_profile.php?username=<?php echo htmlspecialchars($display_name); ?>"><span>by <?php echo htmlspecialchars($display_name) ?></span></a>
         <span>only <?php echo htmlspecialchars($product['price']) ?></span>
         <button class="prod_btn" prod_id="<?php echo $product['id'] ?>">Aggiungi al carrello</button>
@@ -115,5 +116,6 @@
    ?>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>  
 
+    <script src="js/reviews.js"></script>
 </body>
 </html>
