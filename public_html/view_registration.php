@@ -53,67 +53,95 @@
             }
         }
     ?>
-<section>
-    <form action="registration.php" method="POST" id="registerForm">
-                <label for="firstname">*First name:</label>
+<div class="text-center">
+<main class="form-signin">
+    <form action="registration.php" method="POST">
+    <h1 class="h3 mb-3 fw-normal">Registrati</h1>
+                <label for="firstname" class="visually-hidden">*Nome:</label>
                 <input
+                    class="form-control"
+                    placeholder="Nome"
+                    required=""
                     type="text"
                     id="firstname"
                     name="firstname"
                     value="<?php if (isset($restoring) && isset($restoring['firstname'])) echo $restoring["firstname"] ?>"
                     pattern="<?php echo substr($fstname_reg, 1, strlen($fstname_reg) - 2) ?>">
 
-                <label for="lastname">*Last name:</label>
+                <label for="lastname" class="visually-hidden">*Cognome:</label>
                 <input
+                    class="form-control"
+                    placeholder="Cognome"
+                    required=""
                     type="text"
                     id="lastname"
                     name="lastname"
                     value="<?php if (isset($restoring) && isset($restoring['lastname'])) echo $restoring["lastname"] ?>"
                     pattern="<?php echo substr($lastname_reg, 1, strlen($lastname_reg) - 2) ?>">
                 
-                <label for="email">*Email</label>
-                <input type="email" id="email" name="email" value="<?php if (isset($restoring) && isset($restoring['email'])) echo $restoring["email"] ?>">
+                <label for="email"  class="visually-hidden">*Email</label>
+                <input class="form-control" placeholder="Email" required="" type="email" id="email" name="email" value="<?php if (isset($restoring) && isset($restoring['email'])) echo $restoring["email"] ?>">
 
-                <label for="pass">*Password:</label>
-                <input type="password" id="pass" name="pass">
+                <label for="pass" class="visually-hidden">*Password:</label>
+                <input class="form-control" placeholder="Password" required="" type="password" id="pass" name="pass">
 
-                <label for="confirm">*Confirm password:</label>
-                <input type="password" id="confirm" name="confirm">
+                <label for="confirm" class="visually-hidden">*Conferma password:</label>
+                <input class="form-control" placeholder="Conferma password" required="" type="password" id="confirm" name="confirm">
 
-                <label for="username">Username:</label>
+                <label for="username" class="visually-hidden">Username:</label>
                 <input
+                   class="form-control"
+                    placeholder="Username"
+                    required=""
                     type="text"
                     id="username"
                     name="username"
                     value="<?php if (isset($restoring) && isset($restoring['username'])) echo $restoring["username"] ?>"
                     pattern="<?php echo substr($username_reg, 1, strlen($username_reg) - 2) ?>">
 
-                <label for="address">Address:</label>
+                <label for="address" class="visually-hidden">Indirizzo:</label>
                 <input
+                class="form-control"
+                    placeholder="Indirizzo"
+                    required=""
                     type="text"
                     id="address"
                     name="address"
                     value="<?php if (isset($restoring) && isset($restoring['address'])) echo $restoring["address"] ?>"
                     pattern="<?php echo substr($address_reg, 1, strlen($address_reg) - 2) ?>">
 
-                <label for="phone">Phone:</label>
+                <label for="phone" class="visually-hidden">Telefono:</label>
                 <input
+                class="form-control"
+                    placeholder="Telefono"
+                    required=""
                     type="text"
                     id="phone"
                     name="phone"
                     value="<?php if (isset($restoring) && isset($restoring['phone'])) echo $restoring["phone"] ?>"
                     pattern="<?php echo substr($phone_reg, 1, strlen($phone_reg) - 2) ?>">
 
-                <input id="submit" type="submit" name="submit" value="submit">
+                    <button class="w-100 btn btn-lg btn-primary" type="submit" name="submit">Registrati</button>
     </form>
-    <p>Fields marked by * are mandatory</p>
-</section>
+    <p>I campi * sono obbligatori</p>
+</main>
+</div>
     
 
 
-    <?php require_once("common/footer.php"); ?>
+    <?php require_once("common/footer.php"); ?><
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>  
 
     <script src="js/user_check.js"></script>
 </body>
 </html>
+
+
+
+
+ 
+   
+    
+
+
+

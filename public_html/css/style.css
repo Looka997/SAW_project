@@ -1,13 +1,3 @@
-*{
-    padding: 0;
-    margin: 0;
-}
-#registerForm input, #loginForm input {
-    display: block;
-    background-color: aqua;
-    border-radius: .8em;
-    height: 1.5em;
-}
 table, tr, td {
     border: 1px black solid;
     border-collapse: collapse;
