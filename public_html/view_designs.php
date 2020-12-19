@@ -95,7 +95,7 @@
         <?php // lavorare su prepared statement ?>
         <a href="show_profile.php?username=<?php echo htmlspecialchars($display_name); ?>"><span>by <?php echo htmlspecialchars($display_name) ?></span></a>
         <span>only <?php echo htmlspecialchars($product['price']) ?></span>
-        <button class="prod_btn" prod_id="<?php echo htmlspecialchars($product['id']) ?>">Aggiungi al carrello</button>
+        <button class="prod_btn" prod_id="<?php echo $product['id'] ?>">Aggiungi al carrello</button>
     </div>
     
     <!-- qua probabilmente un bel average voto -->
