@@ -14,3 +14,7 @@ footer{
 .hidden{
     display: none;
 }
+
+.greyed{
+    color: grey;
+}

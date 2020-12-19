@@ -11,11 +11,10 @@ if (!isset($_POST['prod_id'])) {
 
 $prod_id = mysqli_escape_string($link, $_POST['prod_id']);
 
-$query = "SELECT content, score, author FROM reviews" .
-    " WHERE product= " . mysqli_escape_string($link, $_POST['prod_id']);
+$query = "SELECT content, score, IFNULL(username, email) as user FROM reviews JOIN users" .
+    " WHERE users.id = author AND product= " . mysqli_escape_string($link, $_POST['prod_id']);
 $res = my_oo_query($link, $query);
 $reviews = mysqli_fetch_all($res, MYSQLI_ASSOC);
-
 
 header("Content-Type: application/json");
 echo json_encode($reviews);

@@ -14,20 +14,27 @@ let fetch_post = (value, callback, node) => {
     });
 };
 
-// given an author, a score and a review content, makes a review node (div (h5, div(img), p) ) )
+// given an author, a score and a review content, makes a review node (div (h4, div(img), p) ) )
 
 let constructReview = (author, score, content) => {
     let li = $("<li>");
     let div = $("<div>");
-    let h5 = $("<h5>").text(author);
-    let p = $("<p>").text(content);
-    return li.append(div.append(h5,p));
+    let h4 = $("<h4>").text(author);
+    let p_score = $("<p>").text("Voto: " + score + "/5.0");
+    let p_content = $("<p>");
+    if (content){
+        p_content.text(content);
+    }else{
+        p_content.text( "Nessuna recensione fornita da questo utente");
+        p_content.addClass("greyed");
+    }
+    return li.append(div.append(h4, p_score, p_content));
 };
 
 let addReviews = (reviews, node) => {
     console.log(reviews);
     reviews.forEach(element => {
-        node.append(constructReview(element.author, element.score, element.content));
+        node.append(constructReview(element.user, element.score, element.content));
     });
 }
 

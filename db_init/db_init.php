@@ -71,7 +71,7 @@
     ('senza@address.it','" . password_hash('prova5', PASSWORD_DEFAULT) . "','Senza', 'Address', 'Hobo', NULL, '399 3999 99', FALSE),
     ('phone@less.it','" . password_hash('prova6', PASSWORD_DEFAULT) . "','Phone', 'Less', 'OldFashioned123', 'Vivoquantomeno 25, Chiavari', NULL, FALSE),
     ('vero@antico.it','" . password_hash('prova7', PASSWORD_DEFAULT) . "','Vero', 'Antico', 'Amish', NULL, NULL, FALSE),
-    ('gian@vandome','" . password_hash('prova8', PASSWORD_DEFAULT) . "','Monet', 'Monet', 'Monet', 'Stradet XIX, Parigi', NULL, FALSE),
+    ('gian@vandome','" . password_hash('prova8', PASSWORD_DEFAULT) . "','Monet', 'Monet', NULL, 'Stradet XIX, Parigi', NULL, FALSE),
     ('il@nono.it','" . password_hash('prova9', PASSWORD_DEFAULT) . "','Eren', 'Yeger', 'EREN', 'Casa 9, Novi', '666666666666', FALSE),
     ('ponte@decimo.it','" . password_hash('prova10', PASSWORD_DEFAULT) . "','Fiume', 'D\'Annunzio', 'CeLoRiprendiamo', 'Via dei Mille 1000, Fiume, Croazia', '99909990', FALSE),
     ('re@undicesimo.it','" . password_hash('prova11', PASSWORD_DEFAULT) . "','Vero', 'Re', 'KingOfTheMountain', 'Via XX settembre 20,Pizzo Calabro', '1234', FALSE),
