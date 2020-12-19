@@ -8,28 +8,6 @@
     border-radius: .8em;
     height: 1.5em;
 }
-
-.navbar {
-    color: whitesmoke;
-    width: 100%;
-}
-
-.navbar ul{
-    display: flex;
-    list-style-type: none;
-    background-color: darkred;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 5px 13px;
-}
-.navbar li{
-    margin-left: 15px;
-}
-.navbar a {
-    text-decoration: none;
-    color: whitesmoke;
-}
-
 table, tr, td {
     border: 1px black solid;
     border-collapse: collapse;
