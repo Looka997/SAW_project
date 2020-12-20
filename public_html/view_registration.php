@@ -13,6 +13,10 @@
 <body>
     <?php 
         session_start();
+        if (isset($_SESSION["email"])){
+            header("Location: index.php");
+            exit;
+        }
         require("common/navbar.php");
         require_once("common/details_reg.php");
         require("common/get_keywords.php");
@@ -93,7 +97,6 @@
                 <input
                    class="form-control"
                     placeholder="Username"
-                    required=""
                     type="text"
                     id="username"
                     name="username"
@@ -104,7 +107,6 @@
                 <input
                 class="form-control"
                     placeholder="Indirizzo"
-                    required=""
                     type="text"
                     id="address"
                     name="address"
@@ -115,7 +117,6 @@
                 <input
                 class="form-control"
                     placeholder="Telefono"
-                    required=""
                     type="text"
                     id="phone"
                     name="phone"
@@ -124,7 +125,7 @@
 
                     <button class="w-100 btn btn-lg btn-primary" type="submit" name="submit">Registrati</button>
     </form>
-    <p>I campi * sono obbligatori</p>
+    <p id="txt_obbl">I campi * sono obbligatori</p>
 </main>
 </div>
     

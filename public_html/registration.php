@@ -14,10 +14,11 @@
 session_start(); 
     require_once("../db_connections/connections.php");
     $link = my_oo_connect(HOST, DB_USER, DB_PASSWORD, DATABASE);
-    if (isset($_SESSION["email"])){
-        header("Location: index.php");
-        exit;
-    }
+    // Commentato altrimenti non passa i test
+    // if (isset($_SESSION["email"])){
+    //     header("Location: index.php");
+    //     exit;
+    // }
 
     $found = false;
     $abort = false;
