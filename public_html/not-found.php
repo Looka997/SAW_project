@@ -21,8 +21,11 @@
         .easter-egg {
             position: fixed;
             bottom: 10px;
-            width: var(--image-width);
             right: calc(100vw + var(--image-width));
+        }
+        
+        .easter-egg img {
+            width: var(--image-width);
         }
 
         .easter-egg.active {
@@ -35,7 +38,7 @@
     <img src="https://i.imgur.com/xwfI7Hw.png" alt="mmmmh, error 404">
     <audio src="assets/404.mp3"></audio>
     <h2>Please click this page</h2>
-    <img id="easter" class="easter-egg" src="assets/to-be-continued.png" alt="To be continued">
+    <a id="easter" class="easter-egg" href="index.php"><img src="assets/to-be-continued.png" alt="To be continued"></a>
 
     <script>
         document.addEventListener("click", event => {
