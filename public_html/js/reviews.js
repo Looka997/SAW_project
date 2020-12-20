@@ -47,9 +47,14 @@ $(".show-reviews").click((event) => {
         return;
     }
     let ul = $("#reviews" + prod_id)
-    ul.toggleClass('hidden');
-    if (!ul.hasClass('hidden') && !reviews_requested.includes(prod_id)){
+    let div = ul.parent();
+    div.toggleClass('hidden');
+    if (!div.hasClass('hidden') && !reviews_requested.includes(prod_id)){
         // fetch reviews with prod_id
         fetch_post("prod_id=" + prod_id, addReviews, ul, prod_id);
     }
 });
+
+let submitReview = () => {
+
+}

@@ -99,7 +99,9 @@
     <img src=<?php echo "uploads/$product[filename]"; ?> alt="Design image">
     <div>
         <button class="show-reviews" prod_id="<?php echo htmlspecialchars($product['id']) ?>" >This design has <?php echo $reviews[0] ?> reviews </button>
-        <ul id="<?php echo 'reviews' . $product['id']?>" class="hidden"></ul>
+        <div class="hidden">
+            <ul id="<?php echo 'reviews' . $product['id']?>" ></ul>
+        </div>
         <a href="show_profile.php?username=<?php echo htmlspecialchars($display_name); ?>"><span>by <?php echo htmlspecialchars($display_name) ?></span></a>
         <span>only <?php echo htmlspecialchars($product['price']) ?></span>
         <button class="prod_btn" prod_id="<?php echo $product['id'] ?>">Aggiungi al carrello</button>
