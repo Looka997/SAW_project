@@ -1,3 +1,86 @@
+:root {
+    --blu-logo: #4895ef;
+}
+
+nav {
+    background-color: var(--blu-logo);
+}
+
+#index-centered {
+    background-image: url("https://i.pinimg.com/originals/7f/60/46/7f6046c2151e085d1039276dc8fc0850.gif");
+    background-size:cover;
+}
+
+.light-txt {
+    color: white;
+    font-weight: 400;
+}
+
+.dark-txt {
+    color: black;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+}
+
+ #community-box {
+    background-image: url("https://i.pinimg.com/originals/05/3c/39/053c39f4c14d99d4bc143c05dc3ca219.gif");
+    background-size:cover;
+    opacity: 0.5;
+}
+
+#community-box:hover {
+    background-image: url("https://i.pinimg.com/originals/05/3c/39/053c39f4c14d99d4bc143c05dc3ca219.gif");
+    background-size:cover;
+    opacity: 1;
+}
+
+.btn {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#about-us-box {
+    background-image: url("https://i.kym-cdn.com/photos/images/original/001/004/553/5b0.gif");
+    background-size:cover;
+    background-position: center;
+    opacity: 0.5;
+}
+
+#about-us-box:hover {
+    background-image: url("https://media4.giphy.com/media/QbumCX9HFFDQA/giphy.gif");
+    background-size:cover;
+    background-position: center;
+    opacity: 1;
+}
+
+/*------------------------------------------------------*/
+#help-box {
+    background-image: url("../assets/helpme.png");
+    background-size:cover;
+    background-position: center;
+    opacity: 0.5;
+}
+
+#help-box:hover {
+    background-image: url("../assets/helpme.png");
+    background-size:cover;
+    background-position: center;
+    opacity: 1;
+}
+
+/*------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
 table, tr, td {
     border: 1px black solid;
     border-collapse: collapse;
@@ -7,10 +90,10 @@ td{
     text-align: center;
 }
 
-
-footer{
-    text-align: center;
+#txt_obbl{
+    padding-top: 10px;
 }
+
 .hidden{
     display: none;
 }

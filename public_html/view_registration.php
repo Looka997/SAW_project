@@ -97,7 +97,6 @@
                 <input
                    class="form-control"
                     placeholder="Username"
-                    required=""
                     type="text"
                     id="username"
                     name="username"
@@ -108,7 +107,6 @@
                 <input
                 class="form-control"
                     placeholder="Indirizzo"
-                    required=""
                     type="text"
                     id="address"
                     name="address"
@@ -119,7 +117,6 @@
                 <input
                 class="form-control"
                     placeholder="Telefono"
-                    required=""
                     type="text"
                     id="phone"
                     name="phone"
@@ -128,7 +125,7 @@
 
                     <button class="w-100 btn btn-lg btn-primary" type="submit" name="submit">Registrati</button>
     </form>
-    <p>I campi * sono obbligatori</p>
+    <p id="txt_obbl">I campi * sono obbligatori</p>
 </main>
 </div>
     

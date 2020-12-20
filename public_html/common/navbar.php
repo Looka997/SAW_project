@@ -8,13 +8,13 @@
 
 <!--    <li> <a href="allusers.php">All users list</a></li> -->
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.php">Inserisci nome del sito qui</a>
+    <a class="navbar-brand" href="index.php"> <img alt="logo" width="100" src="assets/Jojos.svg"> </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="d-flex justify-content-end collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
       <?php if (isset($_SESSION["email"])){
             if (isset($_SESSION["admin"]) && $_SESSION["admin"] )
@@ -22,14 +22,14 @@
                     <a class=\"nav-link\" href=\"../db_init/db_init.php\">DB RESET</a>
                 </li>";
             echo "<li class=\"nav-item\">  
-            <a class=\"nav-link\" href=\"show_profile.php\"> Hi " . htmlspecialchars(view_name()) ." </a>".
+            <a class=\"nav-link\" href=\"show_profile.php\"> Ciao " . htmlspecialchars(view_name()) ." </a>".
             "</li>";
         } ?>
         <li class="nav-item">
-          <a class="nav-link" href="view_create.php"> Design your own</a>
+          <a class="nav-link" href="view_create.php">Crea il tuo design</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="view_designs.php">Designs by the community</a>
+          <a class="nav-link" href="view_designs.php">Design della Community</a>
         </li>
         <?php 
         if (!isset($_SESSION["email"])){
@@ -37,8 +37,8 @@
             echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"view_registration.php\">Registrati</a></li>";
         }
         else{
+          echo "<li class=\"nav-item\"><a class=\"nav-link\" id='cart_btn' href='cart.php'>Carrello</a></li>";
             echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"logout.php\">Logout</a></li>";
-            echo "<li class=\"nav-item\"><a class=\"nav-link\" id='cart_btn' href='cart.php'>Carrello</a></li>";
         }
         ?>
       </ul>
