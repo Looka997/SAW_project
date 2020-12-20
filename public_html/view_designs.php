@@ -100,7 +100,18 @@
     <div>
         <button class="show-reviews" prod_id="<?php echo htmlspecialchars($product['id']) ?>" >This design has <?php echo $reviews[0] ?> reviews </button>
         <div class="hidden">
-            <ul id="<?php echo 'reviews' . $product['id']?>" ></ul>
+            <form method="POST">
+                <label for="review_score">Voto:</label>
+                <input type="number" name="review_score" id="<?php echo 'review_score' 
+                    . htmlspecialchars($product['id'])?>">
+                <label for="review_score">Recensione:</label>
+                <input type="text" name="review_text" id="<?php echo 'review_text' 
+                    . htmlspecialchars($product['id'])?>">
+                <input type="submit" value="Inviaci la tua opinione!"
+                    name = "review_submit" class="review_submit"
+                    prod_id=<?php echo htmlspecialchars($product['id']) ?>>
+            </form>
+            <ul id="<?php echo 'reviews' . htmlspecialchars($product['id'])?>" ></ul>
         </div>
         <a href="show_profile.php?username=<?php echo htmlspecialchars($display_name); ?>"><span>by <?php echo htmlspecialchars($display_name) ?></span></a>
         <span>only <?php echo htmlspecialchars($product['price']) ?></span>
@@ -116,8 +127,8 @@
     <?php
    require("common/footer.php");
    ?>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>  
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>  
     <script src="js/reviews.js"></script>
+    <script src="js/send_review.js"></script>
 </body>
 </html>

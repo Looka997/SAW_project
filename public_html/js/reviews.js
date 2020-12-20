@@ -1,6 +1,7 @@
 let reviews_requested = [];
 
 let fetch_post = (value, callback, ...params) => {
+    console.log(value);
     fetch("api/reviews.php", {
         method: 'POST',
         headers: {
@@ -55,6 +56,3 @@ $(".show-reviews").click((event) => {
     }
 });
 
-let submitReview = () => {
-
-}
