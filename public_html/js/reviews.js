@@ -1,7 +1,6 @@
 let reviews_requested = [];
 
 let fetch_post = (value, callback, ...params) => {
-    console.log(value);
     fetch("api/reviews.php", {
         method: 'POST',
         headers: {
@@ -32,11 +31,21 @@ let constructReview = (author, score, content) => {
     return li.append(div.append(h4, p_score, p_content));
 };
 
-let addReviews = (reviews, node, prod_id) => {
-    console.log(reviews);
+let addReviews = (response, node, prod_id) => {
+    let reviews = response.reviews;
+    if (!reviews) {
+        console.log(" [!!!] Reviews era vuota");
+    }
+
     reviews.forEach(element => {
+        if (response.id === Number(element.user_id)) {
+            let parent_form = $("#review_text" + prod_id).parent();
+            parent_form.remove();
+        }
+
         node.append(constructReview(element.user, element.score, element.content));
     });
+
     reviews_requested.push(prod_id);
 }
 

@@ -21,8 +21,8 @@ let submitReview = (reviewScore, reviewText, prod_id) => {
 
 $('.review_submit').click((event)=>{
     event.preventDefault();
-    if (!reviewSent.includes()){
-        let prod_id = event.target.getAttribute('prod_id');
+    let prod_id = event.target.getAttribute('prod_id');
+    if (!reviewSent.includes(prod_id)){
         let reviewText = $('#review_text' + prod_id).val();
         let reviewScore = $('#review_score' + prod_id).val();
         submitReview(reviewScore, reviewText, prod_id);
