@@ -7,29 +7,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
-<<<<<<< HEAD
-<body>
-   <?php 
-   session_start();
-   require("common/navbar.php");
-   ?> 
-<!------------------------------------------------->
-<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-    <div class="col-md-5 p-lg-5 mx-auto my-5">
-      <h1 class="display-4 fw-normal">Crea il tuo stile!</h1>
-      <p class="lead fw-normal">Vorresti tanto una felpa con il tuo meme preferito, ma non la trovi in vendita? Nessun problema: carica la tua immagine e aspetta che ti arrivi a casa!</p>
-      <a class="btn btn-outline-secondary" href="view_create.php">Inizia!</a>
-    </div>
- 
-<!------------------------------------------------->
-
-   <?php
-   require("common/footer.php");
-   ?>
-
-=======
->>>>>>> CSS
-
 <body>
   <?php
   session_start();
