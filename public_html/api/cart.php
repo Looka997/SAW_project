@@ -11,7 +11,10 @@ if (!isset($_POST['cart'])) {
 
 $prod_ids = json_decode($_POST['cart']);
 
-if (is_null($prod_ids)) exit(200);
+if (is_null($prod_ids)) {
+    http_response_code(500);
+    exit(500);
+}
 
 $query = "SELECT products.id, products.name, products.model, products.price, users.username " .
     "FROM products INNER JOIN users ON users.id = products.author " .
@@ -23,7 +26,10 @@ $res = array();
 foreach ($prod_ids as $prod_id) {
     $current_id = $prod_id;
 
-    if (!$stmt->execute()) die(500);
+    if (!$stmt->execute()) {
+        http_response_code(500);
+        die(500);
+    }
 
     $result = $stmt->get_result();
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {

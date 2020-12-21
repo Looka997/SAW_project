@@ -2,6 +2,7 @@ const keyName = "cart";
 const btnText = "Aggiungi al carrello";
 const btnTextPressed = "Aggiunto";
 const textAnimSeconds = 1;
+const ordersAPI = "api/orders.php";
 
 /** Checks if the cart exists.
  * If it does, it also checks if the content of it is valid.
@@ -51,6 +52,38 @@ const cartRemove = (item_id) => {
  */
 const cartEmpty = () => {
     localStorage.setItem(keyName, JSON.stringify([]));
+};
+
+/** Complete order  
+ * This does the POST request to add the elements to the orders Table
+ * and empties the cart;
+ */
+const cartCompleteOrder = () => {
+    let cartVal = localStorage.getItem(keyName);
+    if (!cartVal) {
+        console.log(" [!!!] Error fetching cart for cartCompleteOrder");
+        return;
+    }
+    
+    let cartArr = JSON.parse(cartVal);
+    if (!Array.isArray(cartArr)) {
+        console.log(" [!!!] cartCompleteOrder received a value that wasn't an array");
+        return;
+    }
+
+    let body = "cart=" + cartVal;
+    fetch(ordersAPI, {
+        method: "POST",
+        withCredentials: true,
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: body
+    }).then((response) => {
+        if (!response.ok) {
+            throw new Error(" [!!!] Error on API: HTTP status " + response.status);
+        }
+    });
 };
 
 // On click event

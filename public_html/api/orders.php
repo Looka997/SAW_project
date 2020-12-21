@@ -43,21 +43,29 @@ function handleGet(mysqli $link, int $prod_id) {
 
     $query = "SELECT * FROM orders WHERE user_id = ? AND prod_id = ?";
     $stmt = $link->prepare($query);
-    if (!$stmt->bind_param("ii", $_SESSION['userid'], $prod_id))
-        die(500);
+    if (!$stmt->bind_param("ii", $_SESSION['userid'], $prod_id)) {
+        http_response_code(500);
+        exit(500);
+    }
 
-    if (!$stmt->execute())
-        die(500);
+    if (!$stmt->execute()) {
+        http_response_code(500);
+        exit(500);
+    }
 
-    if (!$stmt->store_result())
-        die(500);
+    if (!$stmt->store_result()) {
+        http_response_code(500);
+        exit(500);
+    }
 
     if ($stmt->num_rows() > 0) {
         $answer["confirmed"] = true;
     }
 
-    if (!($response = json_encode($answer)))
-        die(500);
+    if (!($response = json_encode($answer))) {
+        http_response_code(500);
+        exit(500);
+    }
     
     header("Content-Type: application/json");
     echo $response;
@@ -82,7 +90,8 @@ function handlePost(mysqli $link, array $cart) {
 
         if (!$stmt->execute()) {
             $link->rollback();
-            die(500);
+            http_response_code(500);
+            exit(500);
         }
     }
     $link->commit();
@@ -92,7 +101,10 @@ function handlePost(mysqli $link, array $cart) {
 
 if (isset($_POST[CART_PARAM])) {
     $decoded_cart = json_decode($_POST[CART_PARAM]);
-    if (is_null($decoded_cart) || !is_array($decoded_cart)) exit(500);
+    if (is_null($decoded_cart) || !is_array($decoded_cart)) {
+        http_response_code(500);
+        exit(500);
+    }
     handlePost($link, $decoded_cart);
     exit(200);
 }
@@ -101,4 +113,5 @@ if (isset($_GET[PROD_ID_PARAM])) {
     exit(200);
 }
 
+http_response_code(500);
 exit(500);
