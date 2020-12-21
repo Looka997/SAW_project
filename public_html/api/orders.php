@@ -23,7 +23,7 @@ function exitUsage() {
     exit(200);
 }
 
-if (!isset($_POST[CART_PARAM]) || !isset($_GET[PROD_ID_PARAM])) {
+if (!isset($_POST[CART_PARAM]) && !isset($_GET[PROD_ID_PARAM])) {
     exitUsage();
 }
 
@@ -43,10 +43,13 @@ function handleGet(mysqli $link, int $prod_id) {
 
     $query = "SELECT * FROM orders WHERE user_id = ? AND prod_id = ?";
     $stmt = $link->prepare($query);
-    if ($stmt->bind_param("ii", $_SESSION['userid'], $prod_id))
+    if (!$stmt->bind_param("ii", $_SESSION['userid'], $prod_id))
         die(500);
 
     if (!$stmt->execute())
+        die(500);
+
+    if (!$stmt->store_result())
         die(500);
 
     if ($stmt->num_rows() > 0) {
@@ -56,6 +59,7 @@ function handleGet(mysqli $link, int $prod_id) {
     if (!($response = json_encode($answer)))
         die(500);
     
+    header("Content-Type: application/json");
     echo $response;
     return;
 }
