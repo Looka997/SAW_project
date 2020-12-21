@@ -83,6 +83,7 @@ const cartCompleteOrder = () => {
         if (!response.ok) {
             throw new Error(" [!!!] Error on API: HTTP status " + response.status);
         }
+        cartEmpty();
     });
 };
 
