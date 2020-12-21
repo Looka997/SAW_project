@@ -46,6 +46,7 @@ const updateTable = () => {
                 ]
             });
         } else {
+            $('#buy_btn').hide();
             $('#cont').html("<span>Nessun oggetto nel carrello</span>");
         }
     });
