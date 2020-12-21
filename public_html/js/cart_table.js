@@ -55,6 +55,5 @@ const updateTable = () => {
 window.onload = updateTable;
 
 $("#buy_btn").click(() => {
-    cartCompleteOrder();
-    updateTable();
+    cartCompleteOrder(updateTable);
 });

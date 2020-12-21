@@ -57,8 +57,10 @@ const cartEmpty = () => {
 /** Complete order  
  * This does the POST request to add the elements to the orders Table
  * and empties the cart;
+ * 
+ * @param {CallableFunction} callback Function to call on success
  */
-const cartCompleteOrder = () => {
+const cartCompleteOrder = (callback) => {
     let cartVal = localStorage.getItem(keyName);
     if (!cartVal) {
         console.log(" [!!!] Error fetching cart for cartCompleteOrder");
@@ -84,6 +86,7 @@ const cartCompleteOrder = () => {
             throw new Error(" [!!!] Error on API: HTTP status " + response.status);
         }
         cartEmpty();
+        callback();
     });
 };
 
