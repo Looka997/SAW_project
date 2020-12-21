@@ -127,6 +127,7 @@
     ";
     my_oo_query($link, $query);
 
-    header("Location: ../public_html/common/logout.php");
+    echo "AAAAAAAAAAAAAAAAAAAA";
+    header("Location: logout.php");
     exit;
 ?>
