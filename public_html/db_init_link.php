@@ -9,4 +9,4 @@
         exit;
     }
 
-    include("../db_init/db_init.php");
+    include_once("../db_init/db_init.php");

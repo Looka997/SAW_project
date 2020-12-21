@@ -19,7 +19,7 @@
       <?php if (isset($_SESSION["email"])){
             if (isset($_SESSION["admin"]) && $_SESSION["admin"] )
                 echo "<li class=\"nav-item\">
-                    <a class=\"nav-link\" href=\"db_init.php\">DB RESET</a>
+                    <a class=\"nav-link\" href=\"db_init_link.php\">DB RESET</a>
                 </li>";
             echo "<li class=\"nav-item\">  
             <a class=\"nav-link\" href=\"show_profile.php\"> Ciao " . htmlspecialchars(view_name()) ." </a>".
