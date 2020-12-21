@@ -90,35 +90,37 @@
         }
         $display_name = is_null($authorusername)? $authoremail : $authorusername;
 
-        $reviews_query = "SELECT COUNT(*) as total FROM reviews WHERE product = $product[id]";
+        $reviews_query = "SELECT COUNT(*) as total, AVG(score) AS average_score FROM reviews WHERE product = $product[id]";
         $reviews_result = my_oo_query($link, $reviews_query);
         $reviews = mysqli_fetch_row($reviews_result);
         
     ?>
-    <h4><?php echo htmlspecialchars($product['name']) ?></h4>
-    <img src=<?php echo "uploads/$product[filename]"; ?> alt="Design image">
     <div>
-        <button class="show-reviews" prod_id="<?php echo htmlspecialchars($product['id']) ?>" >This design has <?php echo $reviews[0] ?> reviews </button>
-        <div class="hidden">
-            <form method="POST">
-                <label for="review_score">Voto:</label>
-                <input type="number" name="review_score" id="<?php echo 'review_score' 
-                    . htmlspecialchars($product['id'])?>">
-                <label for="review_score">Recensione:</label>
-                <input type="text" name="review_text" id="<?php echo 'review_text' 
-                    . htmlspecialchars($product['id'])?>">
-                <input type="submit" value="Inviaci la tua opinione!"
-                    name = "review_submit" class="review_submit"
-                    prod_id=<?php echo htmlspecialchars($product['id']) ?>>
-            </form>
-            <ul id="<?php echo 'reviews' . htmlspecialchars($product['id'])?>" ></ul>
+        <h4><?php echo htmlspecialchars($product['name']) ?></h4>
+        <img src=<?php echo "uploads/$product[filename]"; ?> alt="Design image">
+        <div>
+            <button class="show-reviews" prod_id="<?php echo htmlspecialchars($product['id']) ?>" >This design has <?php echo $reviews[0] ?> reviews </button>
+            <div class="hidden">
+                <form method="POST">
+                    <label for="review_score">Voto:</label>
+                    <input min="1" max="5" step="0.5" type="number" name="review_score" id="<?php echo 'review_score' 
+                        . htmlspecialchars($product['id'])?>">
+                    <label for="review_score">Recensione:</label>
+                    <input type="text" name="review_text" id="<?php echo 'review_text' 
+                        . htmlspecialchars($product['id'])?>">
+                    <input type="submit" value="Inviaci la tua opinione!"
+                        name = "review_submit" class="review_submit"
+                        prod_id=<?php echo htmlspecialchars($product['id']) ?>>
+                </form>
+                <ul id="<?php echo 'reviews' . htmlspecialchars($product['id'])?>" ></ul>
+            </div>
+            <a href="show_profile.php?username=<?php echo htmlspecialchars($display_name); ?>"><span>by <?php echo htmlspecialchars($display_name) ?></span></a>
+            <span>only <?php echo htmlspecialchars($product['price']) ?></span>
+            <button class="prod_btn" prod_id="<?php echo $product['id'] ?>">Aggiungi al carrello</button>
         </div>
-        <a href="show_profile.php?username=<?php echo htmlspecialchars($display_name); ?>"><span>by <?php echo htmlspecialchars($display_name) ?></span></a>
-        <span>only <?php echo htmlspecialchars($product['price']) ?></span>
-        <button class="prod_btn" prod_id="<?php echo $product['id'] ?>">Aggiungi al carrello</button>
+        <p>Voto medio: <?php echo $reviews[1] ?></p>
     </div>
     
-    <!-- qua probabilmente un bel average voto -->
     <?php endforeach; 
     $stmt->close();
     ?>
