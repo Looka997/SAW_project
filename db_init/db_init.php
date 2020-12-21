@@ -68,7 +68,7 @@
     $query = "CREATE TABLE orders(
         id MEDIUMINT AUTO_INCREMENT PRIMARY KEY,
         user_id MEDIUMINT NOT NULL REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
-        prod_id MEDIUMINT NOT NULL REFERENCES products(id) ON UPDATE CASCADE ON DELETE CASCADE,
+        prod_id MEDIUMINT NOT NULL REFERENCES products(id) ON UPDATE CASCADE ON DELETE CASCADE
     )";
     my_oo_query($link, $query);
 
