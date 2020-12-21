@@ -28,6 +28,9 @@
     $query = "DROP TABLE IF EXISTS models";
     my_oo_query($link, $query);
     
+    $query = "DROP TABLE IF EXISTS orders";
+    my_oo_query($link, $query);
+
     $query = "CREATE TABLE models (
         id MEDIUMINT AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(30) NOT NULL UNIQUE,
@@ -62,6 +65,12 @@
     )";
     my_oo_query($link, $query);
     
+    $query = "CREATE TABLE orders(
+        id MEDIUMINT AUTO_INCREMENT PRIMARY KEY,
+        user_id MEDIUMINT NOT NULL REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+        prod_id MEDIUMINT NOT NULL REFERENCES products(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    )";
+    my_oo_query($link, $query);
 
     $query = "INSERT INTO users (email, password, firstname, lastname, username, address, phone, admin) VALUES 
     ('luca@marinelli.it','" . password_hash('prova1', PASSWORD_DEFAULT) . "','Luca', 'Marinelli', 'Looka', 'sotto casa mia 123, Genova', '123 1231 23', TRUE),
