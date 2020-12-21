@@ -34,11 +34,11 @@ const updateTable = () => {
             table = $('#cart').DataTable({
                 data: result,
                 columns: [
-                    { name: 'Nome', data: 'name' },
-                    { name: 'Modello', data: 'model' },
-                    { name: 'Prezzo', data: 'price' },
-                    { name: 'Autore', data: 'username' },
-                    { name: 'Rimuovi', data: "id" , render : function ( data, type ) {
+                    { title: 'Nome Design', data: 'name' },
+                    { title: 'Modello', data: 'model' },
+                    { title: 'Prezzo', data: 'price' },
+                    { title: 'Autore', data: 'username' },
+                    { title: 'Rimuovi', data: "id" , render : function ( data, type ) {
                         return type === 'display'
                             ? '<button onclick="removeRow(' + data + ')" >Rimuovi</button>'
                             : data;
