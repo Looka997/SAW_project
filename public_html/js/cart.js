@@ -10,12 +10,12 @@ const textAnimSeconds = 1;
  * @returns {void}
  */
 const checkCreateCart = () => {
-    const item = sessionStorage.getItem(keyName);
+    const item = localStorage.getItem(keyName);
     if (item && item.length !== 0 && Array.isArray(JSON.parse(item))) {
         return;
     }
 
-    sessionStorage.setItem(keyName, JSON.stringify([]));
+    localStorage.setItem(keyName, JSON.stringify([]));
 };
 
 /** Adds an element to the cart.
@@ -25,27 +25,32 @@ const checkCreateCart = () => {
  * @param {Number} element 
  */
 const cartAdd = (element) => {
-    let cart = JSON.parse(sessionStorage.getItem(keyName));
-    cart.push({uid: Math.floor(Math.random() * 40000), id: element});
-    sessionStorage.setItem(keyName, JSON.stringify(cart));
+    let cart = JSON.parse(localStorage.getItem(keyName));
+    cart.push(element);
+    localStorage.setItem(keyName, JSON.stringify(cart));
 };
 
-/** Removes an element from the cart using its uid
+/** Removes an element from the cart
  * 
- * @param {Number} uid 
+ * @param {Number} item_id 
  */
-const cartRemove = (uid) => {
-    let cart = JSON.parse(sessionStorage.getItem(keyName));
-    cart = cart.filter(element => element.uid !== uid);
-    sessionStorage.setItem(keyName, JSON.stringify(cart));
+const cartRemove = (item_id) => {
+    let cart = JSON.parse(localStorage.getItem(keyName));
+    let index = cart.indexOf(item_id);
+    if (index < 0) {
+        console.log(` [!!!] Error removing an item from the cart\nid: ${item_id}`);
+        return;
+    }
+    cart.splice(index, 1);
+    localStorage.setItem(keyName, JSON.stringify(cart));
 };
 
-/** Overrides the sessionStorage with an emmpty cart
+/** Overrides the localStorage with an empty cart
  * 
  * @returns {void}
  */
 const cartEmpty = () => {
-    sessionStorage.setItem(keyName, JSON.stringify([]));
+    localStorage.setItem(keyName, JSON.stringify([]));
 };
 
 // On click event

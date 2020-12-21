@@ -2,10 +2,10 @@ let table = undefined;
 
 /** Calls the cartRemove function and refreshes the table
  * 
- * @param {Number} uid 
+ * @param {Number} id 
  */
-const removeRow = (uid) => {
-    cartRemove(uid);
+const removeRow = (id) => {
+    cartRemove(id);
     updateTable();
 };
 
@@ -16,7 +16,7 @@ const removeRow = (uid) => {
  * @returns {void}
  */
 const updateTable = () => {
-    let cart_str = sessionStorage.getItem('cart');
+    let cart_str = localStorage.getItem('cart');
     if (!cart_str) return;
     payload = "cart=" + cart_str;
 
@@ -38,7 +38,7 @@ const updateTable = () => {
                     { name: 'Modello', data: 'model' },
                     { name: 'Prezzo', data: 'price' },
                     { name: 'Autore', data: 'username' },
-                    { data: "uid" , render : function ( data, type ) {
+                    { name: 'Rimuovi', data: "id" , render : function ( data, type ) {
                         return type === 'display'
                             ? '<button onclick="removeRow(' + data + ')" >Rimuovi</button>'
                             : data;

@@ -37,7 +37,7 @@
             echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"view_registration.php\">Registrati</a></li>";
         }
         else{
-          echo "<li class=\"nav-item\"><a class=\"nav-link\" id='cart_btn' href='cart.php'>Carrello</a></li>";
+          echo "<li class=\"nav-item\"><a class=\"nav-link\" id='cart_btn' href='view_cart.php'>Carrello</a></li>";
             echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"logout.php\">Logout</a></li>";
         }
         ?>
