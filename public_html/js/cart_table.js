@@ -2,10 +2,10 @@ let table = undefined;
 
 /** Calls the cartRemove function and refreshes the table
  * 
- * @param {Number} uid 
+ * @param {Number} id 
  */
-const removeRow = (uid) => {
-    cartRemove(uid);
+const removeRow = (id) => {
+    cartRemove(id);
     updateTable();
 };
 
@@ -16,7 +16,7 @@ const removeRow = (uid) => {
  * @returns {void}
  */
 const updateTable = () => {
-    let cart_str = sessionStorage.getItem('cart');
+    let cart_str = localStorage.getItem('cart');
     if (!cart_str) return;
     payload = "cart=" + cart_str;
 
@@ -34,11 +34,11 @@ const updateTable = () => {
             table = $('#cart').DataTable({
                 data: result,
                 columns: [
-                    { name: 'Nome', data: 'name' },
-                    { name: 'Modello', data: 'model' },
-                    { name: 'Prezzo', data: 'price' },
-                    { name: 'Autore', data: 'username' },
-                    { data: "uid" , render : function ( data, type ) {
+                    { title: 'Nome Design', data: 'name' },
+                    { title: 'Modello', data: 'model' },
+                    { title: 'Prezzo', data: 'price' },
+                    { title: 'Autore', data: 'username' },
+                    { title: 'Rimuovi', data: "id" , render : function ( data, type ) {
                         return type === 'display'
                             ? '<button onclick="removeRow(' + data + ')" >Rimuovi</button>'
                             : data;
@@ -46,6 +46,7 @@ const updateTable = () => {
                 ]
             });
         } else {
+            $('#buy_btn').hide();
             $('#cont').html("<span>Nessun oggetto nel carrello</span>");
         }
     });
@@ -54,6 +55,5 @@ const updateTable = () => {
 window.onload = updateTable;
 
 $("#buy_btn").click(() => {
-    cartEmpty();
-    updateTable();
+    cartCompleteOrder(updateTable);
 });

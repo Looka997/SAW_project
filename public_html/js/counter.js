@@ -2,13 +2,13 @@ const btn = document.getElementById('cart_btn');
 const seconds = 3;
 
 /** Counts the elemts inside of the cart variable in
- * sessionStorage
+ * localStorage
  * 
  * @returns {void}
  */
 const count_cart = () => {
-    let cart = JSON.parse(sessionStorage.getItem('cart'));
-    if (!cart) return;
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    if (!cart || !btn) return;
 
     let count = cart.length;
     if (count > 0)

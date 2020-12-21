@@ -19,7 +19,7 @@
       <?php if (isset($_SESSION["email"])){
             if (isset($_SESSION["admin"]) && $_SESSION["admin"] )
                 echo "<li class=\"nav-item\">
-                    <a class=\"nav-link\" href=\"../db_init/db_init.php\">DB RESET</a>
+                    <a class=\"nav-link\" href=\"db_init_link.php\">DB RESET</a>
                 </li>";
             echo "<li class=\"nav-item\">  
             <a class=\"nav-link\" href=\"show_profile.php\"> Ciao " . htmlspecialchars(view_name()) ." </a>".
@@ -37,7 +37,7 @@
             echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"view_registration.php\">Registrati</a></li>";
         }
         else{
-          echo "<li class=\"nav-item\"><a class=\"nav-link\" id='cart_btn' href='cart.php'>Carrello</a></li>";
+          echo "<li class=\"nav-item\"><a class=\"nav-link\" id='cart_btn' href='view_cart.php'>Carrello</a></li>";
             echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"logout.php\">Logout</a></li>";
         }
         ?>

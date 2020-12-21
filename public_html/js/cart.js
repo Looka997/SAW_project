@@ -2,6 +2,7 @@ const keyName = "cart";
 const btnText = "Aggiungi al carrello";
 const btnTextPressed = "Aggiunto";
 const textAnimSeconds = 1;
+const ordersAPI = "api/orders.php";
 
 /** Checks if the cart exists.
  * If it does, it also checks if the content of it is valid.
@@ -10,12 +11,12 @@ const textAnimSeconds = 1;
  * @returns {void}
  */
 const checkCreateCart = () => {
-    const item = sessionStorage.getItem(keyName);
+    const item = localStorage.getItem(keyName);
     if (item && item.length !== 0 && Array.isArray(JSON.parse(item))) {
         return;
     }
 
-    sessionStorage.setItem(keyName, JSON.stringify([]));
+    localStorage.setItem(keyName, JSON.stringify([]));
 };
 
 /** Adds an element to the cart.
@@ -25,27 +26,68 @@ const checkCreateCart = () => {
  * @param {Number} element 
  */
 const cartAdd = (element) => {
-    let cart = JSON.parse(sessionStorage.getItem(keyName));
-    cart.push({uid: Math.floor(Math.random() * 40000), id: element});
-    sessionStorage.setItem(keyName, JSON.stringify(cart));
+    let cart = JSON.parse(localStorage.getItem(keyName));
+    cart.push(element);
+    localStorage.setItem(keyName, JSON.stringify(cart));
 };
 
-/** Removes an element from the cart using its uid
+/** Removes an element from the cart
  * 
- * @param {Number} uid 
+ * @param {Number} item_id 
  */
-const cartRemove = (uid) => {
-    let cart = JSON.parse(sessionStorage.getItem(keyName));
-    cart = cart.filter(element => element.uid !== uid);
-    sessionStorage.setItem(keyName, JSON.stringify(cart));
+const cartRemove = (item_id) => {
+    let cart = JSON.parse(localStorage.getItem(keyName));
+    let index = cart.indexOf(item_id);
+    if (index < 0) {
+        console.log(` [!!!] Error removing an item from the cart\nid: ${item_id}`);
+        return;
+    }
+    cart.splice(index, 1);
+    localStorage.setItem(keyName, JSON.stringify(cart));
 };
 
-/** Overrides the sessionStorage with an emmpty cart
+/** Overrides the localStorage with an empty cart
  * 
  * @returns {void}
  */
 const cartEmpty = () => {
-    sessionStorage.setItem(keyName, JSON.stringify([]));
+    localStorage.setItem(keyName, JSON.stringify([]));
+};
+
+/** Complete order  
+ * This does the POST request to add the elements to the orders Table
+ * and empties the cart;
+ * 
+ * @param {CallableFunction} callback Function to call on success
+ */
+const cartCompleteOrder = (callback) => {
+    let cartVal = localStorage.getItem(keyName);
+    if (!cartVal) {
+        console.log(" [!!!] Error fetching cart for cartCompleteOrder");
+        return;
+    }
+    
+    let cartArr = JSON.parse(cartVal);
+    if (!Array.isArray(cartArr)) {
+        console.log(" [!!!] cartCompleteOrder received a value that wasn't an array");
+        return;
+    }
+
+    let body = "cart=" + cartVal;
+    fetch(ordersAPI, {
+        method: "POST",
+        withCredentials: true,
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: body
+    }).then((response) => {
+        if (!response.ok) {
+            throw new Error(" [!!!] Error on API: HTTP status " + response.status);
+        }
+        cartEmpty();
+        callback();
+    });
 };
 
 // On click event
