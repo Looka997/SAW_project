@@ -36,11 +36,14 @@ $stmt = my_oo_prepared_stmt(
     $_POST['product'], 
     $_SESSION['userid']
 );
-if ($stmt->errno){
-    $result = $stmt->errno === 1062? DB_DUP_ERR : DB_GENERIC_ERR;
-}else{
-    $result = OK;
+
+$result = [];
+if ($stmt->errno)
+    $result['error'] = $stmt->errno === 1062? DB_DUP_ERR : DB_GENERIC_ERR;
+else{
+    $result['success'] = OK;
 }
+
 
 $stmt->close();
 

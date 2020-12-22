@@ -101,6 +101,14 @@
         <div>
             <button class="show-reviews" prod_id="<?php echo htmlspecialchars($product['id']) ?>" >This design has <?php echo $reviews[0] ?> reviews </button>
             <div class="hidden">
+                <div class="hidden alert-success" id="<?php echo 'alert-success' 
+                        . htmlspecialchars($product['id'])?>">
+                    <p>Grazie per averci fatto sapere quello che pensi su questo design!</p>
+                </div>
+                <div class="hidden alert-danger" id="<?php echo 'alert-danger' 
+                        . htmlspecialchars($product['id'])?>">>
+                    <p>La review non è stata inserita correttamente</p>
+                </div>
                 <form method="POST">
                     <label for="review_score">Voto:</label>
                     <input min="1" max="5" step="0.5" type="number" name="review_score" id="<?php echo 'review_score' 
