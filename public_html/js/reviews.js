@@ -46,7 +46,7 @@ $(".show-reviews").click((event) => {
     div.toggleClass('hidden');
     if (!div.hasClass('hidden') && !reviews_requested.includes(prod_id)){
         // fetch reviews with prod_id
-        fetch_post("api/reviews.php","prod_id=" + prod_id, addReviews, ul, prod_id);
+        fetch_post("api/reviews.php","reviews=&product=" + prod_id, addReviews, ul, prod_id);
     }
 });
 

@@ -99,7 +99,7 @@
         <h4><?php echo htmlspecialchars($product['name']) ?></h4>
         <img src=<?php echo "uploads/$product[filename]"; ?> alt="Design image">
         <div>
-            <button class="show-reviews" prod_id="<?php echo htmlspecialchars($product['id']) ?>" >This design has <?php echo $reviews[0] ?> reviews </button>
+            <button class="show-reviews" prod_id="<?php echo htmlspecialchars($product['id']) ?>" >Questo design ha <?php echo $reviews[0] ?> reviews </button>
             <div class="hidden">
                 <div class="hidden alert-success" id="<?php echo 'alert-success' 
                         . htmlspecialchars($product['id'])?>">
@@ -126,7 +126,8 @@
             <span>only <?php echo htmlspecialchars($product['price']) ?></span>
             <button class="prod_btn" prod_id="<?php echo $product['id'] ?>">Aggiungi al carrello</button>
         </div>
-        <p>Voto medio: <?php echo $reviews[1] ?></p>
+        <p id="<?php echo 'avg_score' . htmlspecialchars($product['id'])?>">
+            Voto medio: <?php echo $reviews[1] ?></p>
     </div>
     
     <?php endforeach; 
