@@ -1,19 +1,5 @@
 let reviewSent = [];
 
-let fetch_send_review = (url, value, callback, ...params) => {
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: value
-    })
-    .then(response => response.json())
-    .then(data => {
-        callback(data,...params)
-    });
-};
-
 
 let displayAlert = (error, prod_id) => {
     let alert_to_show;
@@ -34,23 +20,16 @@ let displayAlert = (error, prod_id) => {
     }
 }
 
-let disableReviewForm = (prod_id) => {
-
-};
-
-let updateReviewCounter = (prod_id) => {
-
-};
-
 let onReviewInsert = (response, prod_id) => {
     displayAlert(response.error, prod_id);
-    disableReviewForm(prod_id);
+    removeReviewForm(prod_id);
     updateReviewCounter(prod_id);
+    updateAverageScore(prod_id);
 };
 
 let submitReview = (reviewScore, reviewText, prod_id) => {
     let request = "score=" + reviewScore + "&content=" + reviewText + "&product=" + prod_id;
-    fetch_send_review("api/send_review.php", request, onReviewInsert, prod_id)
+    fetch_post("api/send_review.php", request, onReviewInsert, prod_id)
 };
 
 $('.review_submit').click((event)=>{

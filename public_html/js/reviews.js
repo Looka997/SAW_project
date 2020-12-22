@@ -1,19 +1,5 @@
 let reviews_requested = [];
 
-let fetch_post = (value, callback, ...params) => {
-    fetch("api/reviews.php", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: value
-    })
-    .then(response => response.json())
-    .then(data => {
-        callback(data, ...params)
-    });
-};
-
 // given an author, a score and a review content, makes a review node (div (h4, div, p) ) )
 
 let constructReview = (author, score, content) => {
@@ -39,8 +25,7 @@ let addReviews = (response, node, prod_id) => {
 
     reviews.forEach(element => {
         if (response.id === Number(element.user_id)) {
-            let parent_form = $("#review_text" + prod_id).parent();
-            parent_form.remove();
+            removeReviewForm(prod_id);
         }
 
         node.append(constructReview(element.user, element.score, element.content));
@@ -61,7 +46,7 @@ $(".show-reviews").click((event) => {
     div.toggleClass('hidden');
     if (!div.hasClass('hidden') && !reviews_requested.includes(prod_id)){
         // fetch reviews with prod_id
-        fetch_post("prod_id=" + prod_id, addReviews, ul, prod_id);
+        fetch_post("api/reviews.php","prod_id=" + prod_id, addReviews, ul, prod_id);
     }
 });
 
