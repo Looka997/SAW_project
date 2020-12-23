@@ -39,3 +39,20 @@ let updateAverageScore = (prod_id) => {
     let request = "avg_score=" + "&product=" + prod_id;
     fetch_post("api/reviews.php", request, setAverageScore, prod_id);
 };
+
+// given an author, a score and a review content, makes a review node (div (h4, div, p) ) )
+
+let constructReview = (author, score, content) => {
+    let li = $("<li>");
+    let div = $("<div>");
+    let h4 = $("<h4>").text(author);
+    let p_score = $("<p>").text("Voto: " + score + "/5.0");
+    let p_content = $("<p>");
+    if (content){
+        p_content.text(content);
+    }else{
+        p_content.text( "Nessuna recensione fornita da questo utente");
+        p_content.addClass("greyed");
+    }
+    return li.append(div.append(h4, p_score, p_content));
+};

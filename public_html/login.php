@@ -54,12 +54,6 @@
                     $_SESSION["admin"] = TRUE;
                 setcookie(session_name(), $_COOKIE[session_name()], time() + COOKIE_DURATION);
                 mysqli_stmt_close($stmt);
-                if (isset($_SESSION["create_POST"])){
-                    header("Location: view_create.php");
-                    exit;
-                }
-                header('Location: index.php');
-                exit;
             } else {
                 mysqli_stmt_close($stmt);
                 header("Location: view_login.php?" . ERROR . "=" . NOT_FOUND);
@@ -67,5 +61,20 @@
             }
         }
     ?>
+
+<script>
+    let username = <?php echo isset($_SESSION['username']) ? "'{$_SESSION['username']}'" : "null" ?>;
+    let email = <?php echo isset($_SESSION['email']) ? "'{$_SESSION['email']}'" : "null" ?>;
+    localStorage.setItem("username", username);
+    localStorage.setItem("email", email);
+</script>
+
+<?php
+    if (isset($_SESSION["create_POST"])) {
+        echo '<meta http-equiv="refresh" content="0; url=view_create.php">';
+    }
+    echo '<meta http-equiv="refresh" content="0; url=index.php">';
+?>
+
 </body>
 </html>

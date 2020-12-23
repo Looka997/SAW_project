@@ -21,8 +21,24 @@ let displayAlert = (error, prod_id) => {
     }
 }
 
+const showReview = (prod_id) => {
+    let author = localStorage.getItem("username");
+    if (!author) {
+        author = localStorage.getItem("email");
+        if (!author) {
+            throw new Error(" [!!!] localStorage currupted????");
+        }
+    }
+
+    let reviewText = $('#review_text' + prod_id).val();
+    let reviewScore = $('#review_score' + prod_id).val();
+
+    $("#reviews" + prod_id).append(constructReview(author, reviewScore, reviewText));
+}
+
 let onReviewInsert = (response, prod_id) => {
     displayAlert(response.error, prod_id);
+    showReview(prod_id);
     removeReviewForm(prod_id);
     updateReviewCounter(prod_id);
     updateAverageScore(prod_id);
