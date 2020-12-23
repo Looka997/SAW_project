@@ -105,6 +105,8 @@
                 header("Location: view_create.php?" . array_to_get($errno, ERROR));
                 exit;
             }
+            /*Manda newsletter*/
+            include("newsletter.php");
         }
     }
 
@@ -112,3 +114,6 @@
     header("Location: view_designs.php");
 
 ?>
+
+
+

@@ -127,6 +127,15 @@
     ";
     my_oo_query($link, $query);
 
+    $query = "DROP TABLE IF EXISTS mail_list";
+    my_oo_query($link, $query);
+    $query = "CREATE TABLE mail_list(
+        email_follower VARCHAR(254) REFERENCES users (email) ON UPDATE CASCADE ON DELETE CASCADE, 
+        email_creator VARCHAR(254) REFERENCES users (email) ON UPDATE CASCADE ON DELETE CASCADE,
+        PRIMARY KEY (email_follower, email_creator)
+    )";
+    my_oo_query($link, $query);
+
     header("Location: ../public_html/common/logout.php");
     exit;
 ?>
