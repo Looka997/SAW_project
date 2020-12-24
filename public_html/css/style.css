@@ -72,11 +72,18 @@ footer {
 
 /*------------------------------------------------------*/
 
+.my-search-bar {
+    max-width: 500px;
+    margin: 0 auto;
+}
 
+.my-search-form {
+    margin: 0 32px;
+}
 
-
-
-
+.my-search-bar input {
+    border-radius: 15px;
+}
 
 
 
