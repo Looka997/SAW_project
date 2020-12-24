@@ -106,7 +106,7 @@
                     <p>Grazie per averci fatto sapere quello che pensi su questo design!</p>
                 </div>
                 <div class="hidden alert-danger" id="<?php echo 'alert-danger' 
-                        . htmlspecialchars($product['id'])?>">>
+                        . htmlspecialchars($product['id'])?>">
                     <p>La review non è stata inserita correttamente</p>
                 </div>
                 <form method="POST">

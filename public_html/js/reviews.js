@@ -1,22 +1,5 @@
 let reviews_requested = [];
 
-// given an author, a score and a review content, makes a review node (div (h4, div, p) ) )
-
-let constructReview = (author, score, content) => {
-    let li = $("<li>");
-    let div = $("<div>");
-    let h4 = $("<h4>").text(author);
-    let p_score = $("<p>").text("Voto: " + score + "/5.0");
-    let p_content = $("<p>");
-    if (content){
-        p_content.text(content);
-    }else{
-        p_content.text( "Nessuna recensione fornita da questo utente");
-        p_content.addClass("greyed");
-    }
-    return li.append(div.append(h4, p_score, p_content));
-};
-
 let addReviews = (response, node, prod_id) => {
     let reviews = response.reviews;
     if (!reviews) {

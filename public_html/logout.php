@@ -16,6 +16,8 @@
     <script src="js/cart.js"></script>
     <script>
         cartEmpty();
+        localStorage.removeItem("username");
+        localStorage.removeItem("email");
     </script>
     <meta http-equiv="refresh" content="0.1; url=index.php">
 </body>
