@@ -22,15 +22,32 @@
     require_once("classes/SearchQuery.php");
 
 ?>
-    <form action="view_designs.php" method="GET">
-        <input placeholder="Search..." type="text" name="searchtext" id="searchtext">
-        <label for="from0to10">From 0 to 10</label>
-        <input type="radio" name="from0to10" id="from0to10">
-        <label for="from10to20">From 10 to 20</label>
-        <input type="radio" name="from10to20" id="from10to20">
-        <label for="over20">Over 20</label>
-        <input type="radio" name="over20" id="over20">
-        <input type="submit" value="submit">
+    <form class="my-search-form" action="view_designs.php" method="GET">
+        <div class="form-row">
+            <div class="my-search-bar d-flex">
+                <input class="form-control" placeholder="Cerca..." type="text" name="searchtext" id="searchtext">
+                <button id="searchDropdown" type="button" data-bs-target="#searchOptions" data-bs-toggle="collapse" aria-expanded="false" aria-controls="searchOptions">
+                    <i class="arrow down"></i>
+                </button>
+            </div>
+        </div>
+        <div class="form-row collapse" id="searchOptions">
+            <div class="form-group">
+                <input class="form-check-input" type="radio" name="price-range" value="10" id="under10">
+                <label for="under10">Da 10 in giù</label>
+            </div>
+            <div class="form-group">
+                <input class="form-check-input" type="radio" name="price-range" value="20" id="under20">
+                <label for="under20">Da 20 in giù</label>
+            </div>
+            <div class="form-group">
+                <input class="form-check-input" type="radio" name="price-range" value="50" id="under50">
+                <label for="under50">Da 50 in giù</label>
+            </div>
+        </div>
+        <div class="form-row">
+            <input class="btn btn-primary" type="submit" value="Cerca">
+        </div>
     </form>
 <?php
 
@@ -42,7 +59,7 @@
     $types = "";
     $first_criteria = true;
     foreach($_GET as $get_param => $value){
-        if (isset($criteria_query_assoc[$get_param]) && strlen($value)){
+        if (array_key_exists($get_param, $criteria_query_assoc) && strlen($value)){
             if ($criteria_query_assoc[$get_param]->argc){
                 $types.= $criteria_query_assoc[$get_param]->type;
                 array_push($params, $value);
@@ -115,12 +132,12 @@
                 <?php if (isset($_SESSION['userid'])){ ?>
                     <form method="POST">
                         <label for="review_score">Voto:</label>
-                        <input min="1" max="5" step="0.5" type="number" name="review_score" id="<?php echo 'review_score' 
+                        <input class="form-control" min="1" max="5" step="0.5" type="number" name="review_score" id="<?php echo 'review_score' 
                             . htmlspecialchars($product['id'])?>">
                         <label for="review_score">Recensione:</label>
-                        <input type="text" name="review_text" id="<?php echo 'review_text' 
+                        <input class="form-control" type="text" name="review_text" id="<?php echo 'review_text' 
                             . htmlspecialchars($product['id'])?>">
-                        <input type="submit" value="Inviaci la tua opinione!"
+                        <input class="btn btn-primary mb-2" type="submit" value="Inviaci la tua opinione!"
                             name = "review_submit" class="review_submit"
                             prod_id=<?php echo htmlspecialchars($product['id']) ?>>
                     </form>
@@ -143,7 +160,9 @@
     <?php
    require("common/footer.php");
    ?>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>  
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
     <script src="js/reviews_common.js"></script>
     <script src="js/reviews.js"></script>
     <script src="js/send_review.js"></script>
