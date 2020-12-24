@@ -34,7 +34,7 @@
     </form>
 <?php
 
-    $base_query = 'SELECT id,name,author,filename,price FROM products ORDER BY id ASC';
+    $base_query = 'SELECT id,name,author,filename,price FROM products';
     // write query for all products
     $query = $base_query;
 
@@ -55,6 +55,9 @@
             $query.= " AND " . $criteria_query_assoc[$get_param]->query;
         }
     }
+
+    $query .= " ORDER BY id ASC";
+
     $stmt = my_oo_prepared_stmt($link, $query, $types, ...$params);
     if ($stmt->errno){
         $query = $base_query;
