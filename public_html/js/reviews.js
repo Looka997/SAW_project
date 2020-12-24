@@ -7,10 +7,11 @@ let addReviews = (response, node, prod_id) => {
     }
 
     reviews.forEach(element => {
-        if (response.id === Number(element.user_id)) {
-            removeReviewForm(prod_id);
+        if (localStorage.getItem("email")){
+            if (response.id === Number(element.user_id)) {
+                removeReviewForm(prod_id);
+            }
         }
-
         node.append(constructReview(element.user, element.score, element.content));
     });
 

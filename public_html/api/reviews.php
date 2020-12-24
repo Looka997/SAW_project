@@ -6,19 +6,15 @@ $link = my_oo_connect(HOST, DB_USER, DB_PASSWORD, DATABASE);
 
 session_start();
 
-if (
-    !isset($_POST['product']) ||
-    !isset($_SESSION["userid"]) 
-    ){
+if (!isset($_POST['product'])){
     echo "Usage:\n
-        Requires: Logged user\n
         Method: POST\n";
     exit(200);
 }
 
-$response = [
-    "id" => $_SESSION["userid"]
-];
+$response = [];
+if (isset($_SESSION['userid']))
+    $response['id'] = $_SESSION['userid'];
 $prod_id = mysqli_escape_string($link, $_POST['product']);
 
 $fields = array();
