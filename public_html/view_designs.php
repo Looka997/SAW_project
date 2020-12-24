@@ -109,17 +109,19 @@
                         . htmlspecialchars($product['id'])?>">
                     <p>La review non è stata inserita correttamente</p>
                 </div>
-                <form method="POST">
-                    <label for="review_score">Voto:</label>
-                    <input min="1" max="5" step="0.5" type="number" name="review_score" id="<?php echo 'review_score' 
-                        . htmlspecialchars($product['id'])?>">
-                    <label for="review_score">Recensione:</label>
-                    <input type="text" name="review_text" id="<?php echo 'review_text' 
-                        . htmlspecialchars($product['id'])?>">
-                    <input type="submit" value="Inviaci la tua opinione!"
-                        name = "review_submit" class="review_submit"
-                        prod_id=<?php echo htmlspecialchars($product['id']) ?>>
-                </form>
+                <?php if (isset($_SESSION['userid'])){ ?>
+                    <form method="POST">
+                        <label for="review_score">Voto:</label>
+                        <input min="1" max="5" step="0.5" type="number" name="review_score" id="<?php echo 'review_score' 
+                            . htmlspecialchars($product['id'])?>">
+                        <label for="review_score">Recensione:</label>
+                        <input type="text" name="review_text" id="<?php echo 'review_text' 
+                            . htmlspecialchars($product['id'])?>">
+                        <input type="submit" value="Inviaci la tua opinione!"
+                            name = "review_submit" class="review_submit"
+                            prod_id=<?php echo htmlspecialchars($product['id']) ?>>
+                    </form>
+                <?php }?>
                 <ul id="<?php echo 'reviews' . htmlspecialchars($product['id'])?>" ></ul>
             </div>
             <a href="show_profile.php?username=<?php echo htmlspecialchars($display_name); ?>"><span>by <?php echo htmlspecialchars($display_name) ?></span></a>
