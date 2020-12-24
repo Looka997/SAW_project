@@ -85,6 +85,7 @@ footer {
     border-radius: 15px;
 }
 
+<<<<<<< HEAD
 .arrow {
     border: solid black;
     border-width: 0 3px 3px 0;
@@ -96,6 +97,8 @@ footer {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
 }
+=======
+>>>>>>> 15777badbd92e8833da0eeecebee4e279124729e
 
 
 
