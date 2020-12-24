@@ -34,7 +34,7 @@
     </form>
 <?php
 
-    $base_query = 'SELECT id,name,author,filename,price FROM products';
+    $base_query = 'SELECT id,name,author,filename,price FROM products ORDER BY id ASC';
     // write query for all products
     $query = $base_query;
 
@@ -79,6 +79,10 @@
         exit;
     }
 
+    $reviews_query = "SELECT product, COUNT(*) as total, AVG(score) AS avg_score FROM reviews GROUP BY product ORDER BY product ASC ";
+    $reviews_result = my_oo_query($link, $reviews_query);
+
+
     foreach($products as $product): 
         $authorid = $product['author'];
         if ($stmt->execute()){
@@ -89,17 +93,13 @@
             }
         }
         $display_name = is_null($authorusername)? $authoremail : $authorusername;
-
-        $reviews_query = "SELECT COUNT(*) as total, AVG(score) AS average_score FROM reviews WHERE product = $product[id]";
-        $reviews_result = my_oo_query($link, $reviews_query);
-        $reviews = mysqli_fetch_row($reviews_result);
-        
+        $reviews = mysqli_fetch_assoc($reviews_result);
     ?>
     <div>
         <h4><?php echo htmlspecialchars($product['name']) ?></h4>
         <img src=<?php echo "uploads/$product[filename]"; ?> alt="Design image">
         <div>
-            <button class="show-reviews" prod_id="<?php echo htmlspecialchars($product['id']) ?>" >Questo design ha <?php echo $reviews[0] ?> reviews </button>
+            <button class="show-reviews" prod_id="<?php echo htmlspecialchars($product['id']) ?>" >Questo design ha <?php echo $reviews['total'] ?> reviews </button>
             <div class="hidden">
                 <div class="hidden alert-success" id="<?php echo 'alert-success' 
                         . htmlspecialchars($product['id'])?>">
@@ -129,7 +129,7 @@
             <button class="prod_btn" prod_id="<?php echo $product['id'] ?>">Aggiungi al carrello</button>
         </div>
         <p id="<?php echo 'avg_score' . htmlspecialchars($product['id'])?>">
-            Voto medio: <?php echo $reviews[1] ?></p>
+            Voto medio: <?php echo $reviews['avg_score'] ?></p>
     </div>
     
     <?php endforeach; 
