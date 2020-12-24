@@ -118,7 +118,7 @@
     ('Questo autore mi sorprende sempre', 4.5, 1, 6),
     ('Unica macchia nera nel suo repertoire', 1, 1, 1),
     ('Peccato non fosse disponibile in più colori', 4, 1, 8),
-    ('Il mio nipotino ha apprezzato tantissimo', 5, 1, 5),
+    ('Il mio nipotino ha apprezzato tantissimo', 5, 1, 10),
     ('Sempre voluta una maglia così', 5, 1, 9),
     ('r/programmerhumor apprezzerebbe', 4, 3, 8),
     ('Ne ho prese due!', 5, 3, 1),
@@ -133,6 +133,42 @@
     ('Ho sbagliato a mettere il voto, ma non so come annullare..fa schifo...', 4.5, 2, 6),
     ('Lorem ipsum', 1.5, 2, 3),
     ('Questa è l\'ultima finta review che scrivo', 1.5, 2, 8);
+    ";
+    my_oo_query($link, $query);
+
+    $query = "INSERT INTO orders (user_id, prod_id) VALUES
+    (1,1),
+    (1,2),
+    (1,3),
+    (2,1),
+    (2,2),
+    (2,3),
+    (3,1),
+    (3,2),
+    (3,3),
+    (4,1),
+    (4,2),
+    (4,3),
+    (6,1),
+    (6,2),
+    (6,3),
+    (8,1),
+    (8,2),
+    (8,3),
+    (9,1),
+    (9,3),
+    (10,1),
+    (10,2),
+    (10,3),
+    (11,2),
+    (11,3),
+    (12,1),
+    (13,1),
+    (13,3),
+    
+    (12,2),
+    (14,1),
+    (14,3)
     ";
     my_oo_query($link, $query);
 
