@@ -24,7 +24,6 @@
 ?>
     <form class="my-search-form" action="view_designs.php" method="GET">
         <div class="form-row">
-<<<<<<< HEAD
             <div class="my-search-bar d-flex">
                 <input class="form-control" placeholder="Cerca..." type="text" name="searchtext" id="searchtext">
                 <button id="searchDropdown" type="button" data-bs-target="#searchOptions" data-bs-toggle="collapse" aria-expanded="false" aria-controls="searchOptions">
@@ -49,32 +48,6 @@
         <div class="form-row">
             <input class="btn btn-primary" type="submit" value="Cerca">
         </div>
-=======
-            <div class="my-search-bar">
-                <input class="form-control" placeholder="Cerca..." type="text" name="searchtext" id="searchtext">
-            </div>
-        </div>
-        <div class="dropdown">
-            <a class="dropdown-toggle" href="#" id="searchDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Avanzate
-            </a>
-            <div class="form-row dropdown-menu" aria-labelledby="searchDropdown">
-                <div class="dropdown-item form-group">
-                    <label for="under10">Da 10 in giù</label>
-                    <input class="form-check-input" type="radio" name="price-range" value="10" id="under10">
-                </div>
-                <div class="dropdown-item form-group">
-                    <label for="under20">Da 20 in giù</label>
-                    <input class="form-check-input" type="radio" name="price-range" value="20" id="under20">
-                </div>
-                <div class="dropdown-item form-group">
-                    <label for="under50">Da 50 in giù</label>
-                    <input class="form-check-input" type="radio" name="price-range" value="50" id="under50">
-                </div>
-            </div>
-        </div>
-        <input class="btn btn-primary" type="submit" value="Cerca">
->>>>>>> 15777badbd92e8833da0eeecebee4e279124729e
     </form>
 <?php
 
