@@ -67,6 +67,7 @@
         }
 
         $email = $row["email"];
+        $id = $row["id"];
         $firstname = $row["firstname"];
         $lastname = $row["lastname"];
         if (isset($row["address"]))
@@ -107,6 +108,12 @@
             <input type="submit" name="submit" value="submit">
         <?php endif; ?>
     </form>
+    <?php if(isset($_GET["username"]) || isset($_GET["email"])) { ?>
+    <form action="follow.php" method="POST">
+    <input type="submit" name="segui" value="Segui">
+    <input type="hidden" name="redirect" value="<?php if (isset($email)) echo htmlspecialchars($email) ?>">
+    </form> 
+    <?php } ?>
     <?php
    require("common/footer.php");
    ?>

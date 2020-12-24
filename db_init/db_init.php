@@ -72,6 +72,15 @@
     )";
     my_oo_query($link, $query);
 
+    $query = "DROP TABLE IF EXISTS mail_list";
+    my_oo_query($link, $query);
+    $query = "CREATE TABLE mail_list(
+        email_follower VARCHAR(254) REFERENCES users (email) ON UPDATE CASCADE ON DELETE CASCADE, 
+        email_creator VARCHAR(254) REFERENCES users (email) ON UPDATE CASCADE ON DELETE CASCADE,
+        PRIMARY KEY (email_follower, email_creator)
+    )";
+    my_oo_query($link, $query);
+
     $query = "INSERT INTO users (email, password, firstname, lastname, username, address, phone, admin) VALUES 
     ('luca@marinelli.it','" . password_hash('prova1', PASSWORD_DEFAULT) . "','Luca', 'Marinelli', 'Looka', 'sotto casa mia 123, Genova', '123 1231 23', TRUE),
     ('fede@crippa.it','" . password_hash('prova2', PASSWORD_DEFAULT) . "','Federico', 'Crippa', 'Fedez', 'sotto casa sua 456, La Spezia', '456 4567 45', TRUE),
