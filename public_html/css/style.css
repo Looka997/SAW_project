@@ -37,7 +37,7 @@ footer {
     opacity: 1;
 }
 
-.btn {
+.btn-home {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -104,6 +104,41 @@ footer {
 .my-search-form input.btn{
     max-width: 90px;
 }
+
+.design {
+    text-align: center;
+}
+
+.design img {
+    width: 40vw;
+    max-width: 250px;
+    min-width: 100px;
+}
+
+.design ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.design button {
+    display: block;
+    margin: 0 auto;
+}
+
+.design input[type=range] {
+    padding: 0 32px;
+    max-width: 550px;
+    display: block;
+    margin: 0 auto;
+}
+
+.design textarea {
+    width: 80vw;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* width: 80vw; max-width: 673px; FOOTER IMAGE */
 
 /* --------------------------------------------- */
 

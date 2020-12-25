@@ -77,3 +77,9 @@ $('.review_submit').click((event)=>{
         }
     });
 });
+
+$('.form-range.score-range').on("input", (event) => {
+    let review_score = event.target.value;
+    let span = $(event.target).parent().children('label.score-review').children("span");
+    span.text(review_score);
+})

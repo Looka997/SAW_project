@@ -22,30 +22,30 @@
     require_once("classes/SearchQuery.php");
 
 ?>
-    <form class="my-search-form" action="view_designs.php" method="GET">
+    <form class="my-search-form my-3" action="view_designs.php" method="GET">
         <div class="row">
             <div class="my-search-bar d-flex">
                 <input class="form-control" placeholder="Cerca..." type="text" name="searchtext" id="searchtext">
-                <button id="searchDropdown" type="button" data-bs-target="#searchOptions" data-bs-toggle="collapse" aria-expanded="false" aria-controls="searchOptions">
+                <button class="btn ms-2" id="searchDropdown" type="button" data-bs-target="#searchOptions" data-bs-toggle="collapse" aria-expanded="false" aria-controls="searchOptions">
                     <i class="arrow down"></i>
                 </button>
             </div>
         </div>
         <div class="row collapse align-content-center flex-column" id="searchOptions">
-            <div class="form-group">
+            <div class="form-group py-2 my-1">
                 <input class="form-check-input" type="radio" name="price-range" value="10" id="under10">
                 <label for="under10">Da 10 in giù</label>
             </div>
-            <div class="form-group">
+            <div class="form-group py-2 my-1">
                 <input class="form-check-input" type="radio" name="price-range" value="20" id="under20">
                 <label for="under20">Da 20 in giù</label>
             </div>
-            <div class="form-group">
+            <div class="form-group py-2 my-1">
                 <input class="form-check-input" type="radio" name="price-range" value="50" id="under50">
                 <label for="under50">Da 50 in giù</label>
             </div>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-2">
             <input class="btn btn-primary" type="submit" value="Cerca">
         </div>
     </form>
@@ -115,11 +115,11 @@
         $display_name = is_null($authorusername)? $authoremail : $authorusername;
         $reviews = mysqli_fetch_assoc($reviews_result);
     ?>
-    <div>
+    <div class="design my-4 py-4">
         <h4><?php echo htmlspecialchars($product['name']) ?></h4>
         <img src=<?php echo "uploads/$product[filename]"; ?> alt="Design image">
         <div>
-            <button class="show-reviews" prod_id="<?php echo htmlspecialchars($product['id']) ?>" >Questo design ha <?php echo $reviews['total'] ?> reviews </button>
+            <button class="show-reviews my-2 btn btn-info" prod_id="<?php echo htmlspecialchars($product['id']) ?>" >Questo design ha <?php echo $reviews['total'] ?> reviews </button>
             <div class="hidden">
                 <div class="hidden alert-success" id="<?php echo 'alert-success' 
                         . htmlspecialchars($product['id'])?>">
@@ -131,22 +131,22 @@
                 </div>
                 <?php if (isset($_SESSION['userid'])){ ?>
                     <form method="POST">
-                        <label for="review_score">Voto:</label>
-                        <input class="form-control" min="1" max="5" step="0.5" type="number" name="review_score" id="<?php echo 'review_score' 
+                        <label class="score-review" for="review_score">Voto: <span>3</span></label>
+                        <input class="form-range score-range" min="1" max="5" step="0.5" value="3" type="range" name="review_score" id="<?php echo 'review_score' 
                             . htmlspecialchars($product['id'])?>">
                         <label for="review_score">Recensione:</label>
-                        <input class="form-control" type="text" name="review_text" id="<?php echo 'review_text' 
-                            . htmlspecialchars($product['id'])?>">
-                        <input class="btn btn-primary mb-2" type="submit" value="Inviaci la tua opinione!"
-                            name = "review_submit" class="review_submit"
+                        <textarea class="form-control" name="review_text" rows="4" id="<?php echo 'review_text' 
+                            . htmlspecialchars($product['id'])?>"></textarea>
+                        <input class="btn btn-primary mb-2 review_submit mt-3" type="submit" value="Inviaci la tua opinione!"
+                            name = "review_submit"
                             prod_id=<?php echo htmlspecialchars($product['id']) ?>>
                     </form>
                 <?php }?>
                 <ul id="<?php echo 'reviews' . htmlspecialchars($product['id'])?>" ></ul>
             </div>
-            <a href="show_profile.php?username=<?php echo htmlspecialchars($display_name); ?>"><span>by <?php echo htmlspecialchars($display_name) ?></span></a>
-            <span>only <?php echo htmlspecialchars($product['price']) ?></span>
-            <button class="prod_btn" prod_id="<?php echo $product['id'] ?>">Aggiungi al carrello</button>
+            <a href="show_profile.php?username=<?php echo htmlspecialchars($display_name); ?>"><span>Da <?php echo htmlspecialchars($display_name) ?></span></a>
+            <span>solo €<?php echo htmlspecialchars($product['price']) ?></span>
+            <button class="prod_btn my-2 btn btn-secondary" prod_id="<?php echo $product['id'] ?>">Aggiungi al carrello</button>
         </div>
         <p id="<?php echo 'avg_score' . htmlspecialchars($product['id'])?>">
             Voto medio: <?php echo $reviews['avg_score'] ?></p>
