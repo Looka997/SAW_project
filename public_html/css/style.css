@@ -105,8 +105,17 @@ footer {
     max-width: 90px;
 }
 
+#designs-list{
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .design {
     text-align: center;
+    width:100%;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .design img {
@@ -137,6 +146,26 @@ footer {
     max-width: 500px;
     margin: 0 auto;
 }
+
+@media only screen and (min-width: 768px) {
+    .design{
+        margin-left: 0;
+        margin-right: 0;
+        width: 50%;
+    }
+} 
+
+@media only screen and (min-width: 992px) {
+    .design{
+        width: 33%;
+    }
+} 
+
+@media only screen and (min-width: 1200px) {
+    .design{
+        width: 25%;
+    }
+} 
 
 /* width: 80vw; max-width: 673px; FOOTER IMAGE */
 

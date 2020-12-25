@@ -102,60 +102,62 @@
     $reviews_query = "SELECT product, COUNT(*) as total, AVG(score) AS avg_score FROM reviews GROUP BY product ORDER BY product ASC ";
     $reviews_result = my_oo_query($link, $reviews_query);
 
-
-    foreach($products as $product): 
-        $authorid = $product['author'];
-        if ($stmt->execute()){
-            $stmt->store_result();
-            if ($stmt->num_rows > 0){
-                $stmt->bind_result($authoremail, $authorusername);
-                $stmt->fetch();
+    ?> 
+    <div id="designs-list" class="d-flex"> <?php
+        foreach($products as $product): 
+            $authorid = $product['author'];
+            if ($stmt->execute()){
+                $stmt->store_result();
+                if ($stmt->num_rows > 0){
+                    $stmt->bind_result($authoremail, $authorusername);
+                    $stmt->fetch();
+                }
             }
-        }
-        $display_name = is_null($authorusername)? $authoremail : $authorusername;
-        $reviews = mysqli_fetch_assoc($reviews_result);
-    ?>
-    <div class="design my-4 py-4">
-        <h4><?php echo htmlspecialchars($product['name']) ?></h4>
-        <img src=<?php echo "uploads/$product[filename]"; ?> alt="Design image">
-        <div>
-            <button class="show-reviews my-2 btn btn-info" prod_id="<?php echo htmlspecialchars($product['id']) ?>" >Questo design ha <?php echo $reviews['total'] ?> reviews </button>
-            <div class="hidden">
-                <div class="hidden alert-success" id="<?php echo 'alert-success' 
-                        . htmlspecialchars($product['id'])?>">
-                    <p>Grazie per averci fatto sapere quello che pensi su questo design!</p>
-                </div>
-                <div class="hidden alert-danger" id="<?php echo 'alert-danger' 
-                        . htmlspecialchars($product['id'])?>">
-                    <p>La review non è stata inserita correttamente</p>
-                </div>
-                <?php if (isset($_SESSION['userid'])){ ?>
-                    <form method="POST">
-                        <label class="score-review" for="review_score">Voto: <span>3</span></label>
-                        <input class="form-range score-range" min="1" max="5" step="0.5" value="3" type="range" name="review_score" id="<?php echo 'review_score' 
-                            . htmlspecialchars($product['id'])?>">
-                        <label for="review_score">Recensione:</label>
-                        <textarea class="form-control" name="review_text" rows="4" id="<?php echo 'review_text' 
-                            . htmlspecialchars($product['id'])?>"></textarea>
-                        <input class="btn btn-primary mb-2 review_submit mt-3" type="submit" value="Inviaci la tua opinione!"
-                            name = "review_submit"
-                            prod_id=<?php echo htmlspecialchars($product['id']) ?>>
-                    </form>
-                <?php }?>
-                <ul id="<?php echo 'reviews' . htmlspecialchars($product['id'])?>" ></ul>
-            </div>
-            <a href="show_profile.php?username=<?php echo htmlspecialchars($display_name); ?>"><span>Da <?php echo htmlspecialchars($display_name) ?></span></a>
-            <span>solo €<?php echo htmlspecialchars($product['price']) ?></span>
-            <button class="prod_btn my-2 btn btn-secondary" prod_id="<?php echo $product['id'] ?>">Aggiungi al carrello</button>
-        </div>
-        <p id="<?php echo 'avg_score' . htmlspecialchars($product['id'])?>">
-            Voto medio: <?php echo $reviews['avg_score'] ?></p>
-    </div>
-    
-    <?php endforeach; 
-    $stmt->close();
-    ?>
+            $display_name = is_null($authorusername)? $authoremail : $authorusername;
+            $reviews = mysqli_fetch_assoc($reviews_result);
+        ?>
 
+        <div class="design my-4 py-4">
+            <h4><?php echo htmlspecialchars($product['name']) ?></h4>
+            <img src=<?php echo "uploads/$product[filename]"; ?> alt="Design image">
+            <div>
+                <button class="show-reviews my-2 btn btn-info" prod_id="<?php echo htmlspecialchars($product['id']) ?>" >Questo design ha <?php echo $reviews['total'] ?> reviews </button>
+                <div class="hidden">
+                    <div class="hidden alert-success" id="<?php echo 'alert-success' 
+                            . htmlspecialchars($product['id'])?>">
+                        <p>Grazie per averci fatto sapere quello che pensi su questo design!</p>
+                    </div>
+                    <div class="hidden alert-danger" id="<?php echo 'alert-danger' 
+                            . htmlspecialchars($product['id'])?>">
+                        <p>La review non è stata inserita correttamente</p>
+                    </div>
+                    <?php if (isset($_SESSION['userid'])){ ?>
+                        <form method="POST">
+                            <label class="score-review" for="review_score">Voto: <span>3</span></label>
+                            <input class="form-range score-range" min="1" max="5" step="0.5" value="3" type="range" name="review_score" id="<?php echo 'review_score' 
+                                . htmlspecialchars($product['id'])?>">
+                            <label for="review_score">Recensione:</label>
+                            <textarea class="form-control" name="review_text" rows="4" id="<?php echo 'review_text' 
+                                . htmlspecialchars($product['id'])?>"></textarea>
+                            <input class="btn btn-primary mb-2 review_submit mt-3" type="submit" value="Inviaci la tua opinione!"
+                                name = "review_submit"
+                                prod_id=<?php echo htmlspecialchars($product['id']) ?>>
+                        </form>
+                    <?php }?>
+                    <ul id="<?php echo 'reviews' . htmlspecialchars($product['id'])?>" ></ul>
+                </div>
+                <a href="show_profile.php?username=<?php echo htmlspecialchars($display_name); ?>"><span>Da <?php echo htmlspecialchars($display_name) ?></span></a>
+                <span>solo €<?php echo htmlspecialchars($product['price']) ?></span>
+                <button class="prod_btn my-2 btn btn-secondary" prod_id="<?php echo $product['id'] ?>">Aggiungi al carrello</button>
+            </div>
+            <p id="<?php echo 'avg_score' . htmlspecialchars($product['id'])?>">
+                Voto medio: <?php echo $reviews['avg_score'] ?></p>
+        </div>
+        
+        <?php endforeach; 
+        $stmt->close();
+        ?>
+    </div>
     <script src="js/cart.js"></script>
     <?php
    require("common/footer.php");
