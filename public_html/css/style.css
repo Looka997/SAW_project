@@ -97,7 +97,15 @@ footer {
     -webkit-transform: rotate(45deg);
 }
 
+#searchOptions .form-group{
+    max-width: 500px;
+}
 
+.my-search-form input.btn{
+    max-width: 90px;
+}
+
+/* --------------------------------------------- */
 
 table, tr, td {
     border: 1px black solid;

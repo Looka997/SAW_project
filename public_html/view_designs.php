@@ -23,7 +23,7 @@
 
 ?>
     <form class="my-search-form" action="view_designs.php" method="GET">
-        <div class="form-row">
+        <div class="row">
             <div class="my-search-bar d-flex">
                 <input class="form-control" placeholder="Cerca..." type="text" name="searchtext" id="searchtext">
                 <button id="searchDropdown" type="button" data-bs-target="#searchOptions" data-bs-toggle="collapse" aria-expanded="false" aria-controls="searchOptions">
@@ -31,7 +31,7 @@
                 </button>
             </div>
         </div>
-        <div class="form-row collapse" id="searchOptions">
+        <div class="row collapse align-content-center flex-column" id="searchOptions">
             <div class="form-group">
                 <input class="form-check-input" type="radio" name="price-range" value="10" id="under10">
                 <label for="under10">Da 10 in giù</label>
@@ -45,7 +45,7 @@
                 <label for="under50">Da 50 in giù</label>
             </div>
         </div>
-        <div class="form-row">
+        <div class="row justify-content-center">
             <input class="btn btn-primary" type="submit" value="Cerca">
         </div>
     </form>
