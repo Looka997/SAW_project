@@ -14,9 +14,6 @@
 
     $criteria_query_assoc = [
         'searchtext' => new SearchQuery("name LIKE CONCAT('%',?,'%')", 1, "s" ),
-        'from0to10' => new SearchQuery("price BETWEEN 0 AND 10"),
-        'from10to20' => new SearchQuery("price BETWEEN 10 AND 20"),
-        'over20' => new SearchQuery("price > 20"),
-
+        'price-range' => new SearchQuery("price <= ?", 1, "i"),
     ];
 

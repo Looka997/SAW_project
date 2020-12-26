@@ -43,7 +43,7 @@ let updateAverageScore = (prod_id) => {
 // given an author, a score and a review content, makes a review node (div (h4, div, p) ) )
 
 let constructReview = (author, score, content) => {
-    let li = $("<li>");
+    let li = $("<li class=\"py-2 my-1\">");
     let div = $("<div>");
     let h4 = $("<h4>").text(author);
     let p_score = $("<p>").text("Voto: " + score + "/5.0");
