@@ -9,6 +9,8 @@ nav {
 #index-centered {
     background-image: url("https://i.pinimg.com/originals/7f/60/46/7f6046c2151e085d1039276dc8fc0850.gif");
     background-size:cover;
+    background-position: center;
+    padding: 64px;
 }
 
 .light-txt {
@@ -102,8 +104,44 @@ td{
     color: grey;
 }
 
+.info-icon {
+    height: 32px;
+    width: 32px;
+    grid-area: icon;
+}
+
+.info-title {
+    grid-area: title;
+    font-weight: bold;
+    padding: 0 .50rem;
+}
+
+.info-desc {
+    grid-area: desc;
+    grid-area: desc;
+    padding: 0 .50rem;
+}
+
+.info-box {
+    background-color: cornsilk;
+    display: grid;
+    grid-template-areas: 
+        "icon title"
+        ".    desc";
+    grid-template-columns: 40px 1fr;
+    padding: .50rem;
+    margin: .75rem 0;
+    text-align: left;
+    height: 112px;
+    max-width: 430px;
+}
+
 @media only screen and (min-width: 768px) {
     .w-md-50 {
         width: 50% !important;
+    }
+
+    .info-box {
+        margin: .75rem auto;
     }
 }
