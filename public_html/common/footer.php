@@ -1,6 +1,6 @@
-<footer class="py-5" id="footer">
+<footer class="py-5 container-fluid" id="footer">
   <div class="row">
-    <div class="container-fluid">
+    <div>
       <img alt="logo" width="300px" src="assets/Jojos-text.svg">
       <small class="d-block mb-3 text-muted">© Dec. 2020</small>
     </div>

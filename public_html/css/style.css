@@ -189,44 +189,10 @@ footer {
     max-height: 300px;
 }
 
-@media only screen and (min-width: 768px) {
-    .design{
-        margin-left: 0;
-        margin-right: 0;
-        width: 50%;
-    }
-} 
-
-@media only screen and (min-width: 992px) {
-    #search-flex > div {
-        width: auto;
-    }
-
-    #search-flex > div:last-child {
-        margin-left: 12px;
-        height: 38px;
-    }
-    
-    #search-flex input[type=submit] {
-        margin-top: 0;
-    }
-    
-    .my-search-bar {
-        width: 500px;
-    }
-
-    .design{
-        width: 33%;
-    }
-} 
-
-@media only screen and (min-width: 1200px) {
-    .design{
-        width: 25%;
-    }
-} 
-
-/* width: 80vw; max-width: 673px; FOOTER IMAGE */
+.icon-paypal {
+    width: 80vw;
+    max-width: 673px;
+}
 
 /* --------------------------------------------- */
 
@@ -277,18 +243,49 @@ td{
         ".    desc";
     grid-template-columns: 40px 1fr;
     padding: .50rem;
-    margin: .75rem 0;
+    margin: .75rem auto;
     text-align: left;
     height: 112px;
     max-width: 430px;
 }
 
 @media only screen and (min-width: 768px) {
+    .design{
+        margin-left: 0;
+        margin-right: 0;
+        width: 50%;
+    }
+
     .w-md-50 {
         width: 50% !important;
     }
+} 
 
-    .info-box {
-        margin: .75rem auto;
+@media only screen and (min-width: 992px) {
+    #search-flex > div {
+        width: auto;
+    }
+
+    #search-flex > div:last-child {
+        margin-left: 12px;
+        height: 38px;
+    }
+    
+    #search-flex input[type=submit] {
+        margin-top: 0;
+    }
+    
+    .my-search-bar {
+        width: 500px;
+    }
+
+    .design{
+        width: 33%;
+    }
+} 
+
+@media only screen and (min-width: 1200px) {
+    .design{
+        width: 25%;
     }
 }
