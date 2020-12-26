@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" viewBox="0 -256 1850 1850" id="svg2" version="1.1" inkscape:version="0.48.3.1 r9886" width="100%" height="100%" sodipodi:docname="leaf_font_awesome.svg">
+  <metadata id="metadata12">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs id="defs10"/>
+  <sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="640" inkscape:window-height="480" id="namedview8" showgrid="false" inkscape:zoom="0.13169643" inkscape:cx="896" inkscape:cy="896" inkscape:window-x="0" inkscape:window-y="25" inkscape:window-maximized="0" inkscape:current-layer="svg2"/>
+  <g transform="matrix(1,0,0,-1,30.372881,1396.5762)" id="g4">
+    <path d="m 1280,832 q 0,26 -19,45 -19,19 -45,19 -172,0 -318,-49.5 Q 752,797 638.5,712.5 525,628 403,493 q -19,-21 -19,-45 0,-26 19,-45 19,-19 45,-19 24,0 45,19 27,24 74,71 47,47 67,66 137,124 268.5,176 131.5,52 313.5,52 26,0 45,19 19,19 19,45 z m 512,198 q 0,-95 -20,-193 Q 1726,613 1587.5,454 1449,295 1230,186 1016,78 792,78 q -148,0 -286,47 -15,5 -88,42 -73,37 -96,37 -16,0 -39.5,-32 Q 259,140 237.5,102 216,64 185,32 154,0 125,0 95,0 74,11 53,22 43,35 33,48 16,77 14,81 10,88 6,95 4.5,98 3,101 1.5,107.5 0,114 0,121 q 0,35 31,73.5 31,38.5 68,65.5 37,27 68,56 31,29 31,48 0,4 -14,38 -14,34 -16,44 -9,51 -9,104 0,115 43.5,220 43.5,105 119,184.5 75.5,79.5 170.5,139 95,59.5 204,95.5 55,18 145,25.5 90,7.5 179.5,9 89.5,1.5 178.5,6 89,4.5 163.5,24 74.5,19.5 113.5,56.5 l 29.5,29.5 q 0,0 29.5,28 29.5,28 27,20 -2.5,-8 36.5,16 39,24 43.5,4.5 39,0 70.5,-46 31.5,-46 47.5,-112 16,-66 24,-124 8,-58 8,-96 z" id="path6" inkscape:connector-curvature="0" style="fill:currentColor"/>
+  </g>
+</svg>

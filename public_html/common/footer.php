@@ -23,7 +23,6 @@
         <li><a class="link-secondary" href="#">Resi</a></li>
       </ul>
     </div>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <div class="col-6 col-md">
       <h5>Seguici!</h5>
         <ul class="list-inline mt-4">

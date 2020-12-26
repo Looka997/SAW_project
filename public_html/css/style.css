@@ -9,6 +9,8 @@ nav {
 #index-centered {
     background-image: url("https://i.pinimg.com/originals/7f/60/46/7f6046c2151e085d1039276dc8fc0850.gif");
     background-size:cover;
+    background-position: center;
+    padding: 64px;
 }
 
 .light-txt {
@@ -25,7 +27,6 @@ nav {
 footer {
     text-align: center;
 }
-
 #footer {
     background-color: #64dfdf;
 }
@@ -34,18 +35,18 @@ footer {
     margin-top: 30px;
 }
 
-
-
-
-
- #community-box {
+#community-box {
     background-image: url("https://i.pinimg.com/originals/05/3c/39/053c39f4c14d99d4bc143c05dc3ca219.gif");
+}
+
+.index-images {
+    min-height: 300px;
+    max-height: 460px;
     background-size:cover;
     opacity: 0.5;
 }
 
-#community-box:hover {
-    background-image: url("https://i.pinimg.com/originals/05/3c/39/053c39f4c14d99d4bc143c05dc3ca219.gif");
+.index-images:hover {
     background-size:cover;
     opacity: 1;
 }
@@ -54,33 +55,33 @@ footer {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
+ #community-box {
+    background-image: url("https://i.pinimg.com/originals/05/3c/39/053c39f4c14d99d4bc143c05dc3ca219.gif");
+}
+
+#community-box:hover {
+    background-image: url("https://i.pinimg.com/originals/05/3c/39/053c39f4c14d99d4bc143c05dc3ca219.gif");
+}
+
 #about-us-box {
     background-image: url("https://i.kym-cdn.com/photos/images/original/001/004/553/5b0.gif");
-    background-size:cover;
     background-position: center;
-    opacity: 0.5;
 }
 
 #about-us-box:hover {
     background-image: url("https://media4.giphy.com/media/QbumCX9HFFDQA/giphy.gif");
-    background-size:cover;
     background-position: center;
-    opacity: 1;
 }
 
 /*------------------------------------------------------*/
 #help-box {
     background-image: url("../assets/helpme.png");
-    background-size:cover;
     background-position: center;
-    opacity: 0.5;
 }
 
 #help-box:hover {
     background-image: url("../assets/helpme.png");
-    background-size:cover;
     background-position: center;
-    opacity: 1;
 }
 
 /*------------------------------------------------------*/
@@ -248,4 +249,46 @@ td{
 
 .greyed{
     color: grey;
+}
+
+.info-icon {
+    height: 32px;
+    width: 32px;
+    grid-area: icon;
+}
+
+.info-title {
+    grid-area: title;
+    font-weight: bold;
+    padding: 0 .50rem;
+}
+
+.info-desc {
+    grid-area: desc;
+    grid-area: desc;
+    padding: 0 .50rem;
+}
+
+.info-box {
+    background-color: cornsilk;
+    display: grid;
+    grid-template-areas: 
+        "icon title"
+        ".    desc";
+    grid-template-columns: 40px 1fr;
+    padding: .50rem;
+    margin: .75rem 0;
+    text-align: left;
+    height: 112px;
+    max-width: 430px;
+}
+
+@media only screen and (min-width: 768px) {
+    .w-md-50 {
+        width: 50% !important;
+    }
+
+    .info-box {
+        margin: .75rem auto;
+    }
 }
