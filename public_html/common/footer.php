@@ -1,12 +1,6 @@
-<!--<footer class="footer mt-auto py-3 bg-light">
-  <div class="container">
-    <span class="text-muted">Place sticky footer content here.</span>
-  </div>
-</footer>-->
-
-<footer class="container py-5">
+<footer class="py-5" id="footer">
   <div class="row">
-    <div class="col-12 col-md">
+    <div class="container-fluid">
       <img alt="logo" width="300px" src="assets/Jojos-text.svg">
       <small class="d-block mb-3 text-muted">© Dec. 2020</small>
     </div>
@@ -32,13 +26,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <div class="col-6 col-md">
       <h5>Seguici!</h5>
-      <ul class="list-unstyled text-small">
-        <li><a class="link-secondary" href="#">Instagram</a></li>
-        <li><a class="link-secondary" href="#">Facebook</a></li>
-        <li><a class="link-secondary" href="#">Youtube</a></li>
-        <li><a class="link-secondary" href="#">Twitch</a></li>
-        <li><a class="link-secondary" href="#">Discord</a></li>
-      </ul>
         <ul class="list-inline mt-4">
           <li class="list-inline-item">
             <a href="https://www.youtube.com/channel/UCUzI7864bUoJgke195EznOg" aria-label="YouTube"><i class="fa fa-youtube-play fa-2x"></i></a></li>

@@ -44,9 +44,9 @@
         $mail->setFrom('newsletter@jojos.com', 'Team di JOJOS.com');
 
         $mail->isHTML(true);                                  // Set email format to HTML
-        $mail->Subject = 'Here is the subject';
-        $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        $mail->Subject = 'Scopri le nuove creazioni dei tuoi artisti preferiti!';
+        $mail->Body    = '<b>Ciao!</b><br>Uno dei tuoi artisti preferiti ha inserito un nuovo design, corri a vederlo!<br>Saluti dal <b>Team di JOJOS.com</b>';
+        $mail->AltBody = 'Ciao!'."\r\n".'Uno dei tuoi artisti preferiti ha inserito un nuovo design, corri a vederlo!'."\r\n".'Saluti dal Team di JOJOS.com';
 
         //Set who the message is to be sent to
         require_once("../db_connections/connections.php");

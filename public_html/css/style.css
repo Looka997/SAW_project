@@ -21,9 +21,22 @@ nav {
     font-weight: bold;
 }
 
+/*FOOTER*/
 footer {
     text-align: center;
 }
+
+#footer {
+    background-color: #64dfdf;
+}
+/*SHOW_PROFILE*/
+.col-xs-12 {
+    margin-top: 30px;
+}
+
+
+
+
 
  #community-box {
     background-image: url("https://i.pinimg.com/originals/05/3c/39/053c39f4c14d99d4bc143c05dc3ca219.gif");
@@ -38,7 +51,7 @@ footer {
 }
 
 .btn {
-    background-color: rgba(255, 255, 255, 0.5);
+   /* background-color: rgba(255, 255, 255, 0.5);*/
 }
 
 #about-us-box {
