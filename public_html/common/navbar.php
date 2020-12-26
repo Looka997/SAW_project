@@ -14,7 +14,7 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="d-flex justify-content-end collapse navbar-collapse" id="navbarNav">
+    <div class="d-flex text-center justify-content-center justify-content-lg-end collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
       <?php if (isset($_SESSION["email"])){
             if (isset($_SESSION["admin"]) && $_SESSION["admin"] )
