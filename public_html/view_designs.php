@@ -23,30 +23,32 @@
 
 ?>
     <form class="my-search-form my-3" action="view_designs.php" method="GET">
-        <div class="row">
-            <div class="my-search-bar d-flex">
-                <input class="form-control" placeholder="Cerca..." type="text" name="searchtext" id="searchtext">
-                <button class="btn ms-2" id="searchDropdown" type="button" data-bs-target="#searchOptions" data-bs-toggle="collapse" aria-expanded="false" aria-controls="searchOptions">
-                    <i class="arrow down"></i>
-                </button>
+        <div id="search-flex">
+            <div>
+                <div class="my-search-bar d-flex">
+                    <input class="form-control" placeholder="Cerca..." type="text" name="searchtext" id="searchtext">
+                    <button class="btn ms-2" id="searchDropdown" type="button" data-bs-target="#searchOptions" data-bs-toggle="collapse" aria-expanded="false" aria-controls="searchOptions">
+                        <i class="arrow down"></i>
+                    </button>
+                </div>
+                <div class="row collapse align-content-center flex-column" id="searchOptions">
+                    <div class="form-group py-2 my-1">
+                        <input class="form-check-input" type="radio" name="price-range" value="10" id="under10">
+                        <label for="under10">Da 10 in giù</label>
+                    </div>
+                    <div class="form-group py-2 my-1">
+                        <input class="form-check-input" type="radio" name="price-range" value="20" id="under20">
+                        <label for="under20">Da 20 in giù</label>
+                    </div>
+                    <div class="form-group py-2 my-1">
+                        <input class="form-check-input" type="radio" name="price-range" value="50" id="under50">
+                        <label for="under50">Da 50 in giù</label>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row collapse align-content-center flex-column" id="searchOptions">
-            <div class="form-group py-2 my-1">
-                <input class="form-check-input" type="radio" name="price-range" value="10" id="under10">
-                <label for="under10">Da 10 in giù</label>
+            <div class="row justify-content-center">
+                <input class="btn btn-primary" type="submit" value="Cerca">
             </div>
-            <div class="form-group py-2 my-1">
-                <input class="form-check-input" type="radio" name="price-range" value="20" id="under20">
-                <label for="under20">Da 20 in giù</label>
-            </div>
-            <div class="form-group py-2 my-1">
-                <input class="form-check-input" type="radio" name="price-range" value="50" id="under50">
-                <label for="under50">Da 50 in giù</label>
-            </div>
-        </div>
-        <div class="row justify-content-center mt-2">
-            <input class="btn btn-primary" type="submit" value="Cerca">
         </div>
     </form>
 <?php
@@ -119,7 +121,9 @@
 
         <div class="design my-4 py-4">
             <h4><?php echo htmlspecialchars($product['name']) ?></h4>
-            <img src=<?php echo "uploads/$product[filename]"; ?> alt="Design image">
+            <div class="design-img-container">
+                <img src=<?php echo "uploads/$product[filename]"; ?> alt="Design image">
+            </div>
             <div>
                 <button class="show-reviews my-2 btn btn-info" prod_id="<?php echo htmlspecialchars($product['id']) ?>" >Questo design ha <?php echo $reviews['total'] ?> reviews </button>
                 <div class="hidden">
