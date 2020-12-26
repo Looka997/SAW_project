@@ -18,8 +18,8 @@
       <p class="light-txt lead fw-normal">Vorresti tanto una felpa con il tuo meme preferito, ma non la trovi in vendita? Nessun problema: carica la tua immagine e aspetta che ti arrivi a casa!</p>
       <a class="btn btn-outline-light" href="view_create.php">Inizia!</a>
     </div>
-    <div class="d-flex flex-equal w-100 my-md-3 ps-md-3">
-      <div id="community-box" class="w-50 flex-grow-1 bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+    <div class="d-flex flex-wrap flex-lg-nowrap w-100 my-md-3 ps-md-3">
+      <div id="community-box" class="mx-lg-2 w-100 w-md-50 flex-grow-1 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden index-images">
         <div class="my-3 py-3">
           <h2 class="light-txt display-5">I design della Community</h2>
           <p class="light-txt lead">Vuoi un regalo originale, ma non hai idee? Esplora i modelli creati dalla community!</p>
@@ -27,14 +27,14 @@
         </div>
       </div>
 
-      <div id="about-us-box" class="w-50 flex-grow-1 bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+      <div id="about-us-box" class="mx-lg-2 w-100 w-md-50 flex-grow-1 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden index-images">
         <div class="my-3 py-3">
           <h2 class="light-txt display-5">Chi siamo</h2>
           <p class="light-txt lead">Luca, Federico e Alessio</p>
         </div>
       </div>
 
-      <div id="help-box" class="w-50 flex-grow-1 bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+      <div id="help-box" class="mx-lg-2 w-100 w-md-50 flex-grow-1 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden index-images">
         <div class="my-3 py-3">
           <h2 class="light-txt display-5">Bisogno di aiuto?</h2>
           <p class="light-txt lead">Contattaci!</p>
