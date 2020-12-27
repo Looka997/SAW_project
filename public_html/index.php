@@ -8,6 +8,7 @@
   <link href="css/style.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/my-bootstrap-ext.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" href="favicon.png" type="image/png">
 </head>
 <body>
   <?php 	

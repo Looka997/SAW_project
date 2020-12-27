@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Create your own design </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
 </head>
 <body>
     <!-- vorrei fare in modo che un user non loggato possa creare il design, e nel caso la conferma
