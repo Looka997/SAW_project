@@ -32,18 +32,20 @@
                         <i class="arrow down"></i>
                     </button>
                 </div>
-                <div class="row collapse align-content-center flex-column" id="searchOptions">
-                    <div class="form-group py-2 my-1">
-                        <input class="form-check-input" type="radio" name="price-range" value="10" id="under10">
-                        <label for="under10">Da 10 in giù</label>
-                    </div>
-                    <div class="form-group py-2 my-1">
-                        <input class="form-check-input" type="radio" name="price-range" value="20" id="under20">
-                        <label for="under20">Da 20 in giù</label>
-                    </div>
-                    <div class="form-group py-2 my-1">
-                        <input class="form-check-input" type="radio" name="price-range" value="50" id="under50">
-                        <label for="under50">Da 50 in giù</label>
+                <div class="collapse" id="searchOptions">
+                    <div class="row align-content-center flex-column">
+                        <div class="form-group py-2 my-1">
+                            <input class="form-check-input" type="radio" name="price-range" value="10" id="under10">
+                            <label for="under10">Da 10 in giù</label>
+                        </div>
+                        <div class="form-group py-2 my-1">
+                            <input class="form-check-input" type="radio" name="price-range" value="20" id="under20">
+                            <label for="under20">Da 20 in giù</label>
+                        </div>
+                        <div class="form-group py-2 my-1">
+                            <input class="form-check-input" type="radio" name="price-range" value="50" id="under50">
+                            <label for="under50">Da 50 in giù</label>
+                        </div>
                     </div>
                 </div>
             </div>

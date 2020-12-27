@@ -260,10 +260,6 @@ td{
         margin-right: 0;
         width: 50%;
     }
-
-    .w-md-50 {
-        width: 50% !important;
-    }
 } 
 
 @media only screen and (min-width: 992px) {
