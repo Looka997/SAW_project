@@ -2,9 +2,9 @@
   <div class="row">
     <div>
       <img alt="logo" width="300px" src="assets/Jojos-text.svg">
-      <small class="d-block mb-3 text-muted">© Dec. 2020</small>
+      <small class="d-block mb-3 text-muted" id="since">© Dec. 2020</small>
     </div>
-    <div class="col-6 col-md">
+    <div class="footer-info col-6 col-md">
       <h5>Help</h5>
       <ul class="list-unstyled text-small">
         <li><a class="link-secondary" href="#">Termini e Condizioni d'uso</a></li>
@@ -14,7 +14,7 @@
         <li><a class="link-secondary" href="#">Chi siamo</a></li>
       </ul>
     </div>
-    <div class="col-6 col-md">
+    <div class="footer-info col-6 col-md">
       <h5>Informazioni utili</h5>
       <ul class="list-unstyled text-small">
         <li><a class="link-secondary" href="#">Guida alle taglie</a></li>
@@ -23,7 +23,7 @@
         <li><a class="link-secondary" href="#">Resi</a></li>
       </ul>
     </div>
-    <div class="col-6 col-md">
+    <div class="footer-info col-6 col-md">
       <h5>Seguici!</h5>
         <ul class="list-inline mt-4">
           <li class="list-inline-item">
@@ -35,11 +35,10 @@
         </ul>
       </ul>
     </div>
-      
     </div>
 
 
-    <div class="col-md-6">
+    <div class="pay col-md-6">
       <div class="box-footer">
         <img src="https://www.teetee.eu/app/themes/teetee/assets/img/creditcards.png" class="icon-paypal">
         <div class="text">

@@ -14,7 +14,7 @@
    session_start();	
    require("common/navbar.php");	
    ?> 
-  <div class="position-relative overflow-hidden text-center bg-light">
+  <div class="position-relative overflow-hidden text-center" id="home">
     <div id="index-centered" class="jumbotron jumbotron-fluid">
       <h1 class="light-txt display-4 fw-normal">Crea il tuo stile!</h1>
       <p class="light-txt lead fw-normal">Vorresti tanto una felpa con il tuo meme preferito, ma non la trovi in vendita? Nessun problema: carica la tua immagine e aspetta che ti arrivi a casa!</p>

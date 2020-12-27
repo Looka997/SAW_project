@@ -143,7 +143,7 @@
         <form action="follow.php" method="POST">
         <div class="profile-btn col-xs-12 divider text-center">
                 <p>Clicca "Segui" per rimanere aggiornato sui nuovi designs!</p>
-            <button class="btn btn-success btn-block" type="submit" name="segui" value="Segui"><span class="fa fa-plus-circle"></span> Segui </button>
+            <button class="btn btn-success btn-block" type="submit" name="segui" value="Segui"><span class="follow fa fa-plus-circle"></span> Segui </button>
             <input type="hidden" name="redirect" value="<?php if (isset($email)) echo htmlspecialchars($email) ?>">
         </div>
         </form>

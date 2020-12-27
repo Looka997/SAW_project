@@ -27,8 +27,10 @@
     <div id="cont">
         <table id="cart"></table>
     </div>
-
-    <button id="buy_btn">Compra</button>
+    
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-primary" id="buy_btn">Compra</button>
+    </div>
 
     <?php
         include_once("common/footer.php");
