@@ -14,34 +14,36 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="d-flex text-center justify-content-center justify-content-lg-end collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-      <?php if (isset($_SESSION["email"])){
-            if (isset($_SESSION["admin"]) && $_SESSION["admin"] )
-                echo "<li class=\"nav-item\">
-                    <a class=\"nav-link\" href=\"db_init_link.php\">DB RESET</a>
-                </li>";
-            echo "<li class=\"nav-item\">  
-            <a class=\"nav-link\" href=\"show_profile.php\"> Ciao " . htmlspecialchars(view_name()) ." </a>".
-            "</li>";
-        } ?>
-        <li class="nav-item">
-          <a class="nav-link" href="view_create.php">Crea il tuo design</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="view_designs.php">Design della Community</a>
-        </li>
-        <?php 
-        if (!isset($_SESSION["email"])){
-            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"view_login.php\">Accedi</a></li>";
-            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"view_registration.php\">Registrati</a></li>";
-        }
-        else{
-          echo "<li class=\"nav-item\"><a class=\"nav-link\" id='cart_btn' href='view_cart.php'>Carrello</a></li>";
-            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"logout.php\">Logout</a></li>";
-        }
-        ?>
-      </ul>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="d-flex w-100 text-center justify-content-center justify-content-lg-end ">  
+        <ul class="navbar-nav">
+        <?php if (isset($_SESSION["email"])){
+              if (isset($_SESSION["admin"]) && $_SESSION["admin"] )
+                  echo "<li class=\"nav-item\">
+                      <a class=\"nav-link\" href=\"db_init_link.php\">DB RESET</a>
+                  </li>";
+              echo "<li class=\"nav-item\">  
+              <a class=\"nav-link\" href=\"show_profile.php\"> Ciao " . htmlspecialchars(view_name()) ." </a>".
+              "</li>";
+          } ?>
+          <li class="nav-item">
+            <a class="nav-link" href="view_create.php">Crea il tuo design</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="view_designs.php">Design della Community</a>
+          </li>
+          <?php 
+          if (!isset($_SESSION["email"])){
+              echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"view_login.php\">Accedi</a></li>";
+              echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"view_registration.php\">Registrati</a></li>";
+          }
+          else{
+            echo "<li class=\"nav-item\"><a class=\"nav-link\" id='cart_btn' href='view_cart.php'>Carrello</a></li>";
+              echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"logout.php\">Logout</a></li>";
+          }
+          ?>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
