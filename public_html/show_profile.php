@@ -85,7 +85,7 @@
         <!----------------------------------------------------------------------------------------------------------->
         <div class="container" id="profile">
             <div class="row">
-                <h2>Il mio account</h2>
+                <h2>Account</h2>
                 <label for="email">Email:</label><br>
                 <input value="<?php echo htmlspecialchars($email) ?>" type="email" id="email" name="email">
                 <br>
@@ -133,17 +133,19 @@
         ?>
 
         <?php if (strcmp($email, $_SESSION['email']) === 0) : ?>
-            <div class="col-xs-12 divider text-center">
-                <p>Clicca "Segui" per rimanere aggiornato sui nuovi designs!</p>
+            <div class="profile-btn col-xs-12 divider text-center">
                 <input value="<?php echo htmlspecialchars($email) ?>" type="hidden" name="to_update">
-                <button class="btn btn-success btn-block" type="submit" name="submit" value="submit"><span class="fa fa-plus-circle"></span> Segui </button>
+                <button class="btn btn-success btn-block" type="submit" name="submit" value="submit"> Submit </button>
             </div>
         <?php endif; ?>
     </form>
     <?php if (isset($_GET["username"]) || isset($_GET["email"])) { ?>
         <form action="follow.php" method="POST">
-            <input type="submit" name="segui" value="Segui">
+        <div class="profile-btn col-xs-12 divider text-center">
+                <p>Clicca "Segui" per rimanere aggiornato sui nuovi designs!</p>
+            <button class="btn btn-success btn-block" type="submit" name="segui" value="Segui"><span class="fa fa-plus-circle"></span> Segui </button>
             <input type="hidden" name="redirect" value="<?php if (isset($email)) echo htmlspecialchars($email) ?>">
+        </div>
         </form>
     <?php } ?>
     <?php

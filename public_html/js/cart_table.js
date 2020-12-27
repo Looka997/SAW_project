@@ -40,7 +40,7 @@ const updateTable = () => {
                     { title: 'Autore', data: 'username' },
                     { title: 'Rimuovi', data: "id" , render : function ( data, type ) {
                         return type === 'display'
-                            ? '<button onclick="removeRow(' + data + ')" >Rimuovi</button>'
+                            ? '<button class="btn btn-danger" onclick="removeRow(' + data + ')" >Rimuovi</button>'
                             : data;
                     } },
                 ]
