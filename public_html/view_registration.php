@@ -33,7 +33,7 @@
 
             $error = "";
             // Using format to allow for faster edits in case of adding classes or ids
-            $format = "<p>%s</p>";
+            $format = "<div class=\"alert alert-danger text-center\" role=\"alert\">%s</div>";
             foreach ($_GET[ERROR] as $errno) {
                 switch ($errno) {
                     case DB_DUP_ERR:

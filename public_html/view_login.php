@@ -24,7 +24,7 @@
 
             $error = "";
             // Using format to allow for faster edits in case of adding classes or ids
-            $format = "<p>%s</p>";
+            $format = "<div class=\"alert alert-danger text-center\" role=\"alert\">%s</div>";
             switch ($_GET[ERROR]) {
                 case NOT_FOUND:
                     $error = sprintf($format, "User not found.");
