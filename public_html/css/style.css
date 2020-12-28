@@ -62,6 +62,9 @@ nav {
     margin-right: 50px; 
     width: 100%;
 }
+.input-create input[type=file] {
+    width: 100%;
+}
 .light-txt {
     color: white;
     font-weight: 400;
