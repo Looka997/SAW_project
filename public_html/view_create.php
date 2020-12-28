@@ -26,7 +26,11 @@
             require_once("common/error_codes.php");
 
 
-            $format = "<p>%s</p>";
+            $format = "<div class=\"alert alert-danger text-center alert-dismissible fade show\" role=\"alert\">
+                %s
+                <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Close\">
+                </button>
+            </div>";
             foreach ($_GET[ERROR] as $errno) {
                 $error = "";
                 switch ($errno) {
