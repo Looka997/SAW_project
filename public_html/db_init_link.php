@@ -1,12 +1,12 @@
 <?php
-    session_start();
-    if (!isset($_SESSION['admin'])) {
-        http_response_code(403);
-        exit;
-    }
-    if (!$_SESSION['admin']) {
-        http_response_code(403);
-        exit;
-    }
+session_start();
+if (!isset($_SESSION['admin'])) {
+    http_response_code(403);
+    exit;
+}
+if (!$_SESSION['admin']) {
+    http_response_code(403);
+    exit;
+}
 
-    include_once("../db_init/db_init.php");
+include_once("../db_init/db_init.php");

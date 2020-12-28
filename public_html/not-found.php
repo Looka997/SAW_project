@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
             from {
                 right: calc(100vw + var(--image-width));
             }
+
             to {
                 right: calc(var(--image-width) / 2);
             }
@@ -24,16 +26,17 @@
             bottom: 10px;
             right: calc(100vw + var(--image-width));
         }
-        
+
         .easter-egg img {
             width: var(--image-width);
         }
 
         .easter-egg.active {
-            animation: easter-egg 1s cubic-bezier(.86,0,.07,1) 15s 1 forwards;
+            animation: easter-egg 1s cubic-bezier(.86, 0, .07, 1) 15s 1 forwards;
         }
     </style>
 </head>
+
 <body>
     <h1>Stiamo lavorando per creare questa pagina</h1>
     <img src="https://i.imgur.com/xwfI7Hw.png" alt="mmmmh, error 404">
@@ -51,4 +54,5 @@
         });
     </script>
 </body>
+
 </html>

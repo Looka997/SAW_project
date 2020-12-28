@@ -1,9 +1,10 @@
 <?php
-    function view_name() {
-        return $_SESSION["username"] === NULL
-            ? $_SESSION["email"]
-            : $_SESSION["username"];
-    }
+function view_name()
+{
+  return $_SESSION["username"] === NULL
+    ? $_SESSION["email"]
+    : $_SESSION["username"];
+}
 ?>
 
 <!--    <li> <a href="allusers.php">All users list</a></li> -->
@@ -15,15 +16,15 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <div class="d-flex w-100 text-center justify-content-center justify-content-lg-end ">  
+      <div class="d-flex w-100 text-center justify-content-center justify-content-lg-end ">
         <ul class="navbar-nav">
-        <?php if (isset($_SESSION["email"])){
-              if (isset($_SESSION["admin"]) && $_SESSION["admin"] )
-                  echo "<li class=\"nav-item\">
+          <?php if (isset($_SESSION["email"])) {
+            if (isset($_SESSION["admin"]) && $_SESSION["admin"])
+              echo "<li class=\"nav-item\">
                       <a class=\"nav-link\" href=\"db_init_link.php\">DB RESET</a>
                   </li>";
-              echo "<li class=\"nav-item\">  
-              <a class=\"nav-link\" href=\"show_profile.php\"> Ciao " . htmlspecialchars(view_name()) ." </a>".
+            echo "<li class=\"nav-item\">  
+              <a class=\"nav-link\" href=\"show_profile.php\"> Ciao " . htmlspecialchars(view_name()) . " </a>" .
               "</li>";
           } ?>
           <li class="nav-item focusable text-color-nonactive text-color-hover">
@@ -32,14 +33,13 @@
           <li class="nav-item">
             <a class="nav-link" href="view_designs.php">Design della Community</a>
           </li>
-          <?php 
-          if (!isset($_SESSION["email"])){
-              echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"view_login.php\">Accedi</a></li>";
-              echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"view_registration.php\">Registrati</a></li>";
-          }
-          else{
+          <?php
+          if (!isset($_SESSION["email"])) {
+            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"view_login.php\">Accedi</a></li>";
+            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"view_registration.php\">Registrati</a></li>";
+          } else {
             echo "<li class=\"nav-item\"><a class=\"nav-link\" id='cart_btn' href='view_cart.php'>Carrello</a></li>";
-              echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"logout.php\">Esci</a></li>";
+            echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"logout.php\">Esci</a></li>";
           }
           ?>
         </ul>

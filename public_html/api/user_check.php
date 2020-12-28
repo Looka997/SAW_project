@@ -10,29 +10,29 @@ $fields = array();
 $criteria = array();
 
 
-if (isset($_POST['email'])){
+if (isset($_POST['email'])) {
     $email = mysqli_escape_string($link, $_POST['email']);
-    array_push($fields,"email");
+    array_push($fields, "email");
     array_push($criteria, "email='$email'");
 }
-if (isset($_POST['username'])){
+if (isset($_POST['username'])) {
     $username = mysqli_escape_string($link, $_POST['username']);
-    array_push($fields,"username");
+    array_push($fields, "username");
     array_push($criteria, "username='$username'");
 }
 
-$query .= implode(",",$fields) . " FROM users WHERE " . implode(" OR ", $criteria);
+$query .= implode(",", $fields) . " FROM users WHERE " . implode(" OR ", $criteria);
 
 $res = my_oo_query($link, $query);
 $users = mysqli_fetch_all($res, MYSQLI_ASSOC);
 
 $wrongs = array();
-foreach($fields as $field){
+foreach ($fields as $field) {
     $wrongs[$field] = false;
 }
-foreach($users as $user){
-    foreach($fields as $field){
-        $wrongs[$field] = (isset($wrongs[$field])? $wrongs[$field] : false ) || ($user[$field] === $_POST[$field]);
+foreach ($users as $user) {
+    foreach ($fields as $field) {
+        $wrongs[$field] = (isset($wrongs[$field]) ? $wrongs[$field] : false) || ($user[$field] === $_POST[$field]);
     }
 }
 

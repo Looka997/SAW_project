@@ -1,50 +1,62 @@
 :root {
     --blu-logo: #4895ef;
 }
+
 body {
     /* background-image: url("https://wallpaperaccess.com/full/2548730.jpg"); 
     background-size: cover;  */
-    background-color: #EAEDED;
+    background-color: #eaeded;
 }
-#since, .footer-info {
+
+#since,
+.footer-info {
     margin-top: 15px;
 }
+
 .link-secondary:hover {
     color: hotpink;
     text-decoration: none;
 }
+
 .link-secondary:link {
     text-decoration: none;
     font-size: 18px;
 }
+
 .link-secondary:active {
     text-decoration: none;
 }
+
 nav {
     background-color: var(--blu-logo);
 }
+
 .pay {
     margin-top: 45px;
     margin-left: auto;
     margin-right: auto;
+}
 
-}
 .fa {
-    color:hotpink;
+    color: hotpink;
 }
-.follow{
+
+.follow {
     color: white;
 }
+
 #index-centered {
     background-image: url("https://i.pinimg.com/originals/7f/60/46/7f6046c2151e085d1039276dc8fc0850.gif");
-    background-size:cover;
+    background-size: cover;
     background-position: center;
     padding: 64px;
 }
+
 .grid-create {
     display: flex;
     flex-wrap: wrap;
 }
+
 #graphics_tablet {
     margin: 0 auto;
     max-width: 450;
@@ -53,18 +65,22 @@ nav {
     height: auto;
     padding: 15px;
 }
+
 .grid-create form {
     width: 100%;
     padding: 0 15px;
 }
+
 .input-create {
     margin-top: 40px;
-    margin-right: 50px; 
+    margin-right: 50px;
     width: 100%;
 }
-.input-create input[type=file] {
+
+.input-create input[type="file"] {
     width: 100%;
 }
+
 .light-txt {
     color: white;
     font-weight: 400;
@@ -86,18 +102,22 @@ nav {
 footer {
     text-align: center;
 }
+
 #footer {
     background-color: #64dfdf;
 }
+
 .logo-footer {
     max-width: 300px;
     width: 100%;
 }
+
 /*SHOW_PROFILE*/
 .profile-btn {
     margin-bottom: 30px;
     margin-top: 30px;
 }
+
 #community-box {
     background-image: url("https://i.pinimg.com/originals/05/3c/39/053c39f4c14d99d4bc143c05dc3ca219.gif");
 }
@@ -105,12 +125,12 @@ footer {
 .index-images {
     min-height: 300px;
     max-height: 460px;
-    background-size:cover;
+    background-size: cover;
     opacity: 0.5;
 }
 
 .index-images:hover {
-    background-size:cover;
+    background-size: cover;
     opacity: 1;
 }
 
@@ -118,7 +138,7 @@ footer {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
- #community-box {
+#community-box {
     background-image: url("https://i.pinimg.com/originals/05/3c/39/053c39f4c14d99d4bc143c05dc3ca219.gif");
 }
 
@@ -159,8 +179,8 @@ footer {
     width: 100%;
 }
 
-#search-flex input[type=submit] {
-    margin-top: .5rem;
+#search-flex input[type="submit"] {
+    margin-top: 0.5rem;
 }
 
 .my-search-bar {
@@ -188,15 +208,15 @@ footer {
     -webkit-transform: rotate(45deg);
 }
 
-#searchOptions .form-group{
+#searchOptions .form-group {
     max-width: 500px;
 }
 
-.my-search-form input.btn{
+.my-search-form input.btn {
     max-width: 90px;
 }
 
-#designs-list{
+#designs-list {
     width: 100%;
     flex-wrap: wrap;
     justify-content: center;
@@ -204,16 +224,10 @@ footer {
 
 .design {
     text-align: center;
-    width:100%;
+    width: 100%;
     margin-left: 10px;
     margin-right: 10px;
 }
-
-/* .design img {
-    width: 40vw;
-    max-width: 250px;
-    min-width: 100px;
-} */
 
 .design ul {
     list-style-type: none;
@@ -225,7 +239,7 @@ footer {
     margin: 0 auto;
 }
 
-.design input[type=range] {
+.design input[type="range"] {
     padding: 0 32px;
     max-width: 550px;
     display: block;
@@ -260,24 +274,26 @@ footer {
 
 /* --------------------------------------------- */
 
-table, tr, td {
+table,
+tr,
+td {
     border: 1px black solid;
     border-collapse: collapse;
 }
 
-td{
+td {
     text-align: center;
 }
 
-#txt_obbl{
+#txt_obbl {
     padding-top: 10px;
 }
 
-.hidden{
+.hidden {
     display: none;
 }
 
-.greyed{
+.greyed {
     color: grey;
 }
 
@@ -290,39 +306,38 @@ td{
 .info-title {
     grid-area: title;
     font-weight: bold;
-    padding: 0 .50rem;
+    padding: 0 0.5rem;
 }
 
 .info-desc {
     grid-area: desc;
     grid-area: desc;
-    padding: 0 .50rem;
+    padding: 0 0.5rem;
 }
 
 .info-box {
     background-color: cornsilk;
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
         "icon title"
         ".    desc";
     grid-template-columns: 40px 1fr;
-    padding: .50rem;
-    margin: .75rem auto;
+    padding: 0.5rem;
+    margin: 0.75rem auto;
     text-align: left;
     height: 112px;
     max-width: 430px;
 }
 
 @media only screen and (min-width: 768px) {
-    .design{
+    .design {
         margin-left: 0;
         margin-right: 0;
         width: 50%;
     }
     .grid-create {
         grid-template-columns: 40% 1fr;
-        grid-template-areas: 
-            "tablet input";
+        grid-template-areas: "tablet input";
         display: grid;
         align-items: center;
     }
@@ -335,12 +350,12 @@ td{
         justify-self: center;
         padding: 15px;
     }
-    
+
     .input-create {
         padding-right: 35px;
         grid-area: input;
     }
-} 
+}
 
 @media only screen and (min-width: 992px) {
     #search-flex > div {
@@ -351,22 +366,22 @@ td{
         margin-left: 12px;
         height: 38px;
     }
-    
-    #search-flex input[type=submit] {
+
+    #search-flex input[type="submit"] {
         margin-top: 0;
     }
-    
+
     .my-search-bar {
         width: 500px;
     }
 
-    .design{
+    .design {
         width: 33%;
     }
-} 
+}
 
 @media only screen and (min-width: 1200px) {
-    .design{
+    .design {
         width: 25%;
     }
 }

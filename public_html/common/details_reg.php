@@ -16,4 +16,3 @@
         $strlen = strlen($str);
         return $strlen >=$minlen && $strlen <= $maxlen;
     }
-?>

@@ -1,26 +1,27 @@
 <?php
-    function array_to_get(array $array, string $get_param_name): string {
-        $acc = "";
-        for ($i = 0; $i < count($array); ++$i) {
-            $acc .= $get_param_name . "[]=" . $array[$i];
-            if ($i !== count($array) - 1) {
-                $acc .= "&";
-            }
+function array_to_get(array $array, string $get_param_name): string
+{
+    $acc = "";
+    for ($i = 0; $i < count($array); ++$i) {
+        $acc .= $get_param_name . "[]=" . $array[$i];
+        if ($i !== count($array) - 1) {
+            $acc .= "&";
         }
-        
-        return $acc;
     }
 
-    const WRONG_FORMAT_ERR      = 0;
-    const NOT_SET_ERR           = 1;
-    const WRONG_MIME_ERR        = 2;
-    const SIZE_ERR              = 3;
-    const NOT_MATCH_ERR         = 4;
-    const NOT_FOUND             = 5;
-    const GENERIC_ERR           = 42;
+    return $acc;
+}
 
-    // db errors start from 100
-    const DB_DUP_ERR            = 100;
-    const DB_GENERIC_ERR        = 142;
+const WRONG_FORMAT_ERR      = 0;
+const NOT_SET_ERR           = 1;
+const WRONG_MIME_ERR        = 2;
+const SIZE_ERR              = 3;
+const NOT_MATCH_ERR         = 4;
+const NOT_FOUND             = 5;
+const GENERIC_ERR           = 42;
 
-    const OK                    = 200;
+// db errors start from 100
+const DB_DUP_ERR            = 100;
+const DB_GENERIC_ERR        = 142;
+
+const OK                    = 200;

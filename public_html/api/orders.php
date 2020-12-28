@@ -9,16 +9,17 @@ session_start();
 const CART_PARAM = "cart";
 const PROD_ID_PARAM = "prod_id";
 
-function exitUsage() {
-    echo "Usage\n".
-        "Requires: Logged User\n".
-        "Method: POST or GET\n".
-        "POST Payload: " . CART_PARAM . "=[1,2,3,4,..]\n".
-        "cart value must be JSON decodable\n\n".
-        "GET Payload: ?" . PROD_ID_PARAM . "=<number>\n\n".
-        "Returns:\n".
-        "- 200 on successful POST\n".
-        "- JSON `{\"confirmed\": <bool>}` on successful GET\n".
+function exitUsage()
+{
+    echo "Usage\n" .
+        "Requires: Logged User\n" .
+        "Method: POST or GET\n" .
+        "POST Payload: " . CART_PARAM . "=[1,2,3,4,..]\n" .
+        "cart value must be JSON decodable\n\n" .
+        "GET Payload: ?" . PROD_ID_PARAM . "=<number>\n\n" .
+        "Returns:\n" .
+        "- 200 on successful POST\n" .
+        "- JSON `{\"confirmed\": <bool>}` on successful GET\n" .
         "- HTTP code 500 on any failure\n";
     exit(200);
 }
@@ -38,7 +39,8 @@ if (!isset($_SESSION['email']) || !isset($_SESSION['userid'])) {
  * @param mysqli $link DB connection
  * @param int $prod_id User ID to check
  */
-function handleGet(mysqli $link, int $prod_id) {
+function handleGet(mysqli $link, int $prod_id)
+{
     $answer = array("confirmed" => false);
 
     $query = "SELECT * FROM orders WHERE user_id = ? AND prod_id = ?";
@@ -66,7 +68,7 @@ function handleGet(mysqli $link, int $prod_id) {
         http_response_code(500);
         exit(500);
     }
-    
+
     header("Content-Type: application/json");
     echo $response;
     return;
@@ -79,7 +81,8 @@ function handleGet(mysqli $link, int $prod_id) {
  * @param mysqli $link DB connection
  * @param array $cart Cart array containing only cart IDs
  */
-function handlePost(mysqli $link, array $cart) {
+function handlePost(mysqli $link, array $cart)
+{
     $query = "INSERT INTO orders (user_id, prod_id) VALUES (?, ?)";
     $stmt = $link->prepare($query);
     $stmt->bind_param("ii", $_SESSION['userid'], $prod_id);

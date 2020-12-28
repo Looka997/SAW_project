@@ -3,7 +3,7 @@ let modelInfo = {
     wRatio: undefined,
     hRatio: undefined,
     xRatio: undefined,
-    yRatio: undefined,  
+    yRatio: undefined,
 };
 
 let baseDir = "assets/";
@@ -15,27 +15,27 @@ let ctx = canvas.getContext("2d");
 
 let api_url = "api/assets.php";
 let modelImage = new Image();
-modelImage.addEventListener("load", event => {
+modelImage.addEventListener("load", (event) => {
     draw_canvas();
-})
+});
 
 let uploadImage = new Image();
 uploadImage.addEventListener("load", (event) => {
     draw_canvas();
-})
+});
 
 canvas.width = 450;
 canvas.height = 600;
 
-if (canvas.width/canvas.height !== 450/600) {
+if (canvas.width / canvas.height !== 450 / 600) {
     canvas.width = 450;
     canvas.height = 600;
 }
 
 function get_assets(callback) {
     fetch(api_url)
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
             filenames = data;
             callback();
         });
@@ -54,11 +54,13 @@ function draw_user_image() {
         userImageHeight = canvas.height * modelInfo.hRatio;
     }
 
-    ctx.drawImage(uploadImage,
+    ctx.drawImage(
+        uploadImage,
         canvas.width * modelInfo.xRatio,
         canvas.height * modelInfo.yRatio,
         userImageWidth,
-        userImageHeight);
+        userImageHeight
+    );
 }
 
 function draw_canvas() {
@@ -86,9 +88,11 @@ function update_image(modelName) {
     modelImage.src = path;
 }
 
-get_assets(() => { update_image(modelSelector.value) });
+get_assets(() => {
+    update_image(modelSelector.value);
+});
 
-modelSelector.addEventListener("change", event => {
+modelSelector.addEventListener("change", (event) => {
     update_image(event.target.value);
 });
 
@@ -98,7 +102,7 @@ upload.addEventListener("change", (event) => {
 
     reader.onload = (event) => {
         uploadImage.src = event.target.result;
-    }
+    };
 
     reader.readAsDataURL(input.files[0]);
-})
+});

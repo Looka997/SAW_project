@@ -1,7 +1,7 @@
-@media only screen and (min-width: 768px){
+@media only screen and (min-width: 768px) {
     .mw-md-100 {
         max-width: 100% !important;
-    } 
+    }
     .mw-md-75 {
         max-width: 75% !important;
     }
@@ -65,7 +65,6 @@
 }
 
 @media only screen and (min-width: 1200px) {
-
     .mw-xl-100 {
         max-width: 100% !important;
     }

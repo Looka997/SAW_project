@@ -37,16 +37,16 @@
   </div>
 
 
-    <div class="pay col-md-6">
-      <div class="box-footer">
-        <img src="assets/creditcards.png" alt="pagamenti accettati" class="icon-paypal">
-        <div class="text">
-          <p>
-            © Dec.2020 Blein S.R.L | P. IVA 0101110010<br>
-            All designs copyright by owner.<br>
-            <a href="not-found.php">Privacy Policy</a>
-          </p>
-        </div>
+  <div class="pay col-md-6">
+    <div class="box-footer">
+      <img src="assets/creditcards.png" alt="pagamenti accettati" class="icon-paypal">
+      <div class="text">
+        <p>
+          © Dec.2020 Blein S.R.L | P. IVA 0101110010<br>
+          All designs copyright by owner.<br>
+          <a href="not-found.php">Privacy Policy</a>
+        </p>
       </div>
     </div>
+  </div>
 </footer>

@@ -10,5 +10,3 @@ $stmt = my_oo_prepared_stmt($link, $query, $types, $_SESSION["email"], $_POST["r
 
 header("Location: show_profile.php?email=".$_POST["redirect"]);
 exit;
-?>
-

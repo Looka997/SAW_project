@@ -49,5 +49,3 @@ function my_prepared_stmt($link, $query, $types, ...$parameters){
         }
         return $res;
     }
-    
-?>

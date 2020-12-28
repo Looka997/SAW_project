@@ -112,8 +112,3 @@
 
     //TODO: only for testing, to remove later
     header("Location: view_designs.php");
-
-?>
-
-
-
