@@ -62,7 +62,7 @@
     ?>
 <div class="text-center">
 <main class="form-signin">
-    <form action="registration.php" method="POST">
+    <form id="registerForm" action="registration.php" method="POST">
     <h1 class="h3 mb-3 fw-normal">Registrati</h1>
                 <label for="firstname" class="visually-hidden">*Nome:</label>
                 <input
@@ -125,7 +125,7 @@
                     value="<?php if (isset($restoring) && isset($restoring['phone'])) echo $restoring["phone"] ?>"
                     pattern="<?php echo substr($phone_reg, 1, strlen($phone_reg) - 2) ?>">
 
-                    <button class="w-100 btn btn-lg btn-primary" type="submit" name="submit">Registrati</button>
+                    <button id="submit" class="w-100 btn btn-lg btn-primary" type="submit" name="submit">Registrati</button>
     </form>
     <p id="txt_obbl">I campi * sono obbligatori</p>
 </main>
