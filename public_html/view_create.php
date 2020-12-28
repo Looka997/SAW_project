@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <title>Create your own design </title>
+    <title>Crea il tuo design </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="favicon.png" type="image/png">
 </head>
@@ -62,37 +62,47 @@
                 $fields = $_SESSION["create_POST"];
             }
         ?>
-        <label for="design_name">Insert a name for your design:</label>
-        <input type="text" name="design_name" id="design_name" value="<?php echo $precompiled ? $fields["design_name"] : ""; ?>">
-        <label for="model">Select a model:</label>
-        <select name="model" id="model">
-            <?php 
-                require_once('common/db_ops.php');
-                require_once('common/utilities.php');
-                $query = 'SELECT name, filename, price FROM models';
-                $result = my_oo_query($link, $query);
-                $models = mysqli_fetch_all($result, MYSQLI_ASSOC);
-                $_SESSION["model_names"] = array();
-                foreach($models as $model):    
-                    $model_name = $model['name']; 
-                    // così non dovremmo rifare la stessa query in handle_create
-                    array_push($_SESSION["model_names"], $model_name); 
-                    ?>
-                    <option value="<?php echo $model_name?>" <?php echo $precompiled && ($model_name === $fields['model']) ? "selected" : ""; ?> ><?php echo $model_name  ?></option>       
-            <?php endforeach ?>
-        </select>
+        <div class="input-create">
+            <h1> Crea il tuo design! </h1>
+            <h2> Inizia a creare il tuo capo, selezionando fra tre bellssimi modelli (canottiera, t-shirt e felpa), carica la tua immagine preferita, dagli un nome e un prezzo ed il gioco è fatto!</h2>
+            <br><br> 
+            <label for="design_name">Inserisci un nome per il tuo design:</label>
+            <input type="text" name="design_name" id="design_name" value="<?php echo $precompiled ? $fields["design_name"] : ""; ?>">
+            <br><br> 
+            <label for="model">Seleziona un modello:????</label>
+            <select name="model" id="model">
+                <?php 
+                    require_once('common/db_ops.php');
+                    require_once('common/utilities.php');
+                    $query = 'SELECT name, filename, price FROM models';
+                    $result = my_oo_query($link, $query);
+                    $models = mysqli_fetch_all($result, MYSQLI_ASSOC);
+                    $_SESSION["model_names"] = array();
+                    foreach($models as $model):    
+                        $model_name = $model['name']; 
+                        // così non dovremmo rifare la stessa query in handle_create
+                        array_push($_SESSION["model_names"], $model_name); 
+                        ?>
+                        <option value="<?php echo $model_name?>" <?php echo $precompiled && ($model_name === $fields['model']) ? "selected" : ""; ?> ><?php echo $model_name  ?></option>       
+                <?php endforeach ?>
+            </select>
+            <br><br> 
+            <label for="upload">Carica la tua immagine (.jpeg, .jpg, .png):</label>
+            <input type="file" name="upload" id="upload" accept="image/png, image/jpeg">
+            <br><br>       
+            <label for="design_price">Insersci il prezzo del tuo design ???(a minimum will be set depending on chosen model)???: </label>
+            <!-- TODO: set a minimum price depending on chosen model_name; -->
+            <input type="number" name="design_price" id="design_price" value="<?php echo $precompiled ? $fields["design_price"] : ""; ?>">
 
-        <label for="upload">Upload a custom image (.jpeg, .jpg, .png):</label>
-        <input type="file" name="upload" id="upload" accept="image/png, image/jpeg">
-
-        <label for="design_price">Set a price for your design (a minimum will be set depending on chosen model): </label>
-        <!-- TODO: set a minimum price depending on chosen model_name; -->
-        <input type="number" name="design_price" id="design_price" value="<?php echo $precompiled ? $fields["design_price"] : ""; ?>">
-        <input type="submit" name="design_submit" value="submit">
+            <div class="d-flex justify-content-center mt-5">
+             <button class="btn btn-primary" type="submit" name="design_submit" value="submit">Continua</button>
+            </div>
+        </div>
     </form>
 
-    <canvas id="graphics_tablet"></canvas>
-    <script src="js/graphics_tablet.js"></script>
+        <canvas id="graphics_tablet"></canvas>
+        <script src="js/graphics_tablet.js"></script>
+
     <?php
         require("common/footer.php");
     ?>

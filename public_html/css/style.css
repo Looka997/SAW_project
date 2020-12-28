@@ -25,7 +25,7 @@ nav {
 .pay {
     margin-top: 45px;
     margin-left: auto;
-  margin-right: auto;
+    margin-right: auto;
 
 }
 .fa {
@@ -40,7 +40,16 @@ nav {
     background-position: center;
     padding: 64px;
 }
-
+.input-create {
+    /* float:left;  */  
+    margin-top: 75px;
+    margin-right: 50px; 
+    position: absolute;
+    left: 40%;
+}
+#graphics_tablet {
+    margin-bottom: 15px;
+}
 .light-txt {
     color: white;
     font-weight: 400;
