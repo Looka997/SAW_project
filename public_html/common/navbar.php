@@ -39,7 +39,7 @@
           }
           else{
             echo "<li class=\"nav-item\"><a class=\"nav-link\" id='cart_btn' href='view_cart.php'>Carrello</a></li>";
-              echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"logout.php\">Logout</a></li>";
+              echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"logout.php\">Esci</a></li>";
           }
           ?>
         </ul>

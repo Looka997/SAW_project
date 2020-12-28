@@ -89,16 +89,16 @@
                 <label for="email">Email:</label><br>
                 <input value="<?php echo htmlspecialchars($email) ?>" type="email" id="email" name="email">
                 <br>
-                <label for="firstname">First name:</label><br>
+                <label for="firstname">Nome:</label><br>
                 <input value="<?php echo htmlspecialchars($firstname) ?>" type="text" id="firstname" name="firstname">
                 <br>
-                <label for="lastname">Last name:</label><br>
+                <label for="lastname">Cognome:</label><br>
                 <input value="<?php echo htmlspecialchars($lastname) ?>" type="text" id="lastname" name="lastname">
                 <br>
-                <label for="address">Address:</label><br>
+                <label for="address">Indirizzo:</label><br>
                 <input value="<?php if (isset($address)) echo htmlspecialchars($address) ?>" type="text" id="address" name="address">
                 <br>
-                <label for="phone">Phone:</label><br>
+                <label for="phone">Telefono:</label><br>
                 <input value="<?php if (isset($phone)) echo htmlspecialchars($phone) ?>" type="text" id="phone" name="phone">
                 <br>
                 <label for="username">Username:</label><br>
@@ -114,7 +114,7 @@
         <?php if (strcmp($email, $_SESSION['email']) === 0) : ?>
             <div class="profile-btn col-xs-12 divider text-center">
                 <input value="<?php echo htmlspecialchars($email) ?>" type="hidden" name="to_update">
-                <button class="btn btn-success btn-block" type="submit" name="submit" value="submit"> Submit </button>
+                <button class="btn btn-success btn-block" type="submit" name="submit" value="submit"> Aggiorna </button>
             </div>
         <?php endif; ?>
     </form>
