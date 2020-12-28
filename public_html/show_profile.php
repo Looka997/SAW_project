@@ -83,7 +83,6 @@
     mysqli_stmt_close($stmt);
     ?>
     <form action="update_profile.php" method="POST">
-        <!----------------------------------------------------------------------------------------------------------->
         <div class="container" id="profile">
             <div class="row">
                 <h2>Account</h2>
@@ -106,27 +105,6 @@
                 <input value="<?php if (isset($username)) echo htmlspecialchars($username) ?>" type="text" id="username" name="username">
             </div>
         </div>
-        <!--
-        <label for="email">Email:</label><br>
-        <input value="<?php echo htmlspecialchars($email) ?>" type="email" id="email" name="email">
-        <br>
-
-        <label for="firstname">First name:</label><br>
-        <input value="<?php echo htmlspecialchars($firstname) ?>" type="text" id="firstname" name="firstname">
-        <br>
-        <label for="lastname">Last name:</label><br>
-        <input value="<?php echo htmlspecialchars($lastname) ?>" type="text" id="lastname" name="lastname">
-        <br>
-        <label for="address">Address:</label><br>
-        <input value="<?php if (isset($address)) echo htmlspecialchars($address) ?>" type="text" id="address" name="address">
-        <br>
-        <label for="phone">Phone:</label><br>
-        <input value="<?php if (isset($phone)) echo htmlspecialchars($phone) ?>" type="text" id="phone" name="phone">
-        <br>
-        <label for="username">Username:</label><br>
-        <input value="<?php if (isset($username)) echo htmlspecialchars($username) ?>" type="text" id="username" name="username">
--->
-
         <?php
         if (strcmp($email, $_SESSION['email']) === 0 && $_SESSION["username"] === NULL) {
             echo '<p>For a better experience, set a username!</p>';

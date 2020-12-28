@@ -15,6 +15,7 @@ body {
 }
 .link-secondary:link {
     text-decoration: none;
+    font-size: 18px;
 }
 .link-secondary:active {
     text-decoration: none;
@@ -40,15 +41,26 @@ nav {
     background-position: center;
     padding: 64px;
 }
-.input-create {
-    /* float:left;  */  
-    margin-top: 75px;
-    margin-right: 50px; 
-    position: absolute;
-    left: 40%;
+.grid-create {
+    display: flex;
+    flex-wrap: wrap;
 }
 #graphics_tablet {
-    margin-bottom: 15px;
+    margin: 0 auto;
+    max-width: 450;
+    max-height: 600;
+    width: 100%;
+    height: auto;
+    padding: 15px;
+}
+.grid-create form {
+    width: 100%;
+    padding: 0 15px;
+}
+.input-create {
+    margin-top: 40px;
+    margin-right: 50px; 
+    width: 100%;
 }
 .light-txt {
     color: white;
@@ -73,6 +85,10 @@ footer {
 }
 #footer {
     background-color: #64dfdf;
+}
+.logo-footer {
+    max-width: 300px;
+    width: 100%;
 }
 /*SHOW_PROFILE*/
 .profile-btn {
@@ -234,7 +250,7 @@ footer {
 }
 
 .icon-paypal {
-    width: 80vw;
+    width: 100%;
     max-width: 673px;
 }
 
@@ -298,6 +314,27 @@ td{
         margin-left: 0;
         margin-right: 0;
         width: 50%;
+    }
+    .grid-create {
+        grid-template-columns: 40% 1fr;
+        grid-template-areas: 
+            "tablet input";
+        display: grid;
+        align-items: center;
+    }
+    #graphics_tablet {
+        max-width: 450;
+        max-height: 600;
+        width: 100%;
+        height: auto;
+        grid-area: tablet;
+        justify-self: center;
+        padding: 15px;
+    }
+    
+    .input-create {
+        padding-right: 35px;
+        grid-area: input;
     }
 } 
 

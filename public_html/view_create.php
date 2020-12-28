@@ -54,6 +54,7 @@
             }
         }
     ?>
+    <div class="grid-create">
     <form action="create.php" method="POST" enctype="multipart/form-data">
         <?php 
             $precompiled = false;
@@ -69,7 +70,7 @@
             <label for="design_name">Inserisci un nome per il tuo design:</label>
             <input type="text" name="design_name" id="design_name" value="<?php echo $precompiled ? $fields["design_name"] : ""; ?>">
             <br><br> 
-            <label for="model">Seleziona un modello:????</label>
+            <label for="model">Seleziona un modello:</label>
             <select name="model" id="model">
                 <?php 
                     require_once('common/db_ops.php');
@@ -90,8 +91,7 @@
             <label for="upload">Carica la tua immagine (.jpeg, .jpg, .png):</label>
             <input type="file" name="upload" id="upload" accept="image/png, image/jpeg">
             <br><br>       
-            <label for="design_price">Insersci il prezzo del tuo design ???(a minimum will be set depending on chosen model)???: </label>
-            <!-- TODO: set a minimum price depending on chosen model_name; -->
+            <label for="design_price">Insersci il prezzo del tuo design: </label>
             <input type="number" name="design_price" id="design_price" value="<?php echo $precompiled ? $fields["design_price"] : ""; ?>">
 
             <div class="d-flex justify-content-center mt-5">
@@ -99,10 +99,12 @@
             </div>
         </div>
     </form>
-
+        
+    
         <canvas id="graphics_tablet"></canvas>
-        <script src="js/graphics_tablet.js"></script>
+    </div>
 
+        <script src="js/graphics_tablet.js"></script>
     <?php
         require("common/footer.php");
     ?>
