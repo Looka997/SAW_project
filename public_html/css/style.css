@@ -250,6 +250,7 @@ footer {
 
 .design .design-img-container img {
     max-height: 300px;
+    max-width: 100%;
 }
 
 .icon-paypal {
