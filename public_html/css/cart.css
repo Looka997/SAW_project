@@ -4,6 +4,7 @@
 
 .cart-img {
   max-width: 849px;
+  width: 100%;
   height: auto;
   margin: 0 auto;
 }
