@@ -1,3 +1,15 @@
+#cont {
+  padding: 25px 50px;
+}
+.emp-cart {
+  width: 849px;
+  height: 849px;
+  background-image: url("https://i.pinimg.com/originals/1c/01/61/1c0161b468bd4b8efabe1afb75599e72.jpg");
+  margin: 0 auto;
+}
+#cart {
+  text-align: center;
+}
 /*
  * Table styles
  */

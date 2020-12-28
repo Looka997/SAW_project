@@ -35,10 +35,10 @@
     </style>
 </head>
 <body>
-    <h1>The requested page could not be found</h1>
+    <h1>Stiamo lavorando per creare quesata pagina</h1>
     <img src="https://i.imgur.com/xwfI7Hw.png" alt="mmmmh, error 404">
     <audio src="assets/404.mp3"></audio>
-    <h2>Please click this page</h2>
+    <h2>Nel frattempo, fai click sulla pagina e apparirà una freccia per tornare allo shopping!</h2>
     <a id="easter" class="easter-egg" href="index.php"><img src="assets/to-be-continued.png" alt="To be continued"></a>
 
     <script>
