@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +35,7 @@
     </style>
 </head>
 <body>
-    <h1>Stiamo lavorando per creare quesata pagina</h1>
+    <h1>Stiamo lavorando per creare questa pagina</h1>
     <img src="https://i.imgur.com/xwfI7Hw.png" alt="mmmmh, error 404">
     <audio src="assets/404.mp3"></audio>
     <h2>Nel frattempo, fai click sulla pagina e apparirà una freccia per tornare allo shopping!</h2>
