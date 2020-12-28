@@ -72,7 +72,7 @@
             <h2> Inizia a creare il tuo capo, selezionando fra tre bellssimi modelli (canottiera, t-shirt e felpa), carica la tua immagine preferita, dagli un nome e un prezzo ed il gioco è fatto!</h2>
             <br><br> 
             <label for="design_name">Inserisci un nome per il tuo design:</label>
-            <input type="text" name="design_name" id="design_name" value="<?php echo $precompiled ? $fields["design_name"] : ""; ?>">
+            <input type="text" name="design_name" id="design_name" required value="<?php echo $precompiled ? $fields["design_name"] : ""; ?>">
             <br><br> 
             <label for="model">Seleziona un modello:</label>
             <select name="model" id="model">
@@ -93,10 +93,10 @@
             </select>
             <br><br> 
             <label for="upload">Carica la tua immagine (.jpeg, .jpg, .png):</label>
-            <input type="file" name="upload" id="upload" accept="image/png, image/jpeg">
+            <input required type="file" name="upload" id="upload" accept="image/png, image/jpeg">
             <br><br>       
             <label for="design_price">Insersci il prezzo del tuo design: </label>
-            <input type="number" name="design_price" id="design_price" value="<?php echo $precompiled ? $fields["design_price"] : ""; ?>">
+            <input required min="0" step="0.01" type="number" name="design_price" id="design_price" value="<?php echo $precompiled ? $fields["design_price"] : ""; ?>">
 
             <div class="d-flex justify-content-center mt-5">
              <button class="btn btn-primary" type="submit" name="design_submit" value="submit">Continua</button>
