@@ -43,7 +43,11 @@ const updateTable = () => {
                             ? '<button class="btn btn-danger" onclick="removeRow(' + data + ')" >Rimuovi</button>'
                             : data;
                     } },
-                ]
+                ],
+                rowReorder: {
+                    selector: 'td:nth-child(2)'
+                },
+                responsive: true
             });
         } else {
             $('#buy_btn').hide();
