@@ -26,7 +26,7 @@
               <a class=\"nav-link\" href=\"show_profile.php\"> Ciao " . htmlspecialchars(view_name()) ." </a>".
               "</li>";
           } ?>
-          <li class="nav-item">
+          <li class="nav-item focusable text-color-nonactive text-color-hover">
             <a class="nav-link" href="view_create.php">Crea il tuo design</a>
           </li>
           <li class="nav-item">

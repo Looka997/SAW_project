@@ -47,7 +47,7 @@ const updateTable = () => {
             });
         } else {
             $('#buy_btn').hide();
-            $('#cont').html("<span>Nessun oggetto nel carrello</span>");
+            $('#cont').html("<h1 id='cart'>OPS, non hai oggetti nel carrello. <br> Rendi felice Pablo e aggiungi almeno un design!</h1><div class='emp-cart'></div>");
         }
     });
 };

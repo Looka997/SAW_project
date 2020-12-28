@@ -7,20 +7,20 @@
     <div class="footer-info col-6 col-md">
       <h5>Help</h5>
       <ul class="list-unstyled text-small">
-        <li><a class="link-secondary" href="#">Termini e Condizioni d'uso</a></li>
-        <li><a class="link-secondary" href="#">FAQ</a></li>
-        <li><a class="link-secondary" href="#">Accessibilità</a></li>
-        <li><a class="link-secondary" href="#">Contattaci</a></li>
-        <li><a class="link-secondary" href="#">Chi siamo</a></li>
+        <li><a class="link-secondary" href="http://localhost/SAW/SAW_project/public_html/not-found.php">Termini e Condizioni d'uso</a></li>
+        <li><a class="link-secondary" href="http://localhost/SAW/SAW_project/public_html/not-found.php">FAQ</a></li>
+        <li><a class="link-secondary" href="http://localhost/SAW/SAW_project/public_html/not-found.php">Accessibilità</a></li>
+        <li><a class="link-secondary" href="http://localhost/SAW/SAW_project/public_html/not-found.php">Contattaci</a></li>
+        <li><a class="link-secondary" href="http://localhost/SAW/SAW_project/public_html/not-found.php">Chi siamo</a></li>
       </ul>
     </div>
     <div class="footer-info col-6 col-md">
       <h5>Informazioni utili</h5>
       <ul class="list-unstyled text-small">
-        <li><a class="link-secondary" href="#">Guida alle taglie</a></li>
-        <li><a class="link-secondary" href="#">Tutorial: come creare la tua prima maglietta</a></li>
-        <li><a class="link-secondary" href="#">Tariffe e tempi di spedizione</a></li>
-        <li><a class="link-secondary" href="#">Resi</a></li>
+        <li><a class="link-secondary" href="http://localhost/SAW/SAW_project/public_html/not-found.php">Guida alle taglie</a></li>
+        <li><a class="link-secondary" href="http://localhost/SAW/SAW_project/public_html/not-found.php">Tutorial: come creare la tua prima maglietta</a></li>
+        <li><a class="link-secondary" href="http://localhost/SAW/SAW_project/public_html/not-found.php">Tariffe e tempi di spedizione</a></li>
+        <li><a class="link-secondary" href="http://localhost/SAW/SAW_project/public_html/not-found.php">Resi</a></li>
       </ul>
     </div>
     <div class="footer-info col-6 col-md">
@@ -45,7 +45,7 @@
           <p>
             © Dec.2020 Blein S.R.L | P. IVA 0101110010<br>
             All designs copyright by owner.<br>
-            <a href="">Privacy Policy</a>
+            <a href="http://localhost/SAW/SAW_project/public_html/not-found.php">Privacy Policy</a>
           </p>
         </div>
       </div>
