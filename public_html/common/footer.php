@@ -7,20 +7,20 @@
     <div class="footer-info col-6 col-md">
       <h5>Help</h5>
       <ul class="list-unstyled text-small">
-        <li><a class="link-secondary" href="not-fouond.php">Termini e Condizioni d'uso</a></li>
-        <li><a class="link-secondary" href="not-fouond.php">FAQ</a></li>
-        <li><a class="link-secondary" href="not-fouond.php">Accessibilità</a></li>
-        <li><a class="link-secondary" href="not-fouond.php">Contattaci</a></li>
-        <li><a class="link-secondary" href="not-fouond.php">Chi siamo</a></li>
+        <li><a class="link-secondary" href="not-found.php">Termini e Condizioni d'uso</a></li>
+        <li><a class="link-secondary" href="not-found.php">FAQ</a></li>
+        <li><a class="link-secondary" href="not-found.php">Accessibilità</a></li>
+        <li><a class="link-secondary" href="not-found.php">Contattaci</a></li>
+        <li><a class="link-secondary" href="not-found.php">Chi siamo</a></li>
       </ul>
     </div>
     <div class="footer-info col-6 col-md">
       <h5>Informazioni utili</h5>
       <ul class="list-unstyled text-small">
-        <li><a class="link-secondary" href="not-fouond.php">Guida alle taglie</a></li>
-        <li><a class="link-secondary" href="not-fouond.php">Tutorial: come creare la tua prima maglietta</a></li>
-        <li><a class="link-secondary" href="not-fouond.php">Tariffe e tempi di spedizione</a></li>
-        <li><a class="link-secondary" href="not-fouond.php">Resi</a></li>
+        <li><a class="link-secondary" href="not-found.php">Guida alle taglie</a></li>
+        <li><a class="link-secondary" href="not-found.php">Tutorial: come creare la tua prima maglietta</a></li>
+        <li><a class="link-secondary" href="not-found.php">Tariffe e tempi di spedizione</a></li>
+        <li><a class="link-secondary" href="not-found.php">Resi</a></li>
       </ul>
     </div>
     <div class="footer-info col-6 col-md">
