@@ -17,7 +17,10 @@ const removeRow = (id) => {
  */
 const updateTable = () => {
     let cart_str = localStorage.getItem("cart");
-    if (!cart_str) return;
+    if (!cart_str) {
+        checkCreateCart();
+        cart_str = localStorage.getItem("cart");
+    }
     payload = "cart=" + cart_str;
 
     fetch("api/cart.php", {
