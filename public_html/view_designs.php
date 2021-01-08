@@ -60,7 +60,8 @@
     </form>
     <?php
 
-    $base_query = 'SELECT id,name,author,filename,price FROM products';
+    $base_query = 'SELECT P.id, P.name, P.author, P.filename, P.price, COUNT(R.id) AS total, IFNULL(AVG(score), \'Nessuna Review\') AS avg_score '.
+        'FROM products P LEFT OUTER JOIN reviews R ON P.id = R.product';
     // write query for all products
     $query = $base_query;
 
@@ -82,7 +83,7 @@
         }
     }
 
-    $query .= " ORDER BY id ASC";
+    $query .= " GROUP BY P.id ORDER BY id ASC";
 
     $stmt = my_oo_prepared_stmt($link, $query, $types, ...$params);
     if ($stmt->errno) {
@@ -108,9 +109,6 @@
         exit;
     }
 
-    $reviews_query = "SELECT product, COUNT(*) as total, AVG(score) AS avg_score FROM reviews GROUP BY product ORDER BY product ASC ";
-    $reviews_result = my_oo_query($link, $reviews_query);
-
     ?>
     <div id="designs-list" class="d-flex">
         <?php
@@ -124,7 +122,6 @@
                 }
             }
             $display_name = is_null($authorusername) ? $authoremail : $authorusername;
-            $reviews = mysqli_fetch_assoc($reviews_result);
         ?>
 
             <div class="design my-4 py-4">
@@ -133,7 +130,7 @@
                     <img src=<?php echo "uploads/$product[filename]"; ?> alt="Design image">
                 </div>
                 <div>
-                    <button class="show-reviews my-2 btn btn-info" prod_id="<?php echo htmlspecialchars($product['id']) ?>">Questo design ha <?php echo $reviews['total'] ?> reviews </button>
+                    <button class="show-reviews my-2 btn btn-info" prod_id="<?php echo htmlspecialchars($product['id']) ?>">Questo design ha <?php echo $product['total'] ?> reviews </button>
                     <div class="hidden">
                         <div class="hidden alert-success" id="<?php echo 'alert-success'
                                                                     . htmlspecialchars($product['id']) ?>">
@@ -149,7 +146,7 @@
                                 <input class="form-range score-range" min="1" max="5" step="0.5" value="3" type="range" name="review_score" id="<?php echo 'review_score'
                                                                                                                                                     . htmlspecialchars($product['id']) ?>">
                                 <label for="review_score">Recensione:</label>
-                                <textarea class="form-control" name="review_text" rows="4" id="<?php echo 'review_text'
+                                <textarea class="form-control mw-100" name="review_text" rows="4" id="<?php echo 'review_text'
                                                                                                     . htmlspecialchars($product['id']) ?>"></textarea>
                                 <input class="btn btn-primary mb-2 review_submit mt-3" type="submit" value="Inviaci la tua opinione!" name="review_submit" prod_id=<?php echo htmlspecialchars($product['id']) ?>>
                             </form>
@@ -161,7 +158,7 @@
                     <button class="prod_btn my-2 btn btn-secondary" prod_id="<?php echo $product['id'] ?>">Aggiungi al carrello</button>
                 </div>
                 <p id="<?php echo 'avg_score' . htmlspecialchars($product['id']) ?>">
-                    Voto medio: <?php echo $reviews['avg_score'] ?></p>
+                    Voto medio: <?php echo $product['avg_score'] ?></p>
             </div>
 
         <?php endforeach;
