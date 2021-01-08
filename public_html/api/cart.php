@@ -6,14 +6,15 @@ $link = my_oo_connect(HOST, DB_USER, DB_PASSWORD, DATABASE);
 
 if (!isset($_POST['cart'])) {
     echo "Usage:\nMethod: POST\nPayload: cart: [1,2,3,4,..]\n";
-    exit(200);
+    http_response_code(300);
+    exit();
 }
 
 $prod_ids = json_decode($_POST['cart']);
 
 if (is_null($prod_ids)) {
     http_response_code(500);
-    exit(500);
+    exit();
 }
 
 $query = "SELECT products.id, products.name, products.model, products.price, users.username " .
@@ -28,11 +29,12 @@ foreach ($prod_ids as $prod_id) {
 
     if (!$stmt->execute()) {
         http_response_code(500);
-        die(500);
+        die();
     }
 
     $result = $stmt->get_result();
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+        $row = array_map('htmlspecialchars', $row);
         array_push($res, $row);
     }
 }
