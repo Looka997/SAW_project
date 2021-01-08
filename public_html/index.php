@@ -83,7 +83,7 @@
         <div class="my-3 py-3">
           <h2 class="light-txt display-5">Bisogno di aiuto?</h2>
           <p class="light-txt lead">Contattaci!</p>
-          <a class="dark-txt btn-home btn btn-outline-secondary" href="http://localhost/SAW/SAW_project/public_html/not-found.php">Vai ai contatti</a>
+          <a class="dark-txt btn-home btn btn-outline-secondary" href="not-found.php">Vai ai contatti</a>
         </div>
       </div>
     </div>
