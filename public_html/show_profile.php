@@ -107,19 +107,19 @@
             </div>
         </div>
         <?php
-        if (strcmp($email, $_SESSION['email']) === 0 && $_SESSION["username"] === NULL) {
+        if (isset($_SESSION['email']) && strcmp($email, $_SESSION['email']) === 0 && $_SESSION["username"] === NULL) {
             echo '<p>For a better experience, set a username!</p>';
         }
         ?>
 
-        <?php if (strcmp($email, $_SESSION['email']) === 0) : ?>
+        <?php if (isset($_SESSION['email']) && strcmp($email, $_SESSION['email']) === 0) : ?>
             <div class="profile-btn col-xs-12 divider text-center">
                 <input value="<?php echo htmlspecialchars($email) ?>" type="hidden" name="to_update">
                 <button class="btn btn-success btn-block" type="submit" name="submit" value="submit"> Aggiorna </button>
             </div>
         <?php endif; ?>
     </form>
-    <?php if (isset($_GET["username"]) || isset($_GET["email"])) { ?>
+    <?php if (isset($_SESSION['email']) && (isset($_GET["username"]) || isset($_GET["email"]))) { ?>
         <form action="follow.php" method="POST">
             <div class="profile-btn col-xs-12 divider text-center">
                 <p>Clicca "Segui" per rimanere aggiornato sui nuovi designs!</p>
