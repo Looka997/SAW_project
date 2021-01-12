@@ -5,9 +5,35 @@
     if (!isset($link)){
         $link = my_oo_connect(HOST, DB_USER, DB_PASSWORD, DATABASE);
     }
+
+
+    $link->begin_transaction();
+
+    $link->query("SET FOREIGN_KEY_CHECKS=0");
     
     $query = "DROP TABLE IF EXISTS users";
     my_oo_query($link, $query);
+
+    $query = "DROP TABLE IF EXISTS products";
+    my_oo_query($link, $query);
+
+    $query = "DROP TABLE IF EXISTS models";
+    my_oo_query($link, $query);
+    
+    $query = "DROP TABLE IF EXISTS orders";
+    my_oo_query($link, $query);
+
+    $query = "DROP TABLE IF EXISTS reviews";
+    my_oo_query($link, $query);
+
+    $query = "DROP TABLE IF EXISTS mail_list";
+    my_oo_query($link, $query);
+
+    $link->query("SET FOREIGN_KEY_CHECKS=1");
+
+    $link->commit();
+
+    $link->begin_transaction();
 
     $query = "CREATE TABLE users (
         id MEDIUMINT AUTO_INCREMENT PRIMARY KEY,
@@ -20,15 +46,6 @@
         phone VARCHAR(15),
         admin BOOLEAN DEFAULT FALSE
         ) ";
-    my_oo_query($link, $query);
-
-    $query = "DROP TABLE IF EXISTS products";
-    my_oo_query($link, $query);
-
-    $query = "DROP TABLE IF EXISTS models";
-    my_oo_query($link, $query);
-    
-    $query = "DROP TABLE IF EXISTS orders";
     my_oo_query($link, $query);
 
     $query = "CREATE TABLE models (
@@ -46,38 +63,42 @@
     $query = "CREATE TABLE products (
         id MEDIUMINT AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(256) NOT NULL,
-        model VARCHAR(30) REFERENCES models(name) ON UPDATE RESTRICT ON DELETE RESTRICT,
-        author MEDIUMINT REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+        model VARCHAR(30),
+        author MEDIUMINT,
         filename VARCHAR(255) NOT NULL,
-        price DECIMAL(12,2) NOT NULL -- https://youtu.be/ehcp_lI5CAc?t=55
+        price DECIMAL(12,2) NOT NULL, -- https://youtu.be/ehcp_lI5CAc?t=55
+        FOREIGN KEY (model) REFERENCES models(name) ON UPDATE RESTRICT ON DELETE RESTRICT,
+        FOREIGN KEY (author) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
         ) ";
     my_oo_query($link, $query);
 
-    $query = "DROP TABLE IF EXISTS reviews";
-    my_oo_query($link, $query);
     $query = "CREATE TABLE reviews(
         id MEDIUMINT AUTO_INCREMENT PRIMARY KEY,
         content VARCHAR(500),
-        score DECIMAL(3,1) NOT NULL CHECK (score BETWEEN 1 AND 5),
-        product MEDIUMINT REFERENCES products(id) ON UPDATE CASCADE ON DELETE CASCADE,
-        author MEDIUMINT REFERENCES user(id) ON UPDATE CASCADE ON DELETE CASCADE,
+        score DECIMAL(3,1) NOT NULL,
+        product MEDIUMINT,
+        author MEDIUMINT,
+        FOREIGN KEY (product) REFERENCES products(id) ON UPDATE CASCADE ON DELETE CASCADE,
+        FOREIGN KEY (author) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
         CONSTRAINT reviews UNIQUE(author,product)
     )";
     my_oo_query($link, $query);
     
     $query = "CREATE TABLE orders(
         id MEDIUMINT AUTO_INCREMENT PRIMARY KEY,
-        user_id MEDIUMINT NOT NULL REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
-        prod_id MEDIUMINT NOT NULL REFERENCES products(id) ON UPDATE CASCADE ON DELETE CASCADE
+        user_id MEDIUMINT NOT NULL,
+        prod_id MEDIUMINT NOT NULL,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+        FOREIGN KEY (prod_id) REFERENCES products(id) ON UPDATE CASCADE ON DELETE CASCADE
     )";
     my_oo_query($link, $query);
 
-    $query = "DROP TABLE IF EXISTS mail_list";
-    my_oo_query($link, $query);
     $query = "CREATE TABLE mail_list(
-        email_follower VARCHAR(254) REFERENCES users (email) ON UPDATE CASCADE ON DELETE CASCADE, 
-        email_creator VARCHAR(254) REFERENCES users (email) ON UPDATE CASCADE ON DELETE CASCADE,
-        PRIMARY KEY (email_follower, email_creator)
+        email_follower VARCHAR(254), 
+        email_creator VARCHAR(254),
+        PRIMARY KEY (email_follower, email_creator),
+        FOREIGN KEY (email_follower) REFERENCES users (email) ON UPDATE CASCADE ON DELETE CASCADE,
+        FOREIGN KEY (email_creator) REFERENCES users (email) ON UPDATE CASCADE ON DELETE CASCADE
     )";
     my_oo_query($link, $query);
 
@@ -101,17 +122,17 @@
     
     my_oo_query($link, $query); 
 
-    $query = "INSERT INTO products (name, model, author, filename, price) VALUES 
-    ('Paper Mario!', 'T-shirt', 1, 'paper-mario.jpg', 9.99),
-    ('Vita da Trullo', 'T-shirt', 2,'trullo.jpg', 11.99),
-    ('HTML is for bois', 'T-shirt', 2,'lessgreaterthen.jpg', 20.91)";
-    my_oo_query($link, $query);
-
     $query = "INSERT INTO models (name, filename, price, image_x_ratio, image_y_ratio, image_w_ratio, image_h_ratio) VALUES
     ('Canottiera', 'tanktop.svg', 7.00, 0.2455, 0.4, 0.5111, 0.2083),
     ('T-shirt', 'tshirt.svg', 10.00, 0.2785, 0.36, 0.4555, 0.2583),
     ('Felpa', 'hoody.svg', 20.00, 0.32, 0.45, 0.375, 0.1583)
     ";
+    my_oo_query($link, $query);
+
+    $query = "INSERT INTO products (name, model, author, filename, price) VALUES 
+    ('Paper Mario!', 'T-shirt', 1, 'paper-mario.jpg', 9.99),
+    ('Vita da Trullo', 'T-shirt', 2,'trullo.jpg', 11.99),
+    ('HTML is for bois', 'T-shirt', 2,'lessgreaterthen.jpg', 20.91)";
     my_oo_query($link, $query);
 
     $query = "INSERT INTO reviews (content, score, product, author) VALUES
@@ -180,6 +201,8 @@
     (14,3)
     ";
     my_oo_query($link, $query);
+
+    $link->commit();
 
     header("Location: logout.php");
     exit;

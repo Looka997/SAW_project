@@ -16,14 +16,16 @@ if (
     (!isset($_POST['product']))
     || (!isset($_POST['content']))
     || (!isset($_SESSION['userid']))
-    || (!isset($_POST['score']))
+    || (!isset($_POST['score'])
+    || $_POST['score'] < 1
+    || $_POST['score'] > 5)
 ) {
     echo "Usage:\nRequires:Logged user\n
             Method: POST\n
-            Payload: score=number&content=text&product=prod_id\n";
+            Payload: score=number&content=text&product=prod_id\n
+            Score between 1 and 5\n";
     exit(200);
 }
-
 
 
 $query = "INSERT INTO reviews (content, score, product, author) VALUES
