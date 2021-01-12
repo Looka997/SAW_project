@@ -119,19 +119,38 @@
             </div>
         <?php endif; ?>
     </form>
-    <?php if (isset($_SESSION['email']) && (isset($_GET["username"]) || isset($_GET["email"]))) { ?>
-        <form action="follow.php" method="POST">
+    <?php 
+    // $result = mysqli_fetch_all($stmt, MYSQLI_ASSOC);
+    if (isset($_SESSION['email']) && (isset($_GET["username"]) || isset($_GET["email"]))) { 
+        $query = "SELECT email_creator FROM mail_list WHERE email_follower=? AND email_creator=?";
+        $types = "ss";
+        $stmt = my_oo_prepared_stmt($link, $query, $types, $_SESSION["email"], $email); 
+        $result = $stmt->get_result();
+        if (mysqli_num_rows($result) === 0) {?>
+        <form id="followForm" action="follow.php" method="POST">
             <div class="profile-btn col-xs-12 divider text-center">
                 <p>Clicca "Segui" per rimanere aggiornato sui nuovi designs!</p>
                 <button class="btn btn-success btn-block" type="submit" name="segui" value="Segui"><span class="follow fa fa-plus-circle"></span> Segui </button>
                 <input type="hidden" name="redirect" value="<?php if (isset($email)) echo htmlspecialchars($email) ?>">
             </div>
         </form>
-    <?php } ?>
+        <?php } else { ?>
+        <form id="followForm" action="unfollow.php" method="POST">
+            <div class="profile-btn col-xs-12 divider text-center">
+                <p>"Clicca "Non seguire" per interrompere gli aggiornamenti sui nuovi designs."</p>
+                <button class="btn btn-danger btn-block" type="submit" name="segui" value="Non seguire"><span class="follow fa fa-minus-circle"></span> Segui </button>
+                <input type="hidden" name="redirect" value="<?php if (isset($email)) echo htmlspecialchars($email) ?>">
+            </div>
+        </form>    
+        <?php } ?>
+
+        
+    <?php $stmt->close();} ?>
     <?php
     require("common/footer.php");
     ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="js/follow_unfollow.js"></script>
 </body>
 
 </html>

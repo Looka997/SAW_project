@@ -202,6 +202,9 @@
     ";
     my_oo_query($link, $query);
 
+    $query = "INSERT INTO `mail_list`(`email_follower`, `email_creator`) VALUES ('fede@crippa.it','luca@marinelli.it')";
+    my_oo_query($link, $query);
+    
     $link->commit();
 
     header("Location: logout.php");
