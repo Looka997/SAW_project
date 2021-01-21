@@ -108,7 +108,7 @@
         </div>
         <?php
         if (isset($_SESSION['email']) && strcmp($email, $_SESSION['email']) === 0 && $_SESSION["username"] === NULL) {
-            echo '<p>For a better experience, set a username!</p>';
+            echo '<p>Per un esperienza migliore, inserisci uno username!</p>';
         }
         ?>
 
@@ -138,7 +138,7 @@
         <form id="followForm" action="unfollow.php" method="POST">
             <div class="profile-btn col-xs-12 divider text-center">
                 <p>"Clicca "Non seguire" per interrompere gli aggiornamenti sui nuovi designs."</p>
-                <button class="btn btn-danger btn-block" type="submit" name="segui" value="Non seguire"><span class="follow fa fa-minus-circle"></span> Segui </button>
+                <button class="btn btn-danger btn-block" type="submit" name="segui" value="Non seguire"><span class="follow fa fa-minus-circle"></span> Non Seguire </button>
                 <input type="hidden" name="redirect" value="<?php if (isset($email)) echo htmlspecialchars($email) ?>">
             </div>
         </form>    
@@ -150,7 +150,6 @@
     require("common/footer.php");
     ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <script src="js/follow_unfollow.js"></script>
 </body>
 
 </html>
