@@ -137,7 +137,7 @@
         <?php } else { ?>
         <form id="followForm" action="unfollow.php" method="POST">
             <div class="profile-btn col-xs-12 divider text-center">
-                <p>"Clicca "Non seguire" per interrompere gli aggiornamenti sui nuovi designs."</p>
+                <p>Clicca "Non seguire" per interrompere gli aggiornamenti sui nuovi designs.</p>
                 <button class="btn btn-danger btn-block" type="submit" name="segui" value="Non seguire"><span class="follow fa fa-minus-circle"></span> Non Seguire </button>
                 <input type="hidden" name="redirect" value="<?php if (isset($email)) echo htmlspecialchars($email) ?>">
             </div>
