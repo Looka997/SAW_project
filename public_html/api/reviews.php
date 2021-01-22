@@ -16,6 +16,10 @@ $response = [];
 if (isset($_SESSION['userid']))
     $response['id'] = $_SESSION['userid'];
 $prod_id = mysqli_escape_string($link, $_POST['product']);
+if (!is_numeric($prod_id)) {
+    http_response_code(300);
+    exit();
+}
 
 $fields = array();
 if (isset($_POST['avg_score']))
@@ -38,7 +42,7 @@ if (isset($_POST['reviews'])) {
     $reviews_query = "SELECT users.id AS user_id, content, score, 
         IFNULL(username, email) as user FROM reviews JOIN users" .
         " WHERE users.id = author AND product= " .
-        mysqli_escape_string($link, $_POST['product']);
+        $prod_id;
     $res = my_oo_query($link, $reviews_query);
     $reviews = mysqli_fetch_all($res, MYSQLI_ASSOC);
     $response['reviews'] = $reviews;
