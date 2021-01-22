@@ -8,7 +8,8 @@ session_start();
 
 if (!isset($_POST['product'])) {
     echo "Usage:\n
-        Method: POST\n";
+        Method: POST\n".
+        "product must be set, at least one among avg_score, count or reviews";
     exit(200);
 }
 
